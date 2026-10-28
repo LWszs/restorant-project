@@ -1,0 +1,339 @@
+/* CONTAINER */
+
+.profileContainer{
+    flex: 1;
+    background: var(--BACKGROUND-PERSONAL-DETAILS);
+    background-position: center;
+    background-size: cover;
+
+    border: var(--BORDER-HITAM);
+
+    font-family: var(--FF-ROBOTO);
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer{
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+button{
+    font-size: var(--FS-PROFILE-BUTTON);
+}
+
+/* PROFILE */
+
+.back{
+    margin: 1em;
+    padding: 0.3em;
+
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-SMALL);
+
+    background-color: var(--COLOR-BLACK-GREEN);
+    color: var(--COLOR-NORMAL-WHITE);
+}
+
+.back:hover{
+    background-color: var(--COLOR-BLACK-GREEN-HOVER);
+}
+
+.back:active{
+    background-color: var(--COLOR-BLACK-GREEN-ACTIVE);
+}
+
+/* IMG CONTAINER */
+
+.profileImgContainer{
+    margin: 1em;
+    padding: 1em;
+
+    text-align: center;
+}
+
+/* IMG */
+.profileImg{
+    border-radius: var(--RADIUS-NORMAL);
+    width: clamp(60%,1vw,100%);
+}
+
+/* EMPLOYEE ID */
+.profileId{
+    background-color: var(--COLOR-EMP-ID);
+    color: var(--COLOR-NORMAL-WHITE);
+
+    max-width: 500px;
+
+    padding: 0.7em;
+    margin: 1em;
+    border-radius: var(--RADIUS-NORMAL);
+}
+
+/* PROFILE DATA CONTAINER*/
+.profileData dd{
+    border-radius: var(--RADIUS-SMALL);
+    border: var(--BORDER-HITAM);
+    padding: 0.3em;
+
+    background-color: var(--COLOR-NORMAL-WHITE);
+}
+
+.profileDataContainer{
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-NORMAL);
+
+
+    margin: 1em;
+    padding: 1em;
+}
+
+.Button{
+    padding: 0.3em;
+    margin: 0.5em;
+
+    background-color: var(--COLOR-BLACK-GREEN);
+    color: var(--COLOR-NORMAL-WHITE);
+
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-SMALL);
+}
+
+.Button:hover{
+    background-color: var(--COLOR-BLACK-GREEN-HOVER);
+}
+
+.Button:active{
+    background-color: var(--COLOR-BLACK-GREEN-ACTIVE);
+}
+
+
+.profileActivityContainer{
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-NORMAL);
+
+    min-height: 70vh;
+
+    margin: 1em;
+    padding: 1em;
+}
+
+.profileActivitylistContainer{
+    min-height: 80%;
+    width: 100%;
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-NORMAL);
+}
+
+.LogOut{
+    margin-top: 0.5em;
+    padding: 0.5em;
+
+    background-color: var(--COLOR-BLACK-GREEN);
+    color: var(--COLOR-NORMAL-WHITE);
+
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-NORMAL);
+}
+
+.LogOut:hover{
+    background-color: var(--COLOR-BLACK-GREEN-HOVER);
+}
+
+.LogOut:active{
+    background-color: var(--COLOR-BLACK-GREEN-ACTIVE);
+}
+
+
+/* ASIDE */
+.resetPassContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+}
+
+.changePassForm{
+    background: var(--BACKGROUND-CHANGE-PASS);
+    margin: 4em 0;
+    padding: 1em;
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-NORMAL);
+    height: 500px;
+}
+
+.changePassForm svg{
+    display: block;
+    width: 100%;
+    height: 5rem;
+}
+
+.changePassForm input{
+    border: var(--BORDER-HITAM);
+    border-radius: var(--RADIUS-SMALL);
+    padding: 0.3em;
+}
+
+.changePassForm button{
+    padding: 0.3em;
+    margin-right: 1em;
+    background-color: var(--COLOR-BLACK-GREEN);
+    border: none;
+    color: var(--COLOR-NORMAL-WHITE);
+}
+
+.changePassForm button:hover{
+    background-color: var(--COLOR-BLACK-GREEN-HOVER);
+}
+
+.changePassForm button:active{
+    background-color: var(--COLOR-BLACK-GREEN-ACTIVE);
+}
+
+.changePassForm p{
+    color: red;
+}
+
+.seePass{
+    margin-left: 0.3em;
+    border-radius: var(--RADIUS-NORMAL);
+    border: var(--BORDER-HITAM);
+}
+
+.changePassSucces{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--COLOR-BLACK-GREEN);
+    color: var(--COLOR-NORMAL-WHITE);
+    padding: 1em;
+    margin: 1em;
+    border-radius: var(--RADIUS-NORMAL);
+    animation: zoom 1s ease none;
+    white-space: nowrap;
+}
+
+@keyframes zoom {
+    0%{
+        transform: scale(0.9);
+    }
+    90%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
+@media (min-width:420px){
+    .profileContainer{
+        font-size: var(--FS-PROFILE-BIG);
+        justify-content: center;
+        align-items: center;
+        max-width: 500px;
+        border-radius: var(--RADIUS-NORMAL);
+        
+    }
+    .profileMain{
+        margin: 1em auto;
+        width: 80%;
+    }
+    .profileId{
+        margin: 1em auto;
+    }
+    .profileImg{
+        width: 200px;
+    }
+    .profileActivityContainer{
+        width: 80%;
+        margin: 1em auto;
+        height: 100px;
+    }
+    .changePassForm{
+        font-size: 1em;
+    }
+    .changePassForm label{
+        font-size: 1.5em;
+    }
+    .changePassForm button{
+        font-size: 1.2em;
+    }
+}
+
+
+@media (min-width: 720px){
+    .mainContainer{
+        background: var(--BACKGROUND-MAIN-PROFILE);
+        background-position: center;
+        background-size: cover;
+    }
+    .profileContainer{
+        background: none;
+        border: none;
+        gap: 1em;
+        margin: 1em;
+        max-width: none;
+        
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--FS-PROFILE-TABLET);
+        
+    }
+    .profileAllDataContainer{
+        display: flex;
+    }
+    .profileMain{
+        border: var(--BORDER-HITAM);
+        border-radius: var(--RADIUS-NORMAL);
+
+        width: 100%;
+
+        background: var(--BACKGROUND-PERSONAL-DETAILS);
+        background-position: center;
+        background-size: cover;
+
+    }
+    .profileImg{
+        width: 8em;
+    }
+    .profileActivityContainer{
+        background: var(--BACKGROUND-PERSONAL-DETAILS);
+        background-position: center;
+        background-size: cover;
+    }
+
+}
+
+@media (min-width: 1024px){
+    .profileContainer{
+        font-size: 1.1em;
+    }
+    .profileDataContainer{
+        width: 50%;
+        max-width: none;
+    }
+    .profileImg{
+        width: 200px;
+    }
+    .changePassForm{
+        height: 600px;
+    }
+}
+
+@media (min-width: 1281px){
+    .profileImg{
+        width: 300px;
+    }
+}
+
