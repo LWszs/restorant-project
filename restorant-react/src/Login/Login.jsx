@@ -98,28 +98,28 @@ function Login(){
 
     return(
         
-        <div className={styles.body}>
+        <div className="">
             <header>
-                <h1 className={styles.loginHeader}>
-                    <img src="/logo.jpg" alt="logo" width={100} className={styles.loginLogo}/>
-                    <div className={styles.loginDescriptionContainer}>
+                <h1 className="">
+                    <img src="/logo.jpg" alt="logo" width={100} className=""/>
+                    <div className="">
                         <span>Global Bites</span>
-                        <span className={styles.loginDescription}>Flavors of the world</span>
+                        <span className="">Flavors of the world</span>
                     </div>
                 </h1>
             </header>
             <br />
-            <main className={styles.mainContainerLogin}>
+            <main className="">
                 <header >
-                    <h1 className={styles.headerLogin}>Login</h1>
-                    <p className={styles.headerText}>Selamat Datang</p>
+                    <h1 className="">Login</h1>
+                    <p className="">Selamat Datang</p>
                 </header>
                 <form>
                     <div>
-                        <input type="text" name="username" placeholder="Username" className={styles.inputBox} value={username} onChange={(event) => {setUsername(event.target.value)}} onKeyDown={changeFocusUser}/>
+                        <input type="text" name="username" placeholder="Username" className="" value={username} onChange={(event) => {setUsername(event.target.value)}} onKeyDown={changeFocusUser}/>
                         <br />
 
-                        <input type="password" name='password' placeholder="Password"  className={styles.inputBox} value={password} onChange={(event) => {setPassword(event.target.value)}} ref={labelPassword}/*  onKeyDown={changeFocusPass} */ minLength={4}/>
+                        <input type="password" name='password' placeholder="Password"  className="" value={password} onChange={(event) => {setPassword(event.target.value)}} ref={labelPassword}/*  onKeyDown={changeFocusPass} */ minLength={4}/>
                     </div>
                     <button className={`${styles.buttonLogin} ${active ? styles.buttonActive : ""}`} onClick={(event) => checkLogin(event)} ref={buttonLogin} type='submit'>Login</button>
                 </form>
