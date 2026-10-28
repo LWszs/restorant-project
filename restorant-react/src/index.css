@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 
@@ -21,7 +22,6 @@
     --BACKGROUND-MAIN: radial-gradient(circle, #E0F7FA 0%, #80DEEA 100%);
     --BACKGROUND-HEADER: url('/header/restaurant-header-background.png') center/cover;
     --BACKGROUND-MAIN-IMG: rgba(255, 255, 255, 0);
-    --BACKGROUND-LOGIN-BODY: url('/login/background.jpg');
     --BACKGROUND-LOGIN: url('/login/loginBackground.jpg');
 
     --BACKGROUND-PERSONAL-DETAILS: url('/profile/whiteBackground.jpg');
@@ -151,14 +151,19 @@ UNTUK PENGGUNAAN CSS NATIVE ITU ADALAH:
 1.HEADER EMPLOYEE
 2.HEADER INSIDE
 3.PROFILE
-4.LOGIN
-5.HOME
+4.HOME
 
 JADI SAYA MINTA MAAF JIKA KODE SAYA AGAK ANEH
 */
 
 @theme {
   --background-image-table-picker:url('/profile/mainBackground.jpg');
+  --background-image-login-main: url('/login/background-main.jpg');
+  --background-image-login-image: url('/login/background-login.jpg');
+  --background-image-login-form: url('/login/background-form.jpg');
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --default-font-family: var(--font-main);
+  --color-green-main: #1E3E2B;
   --color-pemilihan-pembelian: hsla(37, 25%, 83%, 0.541);
   --color-petunjuk-warna: hsla(37, 25%, 83%, 0.541);
   --color-black-green: #0B3B2E;
@@ -181,8 +186,6 @@ body,html{
 
 * {
     scrollbar-width: none;
-    font-family: var(--FF-MOSSERRAT);
-    font-weight: 500;
 }
 
 *::-webkit-scrollbar {

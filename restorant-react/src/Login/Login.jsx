@@ -1,50 +1,21 @@
 import React, {useState,useEffect,useRef} from 'react';
 import axios from 'axios';
+import { Eye, EyeOff } from 'lucide-react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function Login(){
 
-    //digunakan untuk variabel penyimpan 
-    const [username,setUsername] = useState("");
-    const [password,setPassword] = useState("");
+    const input = "border-2 rounded-xl border-black p-2";
 
-    //digunakan untuk fitur enter    
-    const labelPassword = useRef(null);
-    const buttonLogin = useRef(null);
+    const [username , setUsername] = useState("");
+    const [password , setPassword] = useState("");
 
-    //digunakna untuk pengaktifan
-    const [active,setActive] = useState(true); 
-    const [error,setError] = useState(false);
+    const [showpass , setShowPass] = useState(false);
 
-    // Digunakan untuk navigate
+    const [infoError , setInfoError] = useState(false);
+
     const navigate = useNavigate();
-
-    /* Peraturan untuk username dan password */
-    const peraturan1 = username.length >= 5 && username.length <= 35;
-    const peraturan2 = password.length >= 4 && password.length <= 12;
-    const aturan = peraturan1 && peraturan2;
-
-    /* varaibael penyimpan pesan error */
-    const [msgError, setMsgError] = useState("");
-
-    //ketika aturan sudah benar aktifkan tomboll login
-    useEffect(() =>{
-        setActive(!active);
-    },[aturan])
-
-    //ketika sudah 3 detik hilangkan logo errornya
-    useEffect(() => {
-        let timer;
-        if(error){
-            timer = setTimeout(() =>{
-                setError(false);
-            },3000)
-        }
-        return() =>{
-            clearTimeout(timer);
-        }
-    },[error])
 
     //cek apakah password benar atau salah
     async function authenticate(){
@@ -64,75 +35,78 @@ function Login(){
             }
         }
         catch(error){
-            errorCheck(error.response.status);
-            setError(true);
+            setInfoError(true);
         }
     }
 
-    //ketika focus di username dan menekan enter ganti ke password
-    function changeFocusUser(event){
-        if (event.key === "Enter"){
-            event.preventDefault();
-            labelPassword.current?.focus();
-        }
-    }
 
-    //ketika aktikan tombol login dan masuk ke authenticate
-    function checkLogin(){
-        
-        if (active){
-            event.preventDefault();
-            authenticate()
-        }
-    }
-
-    //mengecek errornya jenis apa untuk tampilan error
-    function errorCheck(status){
-        if (status >= 400 && status <=499){
-            setMsgError("INVALID DATA ERROR")
-        }
-        else if (status >= 500 && status <= 599){
-            setMsgError("SERVER ERROR")
-        };
+    function handleSubmit(event){
+        event.preventDefault();
+        authenticate();
     }
 
     return(
         
-        <div className={styles.body}>
-            <header>
-                <h1 className={styles.loginHeader}>
-                    <img src="/logo.jpg" alt="logo" width={100} className={styles.loginLogo}/>
-                    <div className={styles.loginDescriptionContainer}>
-                        <span>Global Bites</span>
-                        <span className={styles.loginDescription}>Flavors of the world</span>
-                    </div>
-                </h1>
-            </header>
-            <br />
-            <main className={styles.mainContainerLogin}>
-                <header >
-                    <h1 className={styles.headerLogin}>Login</h1>
-                    <p className={styles.headerText}>Selamat Datang</p>
-                </header>
-                <form>
-                    <div>
-                        <input type="text" name="username" placeholder="Username" className={styles.inputBox} value={username} onChange={(event) => {setUsername(event.target.value)}} onKeyDown={changeFocusUser}/>
+        <div className="min-h-screen flex justify-center items-center
+            before:content-['']
+            before:absolute before:inset-0 before:-z-10
+            before:bg-login-main
+            before:bg-cover before:bg-center before:bg-no-repeat
+            before:brightness-40"
+        >
+            <div className='flex'>
+                <section className='hidden lg:block bg-login-image border-2 w-90 rounded-l-2xl'>
+                    <figure className='flex items-center justify-evenly p-2'>
+                        <img src="logo.jpg" alt="logo-restorant" width={100} className='rounded-full'/>
+                        <figcaption>
+                            <h1 className='text-4xl font-bold text-white'>Global Bites</h1>
+                            <p className='text-white text-xs'>
+                                Silahkan kembali lagi ke global bites
+                            </p>
+                        </figcaption>
+                    </figure>
+                    <img src="food/nasiGoreng.jpg" alt="nasi goreng" width={300} className='block rounded-full mx-auto'/>
+                </section>
+                <section className='bg-login-form text-xl text-green-main font-bold p-4 rounded-2xl lg:text-2xl lg:rounded-l-none'>
+                    <header className='mb-5 flex items-center justify-evenly'>
+                        <img src="logo.jpg" alt="logo-restorant" width={100} className='rounded-full'/>
+                        <h2 className='text-4xl'>Login</h2>
+                    </header>
+                    <hr />
+                    {infoError &&
+                        <aside className='border-2 rounded-lg my-4 text-black font-semibold p-2 text-sm'>
+                            <p>
+                                <span className='text-red-600'>&#9433; </span> terjadi error pada akun atau server
+                            </p>
+                        </aside>
+                    }
+                    <form onSubmit={(event) => handleSubmit(event)} className='flex flex-col mt-4'>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" id='username' name='username' placeholder='Insert Username' required className={input} value={username} onChange={(event)=> setUsername(event.target.value)}/>
+
                         <br />
 
-                        <input type="password" name='password' placeholder="Password"  className={styles.inputBox} value={password} onChange={(event) => {setPassword(event.target.value)}} ref={labelPassword}/*  onKeyDown={changeFocusPass} */ minLength={4}/>
-                    </div>
-                    <button className={`${styles.buttonLogin} ${active ? styles.buttonActive : ""}`} onClick={(event) => checkLogin(event)} ref={buttonLogin} type='submit'>Login</button>
-                </form>
-            </main>
-            {error && (            
-            <aside className={styles.errorBox}>
-                <div className={styles.errorContainer}>
-                    <p className={styles.errorTeks}>{msgError}</p>
-                    <button className={styles.errorButton} onClick={() => {setError(false)}}> X </button>
-                </div>
-                <div className={styles.errorDuration}></div>
-            </aside>)}
+                        <label htmlFor="password">Password</label>
+                        <div className="flex gap-2 items-center relative border-2 rounded-2xl p-2">
+                
+                            <input type={showpass ? "text" : "password"} 
+                            id='password' name='password' placeholder='Insert Password' minLength="4" className='border-none outline-none w-[80%]' 
+                            required 
+                            value={password} 
+                            onChange={(event) => setPassword(event.target.value)}/>
 
+                            <button type='button' className='cursor-pointer hover:opacity-70 active:opacity-50 absolute right-5' onClick={() => setShowPass(!showpass)}>
+                                {showpass ? <EyeOff/> :<Eye/>}
+                            </button>
+                        </div>
+
+                        <br />
+
+                        <button type='submit' className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white hover:bg-green-500 active:bg-green-800'>Login</button>
+
+                    </form>
+                </section>
+            </div>
         </div>
     );
 
