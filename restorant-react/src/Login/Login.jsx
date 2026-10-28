@@ -1,11 +1,21 @@
 import React, {useState,useEffect,useRef} from 'react';
 import axios from 'axios';
+import { Eye, EyeOff } from 'lucide-react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function Login(){
 
-    const input = "border-2 rounded-xl border-black p-2"
+    const input = "border-2 rounded-xl border-black p-2";
+
+    const [username , setUsername] = useState("");
+    const [password , setPassword] = useState("");
+
+    const [showpass , setShowPass] = useState(false);
+
+    const [infoError , setInfoError] = useState(false);
+
+    const navigate = useNavigate();
 
     //cek apakah password benar atau salah
     async function authenticate(){
@@ -25,14 +35,14 @@ function Login(){
             }
         }
         catch(error){
-            errorCheck(error.response.status);
-            setError(true);
+            setInfoError(true);
         }
     }
 
 
     function handleSubmit(event){
         event.preventDefault();
+        authenticate();
     }
 
     return(
@@ -62,18 +72,37 @@ function Login(){
                         <img src="logo.jpg" alt="logo-restorant" width={100} className='rounded-full'/>
                         <h2 className='text-4xl'>Login</h2>
                     </header>
-                    <form onSubmit={(event) => handleSubmit(event)} className='flex flex-col'>
+                    <hr />
+                    {infoError &&
+                        <aside className='border-2 rounded-lg my-4 text-black font-semibold p-2 text-sm'>
+                            <p>
+                                <span className='text-red-600'>&#9433; </span> terjadi error pada akun atau server
+                            </p>
+                        </aside>
+                    }
+                    <form onSubmit={(event) => handleSubmit(event)} className='flex flex-col mt-4'>
                         <label htmlFor="username">Username</label>
-                        <input type="text" id='username' name='username' placeholder='Insert Username' required className={input}/>
-                        
-                        <br />
-
-                        <label htmlFor="password">password</label>
-                        <input type="password" id='password' name='password' placeholder='Insert Password' minLength="4" required className={input}/>
+                        <input type="text" id='username' name='username' placeholder='Insert Username' required className={input} value={username} onChange={(event)=> setUsername(event.target.value)}/>
 
                         <br />
 
-                        <button type='submit' className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white'>Login</button>
+                        <label htmlFor="password">Password</label>
+                        <div className="flex gap-2 items-center relative border-2 rounded-2xl p-2">
+                
+                            <input type={showpass ? "text" : "password"} 
+                            id='password' name='password' placeholder='Insert Password' minLength="4" className='border-none outline-none w-[80%]' 
+                            required 
+                            value={password} 
+                            onChange={(event) => setPassword(event.target.value)}/>
+
+                            <button type='button' className='cursor-pointer hover:opacity-70 active:opacity-50 absolute right-5' onClick={() => setShowPass(!showpass)}>
+                                {showpass ? <EyeOff/> :<Eye/>}
+                            </button>
+                        </div>
+
+                        <br />
+
+                        <button type='submit' className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white hover:bg-green-500 active:bg-green-800'>Login</button>
 
                     </form>
                 </section>
