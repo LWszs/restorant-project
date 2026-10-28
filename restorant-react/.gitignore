@@ -26,3 +26,6 @@ dist-ssr
 # Abaikan semua file .env
 .env
 .env.local
+
+node_modules/
+/restorant-express/node_modules/
