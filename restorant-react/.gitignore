@@ -27,5 +27,3 @@ dist-ssr
 .env
 .env.local
 
-node_modules/
-/restorant-express/node_modules/
