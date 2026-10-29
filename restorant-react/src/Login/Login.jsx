@@ -1,7 +1,6 @@
 import React, {useState,useEffect,useRef} from 'react';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
-import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function Login(){

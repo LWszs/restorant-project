@@ -1,5 +1,4 @@
 import axios from 'axios';
-import styles from './FoodContainer.module.css';
 import FormatLengkap from '../reusable/RupiahFormat';
 import {useRef, useCallback, useState, useEffect} from 'react';
 import debounce from 'lodash.debounce';
@@ -41,7 +40,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
 
     /* TEKS YANG DIGUNAKAN KETIKA ANIMASI LOADING */
     const loadingText = <>
-                    syncing <Loader2 width={20} height={15} className={styles.bufferingAnimation}/>
+                    syncing <Loader2 width={20} height={15} className="animate-spin"/>
                 </>
 
     /* TEKS YANG DIGUNAKAN KETIKA ANIMASI SELESAI */
@@ -82,33 +81,38 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
 
     return(
 
-        <figure className={styles.food}>
+        <figure className="shadow-2xl rounded-2xl p-2 bg-amber-50 font-main font-bold text-sm flex flex-col items-center lg:text-lg relative">
             {queryActive && 
-                <div 
-                    className={`${styles.bufferingContainer} ${confirm ? styles.queryConfirm :  ""}`}>
-                        {confirm ? confirmText : loadingText}
+                <div className={`absolute top-0 right-0 rounded-2xl p-1 flex items-center
+                w-20 justify-center ${confirm ? "bg-green-600 text-white" : "bg-yellow-300"}`}>
+                {confirm ? confirmText : loadingText}
                 </div>
             }
+            {queryActive && 
+                <p className={`absolute bg-yellow-300 rounded-2xl p-1 right-0 top-10 ${quantity == 0? "hidden" : "block"}`}>
+                    {quantity} in query
+                </p>
+            } 
+
             <img 
                 src={img_product} 
                 alt={product_name} 
                 width={170} 
-                className={styles.foodImg}/>
-            <figcaption className={styles.foodDescription}>
-                <div className={styles.nameContainer}>
-                    <p 
-                    className={`${styles.foodName} ${product_name.length > 15 ? styles.long : ""}`}>
-                        {product_name}
-                    </p>
-                    <button className={styles.button} onClick={add}>+</button>
+                className="rounded-2xl border-2 border-gray-400 sm:w-full"/>
+            <figcaption className="mt-2 w-full">
+                <div className='flex justify-between'>
+                    <div className='max-w-[80%]'>
+                        <p className="truncate">
+                            {product_name}
+                        </p>
+                        <p>
+                            {FormatLengkap(product_price)}
+                        </p>
+                    </div>
+                    <button className="bg-green-600 p-2 rounded-lg text-white hover:opacity-70 active:opacity-50" onClick={add}>+
+                    </button>
                 </div>
-                <p>
-                    {FormatLengkap(product_price)}
-                </p>
-                <div className={styles.stockQueryContainer}>
-                    <p className={styles.foodStock}> stock: 0</p>
-                    {queryActive && <p className={styles.query}>{quantity} in query</p>}
-                </div>
+                <p className="rounded-2xl bg-gray-300 text-center mt-2"> stock: 0</p>
             </figcaption>
         </figure>
 
