@@ -184,7 +184,7 @@ function Home(){
     return (
         <main className="h-[calc(100dvh-84px)] overflow-hidden flex flex-col w-full sm:flex-row-reverse font-bold">
 
-            <section className="flex flex-col min-h-0 min-w-0 grow sm:max-w-[69%] mb-3">
+            <section className="flex flex-col min-h-0 min-w-0 grow mb-3">
                 <div className="flex-1 overflow-y-auto p-4">
                     <input
                         type="text"
