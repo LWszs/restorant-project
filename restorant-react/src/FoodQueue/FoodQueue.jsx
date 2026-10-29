@@ -1,4 +1,3 @@
-import styles from './FoodQueue.module.css';
 import FormatLengkap from '../reusable/RupiahFormat';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -82,25 +81,25 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
     }
 
     return(
-        <figure className={styles.queueContainer}>
-            <img src={img} alt={product_name} width={90} className={styles.foodQueueImg}/>
-            <div className={styles.queueDescription}>
-                <figcaption className={styles.queueNamePriceContainer}>
+        <figure className="">
+            <img src={img} alt={product_name} width={90} className=""/>
+            <div className="">
+                <figcaption className="">
                     {product_name}
-                    <div className={styles.queueButtonContainer}> 
+                    <div className=""> 
                         <button 
-                            className={`${styles.queueButton} ${styles.queueSubtract}`} 
+                            className="" 
                             onClick={subtractCode}> 
                             - 
                         </button>
                         <input 
                             type="number" 
                             min={1} 
-                            className={styles.queueInput} 
+                            className=""
                             value={quantity || ""} 
                             onChange={(event) => {onchangeCode(event);}}/>
                         <button 
-                            className={`${styles.queueButton} ${styles.queueAdd}`} 
+                            className=""
                             onClick={addCode}> 
                             + 
                         </button> 
@@ -108,7 +107,7 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
                     {FormatLengkap(totalPrice)}
                 </figcaption>
                 <button 
-                    className={styles.queueButtonCancel} 
+                    className=""
                     onClick={cancel}>
                         <abbr title="Cancel"> <Trash/> </abbr>
                 </button>
