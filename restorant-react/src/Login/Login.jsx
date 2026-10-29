@@ -47,7 +47,7 @@ function Login(){
 
     return(
         
-        <div className="min-h-screen flex justify-center items-center
+        <div className="min-h-dvh flex justify-center items-center
             before:content-['']
             before:absolute before:inset-0 before:-z-10
             before:bg-login-main
