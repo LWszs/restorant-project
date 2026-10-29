@@ -81,7 +81,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
 
     return(
 
-        <figure className="shadow-2xl rounded-2xl p-2 bg-amber-50 font-main font-bold text-sm flex flex-col items-center lg:text-lg relative">
+        <figure className="shadow-2xl rounded-2xl p-2 bg-gray-200 font-main font-bold text-sm flex flex-col items-center lg:text-lg relative">
             {queryActive && 
                 <div className={`absolute top-0 right-0 rounded-2xl p-1 flex items-center
                 w-20 justify-center ${confirm ? "bg-green-600 text-white" : "bg-yellow-300"}`}>
@@ -101,7 +101,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
                 className="rounded-2xl border-2 border-gray-400 sm:w-full"/>
             <figcaption className="mt-2 w-full">
                 <div className='flex justify-between'>
-                    <div className='max-w-[80%]'>
+                    <div className='max-w-[75%]'>
                         <p className="truncate">
                             {product_name}
                         </p>
@@ -109,7 +109,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
                             {FormatLengkap(product_price)}
                         </p>
                     </div>
-                    <button className="bg-green-600 p-2 rounded-lg text-white hover:opacity-70 active:opacity-50" onClick={add}>+
+                    <button className="bg-green-600 p-2 rounded-lg text-white cursor-pointer hover:opacity-70 active:opacity-50" onClick={add}>+
                     </button>
                 </div>
                 <p className="rounded-2xl bg-gray-300 text-center mt-2"> stock: 0</p>
