@@ -81,31 +81,35 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
     }
 
     return(
-        <figure className="">
-            <img src={img} alt={product_name} width={90} className=""/>
-            <div className="">
-                <figcaption className="">
-                    {product_name}
-                    <div className=""> 
-                        <button 
-                            className="" 
-                            onClick={subtractCode}> 
-                            - 
-                        </button>
-                        <input 
-                            type="number" 
-                            min={1} 
-                            className=""
-                            value={quantity || ""} 
-                            onChange={(event) => {onchangeCode(event);}}/>
-                        <button 
-                            className=""
-                            onClick={addCode}> 
-                            + 
-                        </button> 
-                    </div>
-                    {FormatLengkap(totalPrice)}
+        <figure className="max-w-120 flex rounded-2xl p-2 m-2 shadow-2xl bg-gray-300 gap-2 h-20 lg:max-w-none">
+            <img src={img} alt={product_name} width={70} className="rounded-2xl "/>
+            <div className="flex justify-between w-full items-center">
+                <figcaption className="flex flex-col gap-1 text-xs w-20">
+                    <p className='truncate text-2xl'>
+                        {product_name}
+                    </p>
+                    <p>
+                        {FormatLengkap(totalPrice)}
+                    </p>
                 </figcaption>
+                <div className="flex"> 
+                    <button 
+                        className="border-2 p-1 rounded-l-lg" 
+                        onClick={subtractCode}> 
+                        - 
+                    </button>
+                    <input 
+                        type="number" 
+                        min={1} 
+                        className="w-10 text-center border-2  bg-gray-400"
+                        value={quantity || ""} 
+                        onChange={(event) => {onchangeCode(event);}}/>
+                    <button 
+                        className="border-2 p-1 rounded-r-lg"
+                        onClick={addCode}> 
+                        + 
+                    </button> 
+                </div>
                 <button 
                     className=""
                     onClick={cancel}>

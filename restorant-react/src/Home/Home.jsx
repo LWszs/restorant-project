@@ -182,9 +182,9 @@ function Home(){
 
 
     return (
-        <main className="h-[calc(100dvh-84px)] overflow-hidden flex flex-col w-full sm:flex-row-reverse font-bold">
+        <main className="h-[calc(100dvh-84px)] min-h-dvh overflow-hidden flex flex-col w-full sm:flex-row-reverse font-bold lg:min-h-0">
 
-            <section className="flex flex-col min-h-0 min-w-0 grow mb-3">
+            <section className="flex flex-col min-h-0 min-w-0 grow mb-3 sm:h-[87dvh]">
                 <div className="flex-1 overflow-y-auto p-4">
                     <input
                         type="text"
@@ -193,7 +193,7 @@ function Home(){
                         value={search}
                         onChange={searchMenu}
                     />
-                    <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
+                    <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                         {data}
                     </ul>
                 </div>
@@ -208,7 +208,7 @@ function Home(){
             <section
                 className={`flex flex-col shrink-0 overflow-hidden transition-all
                     sm:max-h-none sm:max-w-75 sm:min-w-50 md:max-w-none
-                    ${expand ? "max-h-60" : "max-h-23"}`}
+                    ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl`}
             >
                 <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
                     <button className="ml-2" onClick={resetOrder}><Trash />reset</button>
