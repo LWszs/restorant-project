@@ -66,7 +66,7 @@ function HeaderEmployee(){
             </h1>
 
             <nav className='hidden sm:block'>
-                <ul className='flex gap-3'>
+                <ul className='flex gap-3 lg:gap-20'>
                     {mapButtonHamburger}
                 </ul>
             </nav>
