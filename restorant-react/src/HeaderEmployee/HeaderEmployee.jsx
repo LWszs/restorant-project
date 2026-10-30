@@ -6,7 +6,7 @@ import LogOutReuse from '../reusable/LogOutReuse.jsx'
 function HeaderEmployee(){
 
     const styleSpanButton = "bg-white h-0.5 w-full block transition-all";
-    const styleProfileButton = "bg-green-900 border-2 w-full p-4";
+    const styleProfileButton = "bg-green-900 border-2 w-full p-4 hover:bg-green-700 active:bg-green-600";
     const listButtonHamburger = [
         {name: "Order" , icon: Calculator, link:"/Home"},
         {name: "Waste Management" , icon: Trash2, link:"/Waste"},
@@ -71,7 +71,7 @@ function HeaderEmployee(){
                 </ul>
             </nav>
 
-            <button className="bg-profil-default bg-center bg-cover w-10 h-10 rounded-full hover:opacity-70 active:opacity-50 " onClick={() => {setShowProfile(!showProfile); setHamburgerActive(false)}}></button>
+            <button className="bg-profil-default bg-center bg-cover w-10 h-10 rounded-full hover:opacity-70 active:opacity-50" onClick={() => {setShowProfile(!showProfile); setHamburgerActive(false)}}></button>
             <nav 
             className={`absolute z-1 -bottom-35 right-0 m-2 text-white transition-all
             ${showProfile ? "translate-x-0" : "translate-x-30"}`}>
