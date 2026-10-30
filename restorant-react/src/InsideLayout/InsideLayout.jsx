@@ -6,11 +6,11 @@ function InsideLayout(){
 
     return(
 
-        <div className="contentContainer">
+        <div className="min-h-dvh flex flex-col">
 
             <InsideHeader />
 
-            <div className="contentMain">
+            <div className="flex-1 min-h-0 min-w-0">
 
                 <Outlet/>
 

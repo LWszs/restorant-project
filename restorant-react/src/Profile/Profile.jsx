@@ -1,6 +1,5 @@
 import {React, use, useEffect, useState } from "react";
 import useAuth from "../reusable/Auth";
-import styles from './Profile.module.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LogOutReuse from "../reusable/LogOutReuse";
@@ -112,26 +111,26 @@ function Profile(){
     }
 
     return(
-            <div className={styles.mainContainer}>
-                <main className={styles.profileContainer}>
-                    {succesChange && <div className={styles.changePassSucces}>Succes Change Password</div>}
-                    <section className={styles.profileMain}>
-                        <button className={styles.back} onClick={() => navigate(-1)}> 
+            <div className="">
+                <main className="">
+                    {succesChange && <div className="">Succes Change Password</div>}
+                    <section className="">
+                        <button className="" onClick={() => navigate(-1)}> 
                             ← back
                         </button>
                         
                         <hr />
-                        <div className={styles.profileAllDataContainer}>
-                            <figure className={styles.profileImgContainer}>
-                                <img src="/profile/catFace.jpg" alt="Foto Profil" width={200} className={styles.profileImg}/>
-                                <figcaption className={styles.profileId}>Employee Id: {data.employee_id}</figcaption>
+                        <div className="">
+                            <figure className="">
+                                <img src="/profile/catFace.jpg" alt="Foto Profil" width={200} className=""/>
+                                <figcaption className="">Employee Id: {data.employee_id}</figcaption>
                             </figure>
 
-                            <section className={styles.profileDataContainer}>
+                            <section className="">
                                 <h2>Personal Detail</h2>
                                 <hr />
                                 <br />
-                                <dl className={styles.profileData}>
+                                <dl className="">
                                     <dt><strong>Name</strong></dt>
                                     <dd>{data.employee_name}</dd>
                                     
@@ -162,12 +161,12 @@ function Profile(){
 
                                 <br />
 
-                                <button className={styles.Button} onClick={changePassClick}>Change Password</button>
+                                <button className="" onClick={changePassClick}>Change Password</button>
                             </section>
                         </div>
                         {passActive && 
-                            <aside className={styles.resetPassContainer}>
-                                <form onSubmit={(event) => resetPass(event)} className={styles.changePassForm}>
+                            <aside className="">
+                                <form onSubmit={(event) => resetPass(event)} className="">
                                     <button type="button" onClick={()  => setPassActive(false)}>← back</button>
 
                                     <br />
@@ -205,7 +204,7 @@ function Profile(){
                                         onChange={(event) => setOldPass(event.target.value)} 
                                         placeholder="Input Password"/>
                                     <button 
-                                        className={styles.seePass} 
+                                        className=""
                                         type="button" 
                                         onClick={() => {setShowOld(!showOld)}}>
                                         {showOld ? "Hide" : "Show"}
@@ -227,7 +226,7 @@ function Profile(){
                                         onChange={(event) => setNewPass(event.target.value)} 
                                         placeholder="Input Password"/>
                                     <button 
-                                        className={styles.seePass} 
+                                        className=""
                                         type="button" 
                                         onClick={() => {setShowNew(!showNew)}}>
                                         {showNew ? "Hide" : "Show"}
@@ -248,7 +247,7 @@ function Profile(){
                                         onChange={(event) => setConfirmPass(event.target.value)}
                                         placeholder="Input Password"/>
                                     <button 
-                                        className={styles.seePass} 
+                                        className="" 
                                         type="button" 
                                         onClick={() => {setShowConfirm(!showConfirm)}}>
                                         {showConfirm ? "Hide" : "Show"}
@@ -279,14 +278,14 @@ function Profile(){
                             </aside>
                         }
                     </section>
-                    <section className={styles.profileActivityContainer}>
+                    <section className="">
                         <h2>Profile Activity</h2>
                         <hr />
                         <br />
-                        <ul className={styles.profileActivitylistContainer}>
+                        <ul className="">
                             
                         </ul>
-                        <button className={styles.LogOut} onClick={() => LogOutReuse(navigate)}>Log Out</button>
+                        <button className="" onClick={() => LogOutReuse(navigate)}>Log Out</button>
                     </section>
                 </main>
             </div>
