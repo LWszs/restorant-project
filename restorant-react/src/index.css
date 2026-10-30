@@ -20,7 +20,6 @@
 
     /* BACKGROUND */
     --BACKGROUND-MAIN: radial-gradient(circle, #E0F7FA 0%, #80DEEA 100%);
-    --BACKGROUND-HEADER: url('/header/restaurant-header-background.png') center/cover;
     --BACKGROUND-MAIN-IMG: rgba(255, 255, 255, 0);
     --BACKGROUND-LOGIN: url('/login/loginBackground.jpg');
 
@@ -161,6 +160,8 @@ JADI SAYA MINTA MAAF JIKA KODE SAYA AGAK ANEH
   --background-image-login-main: url('/login/background-main.jpg');
   --background-image-login-image: url('/login/background-login.jpg');
   --background-image-login-form: url('/login/background-form.jpg');
+  --background-image-header-employee: url('/header/restaurant-header-background.png');
+  --background-image-profil-default: url('/header/profil-default.jpg');
   --font-main: 'Plus Jakarta Sans', sans-serif;
   --default-font-family: var(--font-main);
   --color-green-main: #1E3E2B;

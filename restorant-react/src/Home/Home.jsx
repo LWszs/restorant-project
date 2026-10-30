@@ -206,14 +206,14 @@ function Home(){
             </section>
 
             <section
-                className={`flex flex-col shrink-0 overflow-hidden transition-all
+                className={`flex flex-col shrink-0 overflow-hidden transition-all duration-300
                     sm:max-h-none sm:max-w-75 sm:min-w-50 md:max-w-none
                     ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl`}
             >
                 <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
                     <button className="ml-2" onClick={resetOrder}><Trash />reset</button>
                     <button
-                        className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
+                        className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all duration-300 sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
                         onClick={() => setExpand(!expand)}
                     >
                         &#8593;
