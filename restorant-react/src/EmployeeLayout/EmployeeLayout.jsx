@@ -6,10 +6,10 @@ function EmployeeLayout(){
 
     return(
 
-        <div className="contentContainer">
+        <div className="flex h-dvh flex-col overflow-hidden">
             <HeaderEmployee/>
 
-            <div className="contentMain">
+            <div className="min-h-0 flex-1">
 
                 <Outlet />
 

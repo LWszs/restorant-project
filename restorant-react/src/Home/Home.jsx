@@ -182,7 +182,7 @@ function Home(){
 
 
     return (
-        <main className="h-[calc(100dvh-84px)] min-h-dvh overflow-hidden flex flex-col w-full sm:flex-row-reverse font-bold lg:min-h-0">
+        <main className="h-[calc(100dvh-84px)] overflow-y-hidden flex flex-col w-full sm:flex-row-reverse font-bold lg:min-h-0">
 
             <section className="flex flex-col min-h-0 min-w-0 grow mb-3 sm:h-[87dvh]">
                 <div className="flex-1 overflow-y-auto p-4">
