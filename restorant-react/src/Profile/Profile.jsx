@@ -3,10 +3,17 @@ import useAuth from "../reusable/Auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LogOutReuse from "../reusable/LogOutReuse";
+import {Lock,Eye,EyeOff} from "lucide-react";
 
 function Profile(){
 
     useAuth();
+
+    const styleDivButton = "relative border rounded-2xl p-1 bg-white text-black";
+    const styleInputPass = "outline-0 text-main";
+    const styleButtonEye = "absolute right-2";
+    const styleButtonBackReset = "bg-green-900 rounded-2xl p-1 px-2 hover:opacity-70  active:opacity-50";
+    const styleErrorPass = "text-red-500";
 
     /* HANDLE SHOW AND HIDE PASS */
     const [showOld,setShowOld] = useState(false);
@@ -111,181 +118,195 @@ function Profile(){
     }
 
     return(
-            <div className="">
-                <main className="">
+            <div className="text-main h-full text-green-main bg-white/30">
+                <main className="mx-2 p-2">
                     {succesChange && <div className="">Succes Change Password</div>}
-                    <section className="">
-                        <button className="" onClick={() => navigate(-1)}> 
+                    <section className="shadow-xl rounded-2xl p-2 relative">
+                        <button className="bg-green-900 rounded-2xl p-1 px-2 text-white hover:opacity-50 active:opacity-70" onClick={() => navigate(-1)}> 
                             ← back
                         </button>
-                        
-                        <hr />
-                        <div className="">
-                            <figure className="">
-                                <img src="/profile/catFace.jpg" alt="Foto Profil" width={200} className=""/>
-                                <figcaption className="">Employee Id: {data.employee_id}</figcaption>
+
+                        <div className="mt-2">
+                            <figure className="flex flex-col items-center">
+                                <img src="/profile/catFace.jpg" alt="Foto Profil" width={150} className="rounded-full"/>
+                                <figcaption className="bg-green-900 text-white font-bold mt-1 rounded-2xl p-1 px-2">Employee Id: {data.employee_id}</figcaption>
                             </figure>
 
-                            <section className="">
-                                <h2>Personal Detail</h2>
-                                <hr />
+                            <section>
+                                <h2 className="font-bold mt-5 text-2xl">Personal Detail</h2>
                                 <br />
-                                <dl className="">
+                                <dl>
                                     <dt><strong>Name</strong></dt>
                                     <dd>{data.employee_name}</dd>
-                                    
+                                    <hr />
                                     <br />
+
                                     <dt><strong>Place and Date Birth</strong></dt>
                                     <dd>{data.employee_birthplace} , {data.employee_datebirth}</dd>
-
+                                    <hr />
                                     <br />
+
                                     <dt><strong>Religion</strong></dt>
                                     <dd>{data.employee_religion}</dd>
-
+                                    <hr />
                                     <br />
+
                                     <dt><strong>Gender</strong></dt>
                                     <dd>{data.employee_gender}</dd>
-
+                                    <hr />
                                     <br />
+
+
                                     <dt><strong>Address</strong></dt>
                                     <dd>{data.employee_address}</dd>
-
+                                    <hr />
                                     <br />
+
                                     <dt><strong>Handphone Number</strong></dt>
                                     <dd>{data.employee_phoneNumber}</dd>
-
+                                    <hr />
                                     <br />
+
                                     <dt><strong>Email</strong></dt>
                                     <dd>{data.employee_email}</dd>
+                                    <hr />
+                                    <br />
                                 </dl>
 
                                 <br />
 
-                                <button className="" onClick={changePassClick}>Change Password</button>
+                                <button className="bg-green-900 p-2 text-white rounded-2xl" onClick={changePassClick}>Change Password</button>
                             </section>
                         </div>
+
                         {passActive && 
-                            <aside className="">
-                                <form onSubmit={(event) => resetPass(event)} className="">
-                                    <button type="button" onClick={()  => setPassActive(false)}>← back</button>
+                            <aside className="fixed top-0 inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center">
+                                <form 
+                                onSubmit={(event) => resetPass(event)} 
+                                className="bg-green-700 text-white p-2 rounded-2xl text-main font-bold">
+
+                                    <button type="button" 
+                                    className={styleButtonBackReset} 
+                                    onClick={()  => setPassActive(false)}>
+
+                                        ← back
+
+                                    </button>
 
                                     <br />
                                     <br />
 
-                                    <svg 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        width="36" 
-                                        height="36" 
-                                        viewBox="0 0 24 24" 
-                                        fill="none" 
-                                        stroke="#405D4C" 
-                                        strokeWidth="2" 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                        <rect x="9" y="11" width="6" height="5" rx="1"/>
-                                        <path d="M10 11V9a2 2 0 0 1 4 0v2"/>
-                                    </svg>         
-
+                                    <Lock className="w-full"/>
 
                                     <br />
+                                    <hr />
                                     <br />
 
                                     <label htmlFor="oldPass">Old Password</label>
                                     <br />
-                                    <input 
-                                        type={showOld ? "text" : "password"} 
-                                        id="oldPass" 
-                                        name="oldPassword" 
-                                        required 
-                                        minLength={4} 
-                                        value={oldPass} 
-                                        onChange={(event) => setOldPass(event.target.value)} 
-                                        placeholder="Input Password"/>
-                                    <button 
-                                        className=""
-                                        type="button" 
-                                        onClick={() => {setShowOld(!showOld)}}>
-                                        {showOld ? "Hide" : "Show"}
-                                    </button>
-                                    {errorWrongPass && <p>wrong password</p>}
+                                    <div className={styleDivButton}>
+                                        <input 
+                                            type={showOld ? "text" : "password"} 
+                                            id="oldPass" 
+                                            name="oldPassword" 
+                                            required 
+                                            minLength={4} 
+                                            value={oldPass} 
+                                            onChange={(event) => setOldPass(event.target.value)} 
+                                            placeholder="Input Password"
+                                            className={styleInputPass}/>
+                                        <button 
+                                            className={styleButtonEye}
+                                            type="button" 
+                                            onClick={() => {setShowOld(!showOld)}}>
+                                            {showOld ? <Eye/> : <EyeOff/>}
+                                        </button>
+                                    </div>
+                                    {errorWrongPass && 
+                                    <p className={styleErrorPass}>&#9433; wrong password</p>}
 
-                                    <br />
                                     <br />
 
                                     <label htmlFor="newPass">New Password</label>
                                     <br />
-                                    <input 
-                                        type={showNew ? "text" : "password"} 
-                                        id="newPass" 
-                                        name="newPassword" 
-                                        required 
-                                        minLength={4} 
-                                        value={newPass} 
-                                        onChange={(event) => setNewPass(event.target.value)} 
-                                        placeholder="Input Password"/>
-                                    <button 
-                                        className=""
-                                        type="button" 
-                                        onClick={() => {setShowNew(!showNew)}}>
-                                        {showNew ? "Hide" : "Show"}
-                                    </button>
-                                    {errorSamePass && <p>cant change same password</p>}
+                                    <div className={styleDivButton}>
+                                        <input 
+                                            type={showNew ? "text" : "password"} 
+                                            id="newPass" 
+                                            name="newPassword" 
+                                            required 
+                                            minLength={4} 
+                                            value={newPass} 
+                                            onChange={(event) => setNewPass(event.target.value)} 
+                                            placeholder="Input Password"
+                                            className={styleInputPass}/>
+                                        <button 
+                                            className={styleButtonEye}
+                                            type="button" 
+                                            onClick={() => {setShowNew(!showNew)}}>
+                                            {showNew ? <Eye/> : <EyeOff/>}
+                                        </button>
+                                    </div>
+                                    {errorSamePass &&  
+                                    <p className={styleErrorPass}>&#9433; cant change same password</p>}
 
-                                    <br />
                                     <br />
 
                                     <label htmlFor="confirmation">Confirm Password</label>
                                     <br />
-                                    <input type={showConfirm ? "text" : "password"} 
-                                        id="confirmation" 
-                                        name="confirmationPassword"
-                                        required 
-                                        minLength={4} 
-                                        value={confirmPass} 
-                                        onChange={(event) => setConfirmPass(event.target.value)}
-                                        placeholder="Input Password"/>
-                                    <button 
-                                        className="" 
-                                        type="button" 
-                                        onClick={() => {setShowConfirm(!showConfirm)}}>
-                                        {showConfirm ? "Hide" : "Show"}
-                                    </button>
-                                    <br />
+                                    <div className={styleDivButton}>
+                                        <input type={showConfirm ? "text" : "password"} 
+                                            id="confirmation" 
+                                            name="confirmationPassword"
+                                            required 
+                                            minLength={4} 
+                                            value={confirmPass} 
+                                            onChange={(event) => setConfirmPass(event.target.value)}
+                                            placeholder="Input Password"
+                                            className={styleInputPass}/>
+                                        <button 
+                                            className={styleButtonEye} 
+                                            type="button" 
+                                            onClick={() => {setShowConfirm(!showConfirm)}}>
+                                            {showConfirm ? <Eye/> : <EyeOff/>}
+                                        </button>
+                                    </div>
                                     {errorMatchPass && <p>password does not match</p>}
 
 
                                     <br />
-                                    <br />
 
-                                    <button 
-                                        type="reset" 
-                                        onClick={() => {
-                                            setOldPass("");
-                                            setNewPass("");
-                                            setConfirmPass("");
-                                            setErorrMatchPass(false);
-                                            setErrorWrongPass(false);
-                                            setShowConfirm(false);
-                                            setShowNew(false);
-                                            setShowOld(false);
-                                            setErrorSamePass(false)}}>
-                                            Reset
-                                    </button>
-                                    <button type="submit">Submit</button>
+                                    <div className="w-full flex justify-around">
+                                        <button 
+                                            type="reset"
+                                            className={styleButtonBackReset}
+                                            onClick={() => {
+                                                setOldPass("");
+                                                setNewPass("");
+                                                setConfirmPass("");
+                                                setErorrMatchPass(false);
+                                                setErrorWrongPass(false);
+                                                setShowConfirm(false);
+                                                setShowNew(false);
+                                                setShowOld(false);
+                                                setErrorSamePass(false)}}>
+                                                Reset
+                                        </button>
+                                        <button 
+                                            type="submit" className={styleButtonBackReset}>
+                                                Submit
+                                        </button>
+                                    </div>
                                 </form>
                             </aside>
                         }
                     </section>
-                    <section className="">
-                        <h2>Profile Activity</h2>
-                        <hr />
-                        <br />
-                        <ul className="">
+                    <section className="shadow-2xl bg-gray-200 rounded-2xl p-2 flex flex-col items-center mt-4 gap-5">
+                        <h2 className="text-2xl font-bold">Profile Activity</h2>
+                        <ul className="min-h-[50dvh] shadow-2xl bg-gray-100 w-[90%] rounded-2xl">
                             
                         </ul>
-                        <button className="" onClick={() => LogOutReuse(navigate)}>Log Out</button>
+                        <button className="bg-green-900 text-white rounded-2xl p-2 w-[80%]" onClick={() => LogOutReuse(navigate)}>Log Out</button>
                     </section>
                 </main>
             </div>
