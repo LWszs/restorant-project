@@ -101,7 +101,10 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
                     <input 
                         type="number" 
                         min={1} 
-                        className="w-10 text-center border-2  bg-gray-400"
+                        className="w-10 text-center border-2  
+                        bg-gray-400
+                        [&::-webkit-outer-spin-button]:appearance-none 
+                        [&::-webkit-inner-spin-button]:appearance-none"
                         value={quantity || ""} 
                         onChange={(event) => {onchangeCode(event);}}/>
                     <button 
