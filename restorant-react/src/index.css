@@ -162,6 +162,7 @@ JADI SAYA MINTA MAAF JIKA KODE SAYA AGAK ANEH
   --background-image-login-form: url('/login/background-form.jpg');
   --background-image-header-employee: url('/header/restaurant-header-background.png');
   --background-image-profil-default: url('/header/profil-default.jpg');
+  --background-image-profile-container: url('/profile/mainBackground.jpg');
   --font-main: 'Plus Jakarta Sans', sans-serif;
   --default-font-family: var(--font-main);
   --color-green-main: #1E3E2B;

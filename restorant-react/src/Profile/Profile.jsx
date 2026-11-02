@@ -118,23 +118,60 @@ function Profile(){
     }
 
     return(
-            <div className="text-main h-full text-green-main bg-white/30">
-                <main className="mx-2 p-2">
+            <main className="p-2 flex justify-center relative h-full
+            before:content-['']
+            before:absolute before:inset-0 before:-z-10
+            before:bg-profile-container
+            before:bg-cover before:bg-center
+            before:brightness-90
+            "
+            >
+                <div className="
+                    flex flex-col justify-center 
+                    sm:flex-row sm:gap-5 sm:items-center">
+
                     {succesChange && <div className="">Succes Change Password</div>}
-                    <section className="shadow-xl rounded-2xl p-2 relative">
-                        <button className="bg-green-900 rounded-2xl p-1 px-2 text-white hover:opacity-50 active:opacity-70" onClick={() => navigate(-1)}> 
+
+                    <section className="
+                            shadow-xl rounded-2xl p-2 relative bg-gray-200
+                            sm:flex-1 sm:text-xs 
+                            md:text-[15px] 
+                            2xl:w-300">
+                                
+                        <button className="
+                            bg-green-900 rounded-2xl p-1 px-2 text-white 
+                            hover:opacity-50 active:opacity-70" 
+                            onClick={() => navigate(-1)}> 
                             ← back
                         </button>
 
-                        <div className="mt-2">
+                        <div className="
+                            mt-2 
+                            sm:flex sm:items-center sm:justify-around sm:p-4 sm:gap-5">
+
                             <figure className="flex flex-col items-center">
-                                <img src="/profile/catFace.jpg" alt="Foto Profil" width={150} className="rounded-full"/>
-                                <figcaption className="bg-green-900 text-white font-bold mt-1 rounded-2xl p-1 px-2">Employee Id: {data.employee_id}</figcaption>
+
+                                <img src="/profile/catFace.jpg" alt="Foto Profil" 
+                                    width={150} className="rounded-full sm:w-90"
+                                />
+
+                                <figcaption className="
+                                bg-green-900 text-white font-bold mt-1 
+                                rounded-2xl p-1 px-2">
+                                    Employee Id: {data.employee_id}
+                                </figcaption>
+                                
                             </figure>
 
                             <section>
-                                <h2 className="font-bold mt-5 text-2xl">Personal Detail</h2>
+
+                                <h2 
+                                    className="font-bold mt-5 text-2xl">
+                                        Personal Detail
+                                </h2>
+
                                 <br />
+
                                 <dl>
                                     <dt><strong>Name</strong></dt>
                                     <dd>{data.employee_name}</dd>
@@ -175,15 +212,22 @@ function Profile(){
 
                                 <br />
 
-                                <button className="bg-green-900 p-2 text-white rounded-2xl" onClick={changePassClick}>Change Password</button>
+                                <button className="
+                                bg-green-900 p-2 text-white rounded-2xl" 
+                                onClick={changePassClick}>
+                                    Change Password
+                                </button>
+
                             </section>
+
                         </div>
 
                         {passActive && 
                             <aside className="fixed top-0 inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center">
+
                                 <form 
                                 onSubmit={(event) => resetPass(event)} 
-                                className="bg-green-700 text-white p-2 rounded-2xl text-main font-bold">
+                                className="bg-green-700 text-white p-2 rounded-2xl text-main font-bold md:w-100 md:text-2xl">
 
                                     <button type="button" 
                                     className={styleButtonBackReset} 
@@ -301,15 +345,24 @@ function Profile(){
                             </aside>
                         }
                     </section>
-                    <section className="shadow-2xl bg-gray-200 rounded-2xl p-2 flex flex-col items-center mt-4 gap-5">
+                    <section className="
+                        shadow-2xl rounded-2xl p-2 flex flex-col items-center mt-4 gap-5  bg-gray-200 max-w-150 sm:flex-1">
+
                         <h2 className="text-2xl font-bold">Profile Activity</h2>
-                        <ul className="min-h-[50dvh] shadow-2xl bg-gray-100 w-[90%] rounded-2xl">
+
+                        <ul className="min-h-[50dvh] shadow-2xl bg-gray-300 w-[90%] rounded-2xl">
                             
                         </ul>
-                        <button className="bg-green-900 text-white rounded-2xl p-2 w-[80%]" onClick={() => LogOutReuse(navigate)}>Log Out</button>
+
+                        <button className="
+                            bg-green-900 text-white rounded-2xl p-2 w-[80%]" 
+                            onClick={() => LogOutReuse(navigate)}>
+                                Log Out
+                        </button>
+
                     </section>
-                </main>
-            </div>
+                </div>
+            </main>
     );
 };
 
