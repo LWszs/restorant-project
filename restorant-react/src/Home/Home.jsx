@@ -11,6 +11,8 @@ function Home(){
 
     useAuth();
 
+    const styleButtonFooter = "cursor-pointer hover:opacity-70 active:opacity-50`";
+
     /* List footer button */
     const foodButtonList = ["Semua","Main Course","Beverage","Appetizer","Dessert","Side Dish"]
 
@@ -211,7 +213,7 @@ function Home(){
                     ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl`}
             >
                 <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
-                    <button className="ml-2" onClick={resetOrder}><Trash />reset</button>
+                    <button className={`ml-2 ${styleButtonFooter}`} onClick={resetOrder}><Trash />reset</button>
                     <button
                         className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all duration-300 sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
                         onClick={() => setExpand(!expand)}
@@ -231,7 +233,10 @@ function Home(){
                     <p>
                         {bufferingTotal ? <Loader2 className="animate-spin" /> : `Total Price: ${FormatLengkap(totalPrice)}`}
                     </p>
-                    {orderList.length > 0 && <button onClick={next}><ShoppingCart /></button>}
+                    {orderList.length > 0 && 
+                        <button onClick={next} className={styleButtonFooter}>
+                            <ShoppingCart />
+                        </button>}
                 </footer>
             </section>
         </main>

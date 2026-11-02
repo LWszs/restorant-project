@@ -7,6 +7,9 @@ import {Trash} from 'lucide-react';
 
 function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,product_price,setRefresh,setBufferingTotal}){
 
+    /* STYLE */
+    const styleButtonAction = "cursor-pointer border-2 p-1 hover:opacity-70 active:opacity-50";
+
     /* GAMBAR DARI MAKANAN */
     const img = `/food/${product_img}`;
 
@@ -94,27 +97,26 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
                 </figcaption>
                 <div className="flex"> 
                     <button 
-                        className="border-2 p-1 rounded-l-lg" 
+                        className={`${styleButtonAction} rounded-l-lg`}
                         onClick={subtractCode}> 
                         - 
                     </button>
                     <input 
                         type="number" 
                         min={1} 
-                        className="w-10 text-center border-2  
-                        bg-gray-400
+                        className={`${styleButtonAction} w-10 text-center bg-gray-400
                         [&::-webkit-outer-spin-button]:appearance-none 
-                        [&::-webkit-inner-spin-button]:appearance-none"
+                        [&::-webkit-inner-spin-button]:appearance-none`}
                         value={quantity || ""} 
                         onChange={(event) => {onchangeCode(event);}}/>
                     <button 
-                        className="border-2 p-1 rounded-r-lg"
+                        className={`${styleButtonAction} rounded-r-lg`}
                         onClick={addCode}> 
                         + 
                     </button> 
                 </div>
                 <button 
-                    className=""
+                    className={`${styleButtonAction} border-0!`}
                     onClick={cancel}>
                         <abbr title="Cancel"> <Trash/> </abbr>
                 </button>
