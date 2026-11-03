@@ -151,7 +151,7 @@ function Profile(){
 
                             <figure className="flex flex-col items-center">
 
-                                <img src="/profile/catFace.jpg" alt="Foto Profil" 
+                                <img src="/profile/catFace.webp" alt="Foto Profil" 
                                     width={150} className="rounded-full sm:w-90"
                                 />
 

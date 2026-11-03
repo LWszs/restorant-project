@@ -58,7 +58,7 @@ function HeaderEmployee(){
                 </ul>
             </nav>
             <h1 className="flex gap-1 items-center">
-                <img src="/header/logo.jpg" alt="logo" width={50} className="rounded-full"/>
+                <img src="/header/logo.webp" alt="logo" width={50} className="rounded-full"/>
                 <div className="text-white text-md flex flex-col">
                     <span className="">Global Bites</span>
                     <span className="text-xs">Flavors of the world</span>

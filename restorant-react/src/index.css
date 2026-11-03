@@ -5,13 +5,13 @@
 
 
 @theme {
-  --background-image-table-picker:url('/profile/mainBackground.jpg');
-  --background-image-login-main: url('/login/background-main.jpg');
-  --background-image-login-image: url('/login/background-login.jpg');
-  --background-image-login-form: url('/login/background-form.jpg');
-  --background-image-header-employee: url('/header/restaurant-header-background.png');
-  --background-image-profil-default: url('/header/profil-default.jpg');
-  --background-image-profile-container: url('/profile/mainBackground.jpg');
+  --background-image-table-picker:url('/profile/mainBackground.webp');
+  --background-image-login-main: url('/login/background-main.webp');
+  --background-image-login-image: url('/login/background-login.webp');
+  --background-image-login-form: url('/login/background-form.webp');
+  --background-image-header-employee: url('/header/restaurant-header-background.webp');
+  --background-image-profil-default: url('/header/profil-default.webp');
+  --background-image-profile-container: url('/profile/mainBackground.webp');
   --font-main: 'Plus Jakarta Sans', sans-serif;
   --default-font-family: var(--font-main);
   --color-green-main: #1E3E2B;

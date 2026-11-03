@@ -56,7 +56,7 @@ function Login(){
             <div className='flex'>
                 <section className='hidden lg:block bg-login-image border-2 w-90 rounded-l-2xl'>
                     <figure className='flex items-center justify-evenly p-2'>
-                        <img src="logo.jpg" alt="logo-restorant" width={100} className='rounded-full'/>
+                        <img src="logo.webp" alt="logo-restorant" width={100} className='rounded-full'/>
                         <figcaption>
                             <h1 className='text-4xl font-bold text-white'>Global Bites</h1>
                             <p className='text-white text-xs'>
@@ -64,11 +64,11 @@ function Login(){
                             </p>
                         </figcaption>
                     </figure>
-                    <img src="food/nasiGoreng.jpg" alt="nasi goreng" width={300} className='block rounded-full mx-auto'/>
+                    <img src="food/nasiGoreng.webp" alt="nasi goreng" width={300} className='block rounded-full mx-auto'/>
                 </section>
                 <section className='bg-login-form text-xl text-green-main font-bold p-4 rounded-2xl lg:text-2xl lg:rounded-l-none'>
                     <header className='mb-5 flex items-center justify-evenly'>
-                        <img src="logo.jpg" alt="logo-restorant" width={100} className='rounded-full'/>
+                        <img src="logo.webp" alt="logo-restorant" width={100} className='rounded-full'/>
                         <h2 className='text-4xl'>Login</h2>
                     </header>
                     <hr />

@@ -10,9 +10,6 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
     /* STYLE */
     const styleButtonAction = "cursor-pointer border-2 p-1 hover:opacity-70 active:opacity-50";
 
-    /* GAMBAR DARI MAKANAN */
-    const img = `/food/${product_img}`;
-
     /* MENAMPILKAN HARGA DAN QUANTITY */
     const [quantity , setQuantity] = useState(orderCart_quantity);
     let totalPrice = quantity * product_price;  
@@ -85,7 +82,7 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
 
     return(
         <figure className="max-w-120 flex rounded-2xl p-2 m-2 shadow-2xl bg-gray-300 gap-2 h-20 lg:max-w-none">
-            <img src={img} alt={product_name} width={70} className="rounded-2xl "/>
+            <img src={`/food/${product_img}.webp`} alt={product_name} width={70} className="rounded-2xl "/>
             <div className="flex justify-between w-full items-center">
                 <figcaption className="flex flex-col gap-1 text-xs w-20">
                     <p className='truncate text-2xl'>
