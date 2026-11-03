@@ -92,7 +92,8 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
             } 
 
             <img 
-                src={`/food/${product_img}.webp`} 
+                src={`/food/${product_img}.webp`}
+                loading='lazy' 
                 alt={product_name} 
                 width={170} height={170}
                 className="rounded-2xl border-2 border-gray-400 sm:w-full"/>
