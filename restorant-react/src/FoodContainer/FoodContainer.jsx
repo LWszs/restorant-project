@@ -6,9 +6,6 @@ import { Loader2, QuoteIcon } from 'lucide-react';
 
 function FoodContainer({product_id,product_name,product_price,product_img,setRefresh}){
 
-    /* GAMBAR DARI MAKANANS */
-    const img_product = `/food/${product_img}`;
-
     /* MENAMPILKAN QUANTITY DARI QUERY */
     const [quantity , setQuantity] = useState(0);
 
@@ -95,9 +92,9 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
             } 
 
             <img 
-                src={img_product} 
+                src={`/food/${product_img}.webp`} 
                 alt={product_name} 
-                width={170} 
+                width={170} height={170}
                 className="rounded-2xl border-2 border-gray-400 sm:w-full"/>
             <figcaption className="mt-2 w-full">
                 <div className='flex justify-between'>
