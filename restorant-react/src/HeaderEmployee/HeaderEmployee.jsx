@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Calculator, Trash2, RotateCcw, Grid } from 'lucide-react';
-import {NavLink , useNavigate} from 'react-router-dom'
+import {NavLink , useNavigate,Link} from 'react-router-dom'
 import LogOutReuse from '../reusable/LogOutReuse.jsx'
 
 function HeaderEmployee(){
@@ -57,12 +57,15 @@ function HeaderEmployee(){
                     {mapButtonHamburger}
                 </ul>
             </nav>
-            <h1 className="flex gap-1 items-center">
-                <img src="/header/logo.webp" alt="logo" width={50} className="rounded-full"/>
-                <div className="text-white text-md flex flex-col">
-                    <span className="">Global Bites</span>
-                    <span className="text-xs">Flavors of the world</span>
-                </div>
+
+            <h1>
+                <Link to="/Home" className="flex gap-1 items-center">
+                    <img src="/header/logo.webp" alt="logo" width={50} className="rounded-full"/>
+                    <div className="text-white text-md flex flex-col">
+                        <span className="">Global Bites</span>
+                        <span className="text-xs">Flavors of the world</span>
+                    </div>
+                </Link>
             </h1>
 
             <nav className='hidden sm:block'>
