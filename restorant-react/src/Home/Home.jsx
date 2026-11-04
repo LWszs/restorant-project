@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useAuth from "../reusable/Auth";
 import FormatLengkap from "../reusable/RupiahFormat";
 import FoodContainer from "./FoodContainer.jsx";
-import FoodQueue from "../FoodQueue/FoodQueue";
+import FoodQueue from "../FoodQueue.jsx";
 import axios from "axios";
 import {Trash,ShoppingCart, Loader2} from 'lucide-react';
 import { useNavigate } from "react-router-dom";

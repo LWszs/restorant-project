@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import HeaderEmployee from "../HeaderEmployee/HeaderEmployee.jsx";
+import HeaderEmployee from '../Header/HeaderEmployee.jsx'
 import { OrderProvider } from "../DataContext/OrderContext.jsx";
 
 

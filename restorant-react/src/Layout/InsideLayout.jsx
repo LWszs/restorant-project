@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import InsideHeader from "../InsideHeader/InsideHeader";
+import InsideHeader from "../Header/InsideHeader";
 
 
 function InsideLayout(){

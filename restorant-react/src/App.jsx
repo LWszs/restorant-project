@@ -1,8 +1,8 @@
-import Login from './Login/Login.jsx'
+import Login from './Login.jsx';
 import Home from './Home/Home.jsx';
-import EmployeeLayout from './EmployeeLayout/EmployeeLayout.jsx';
-import Profile from './Profile/Profile.jsx'
-import InsideLayout from './InsideLayout/InsideLayout.jsx'
+import EmployeeLayout from './Layout/EmployeeLayout.jsx';
+import Profile from './Profile.jsx';
+import InsideLayout from './Layout/InsideLayout.jsx';
 import TablePicker from './TablePicker/TablePicker.jsx';
 import {Routes,Route} from 'react-router-dom'
 

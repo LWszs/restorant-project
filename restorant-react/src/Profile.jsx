@@ -1,8 +1,8 @@
 import {React, use, useEffect, useState } from "react";
-import useAuth from "../reusable/Auth";
+import useAuth from "./reusable/Auth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import LogOutReuse from "../reusable/LogOutReuse";
+import LogOutReuse from "./reusable/LogOutReuse";
 import {Lock,Eye,EyeOff} from "lucide-react";
 
 function Profile(){

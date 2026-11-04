@@ -3,7 +3,7 @@ import { Armchair,Loader2 } from "lucide-react";
 import TableContainer from "./TableContainer.jsx";
 import FormatLengkap from "../reusable/RupiahFormat";
 import { useOrder } from "../DataContext/OrderContext";
-import FoodQueue from "../FoodQueue/FoodQueue";
+import FoodQueue from "../FoodQueue.jsx";
 import axios from "axios";
 
 function TablePicker(){
