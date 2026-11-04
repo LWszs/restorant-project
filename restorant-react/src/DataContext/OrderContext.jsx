@@ -1,16 +1,38 @@
-import { createContext,useContext, useState } from "react";
+import { createContext,useContext, useState , useEffect} from "react";
+import axios from "axios";
 
 const OrderContext = createContext(null);
 
 export function OrderProvider({children}) {
 
+
     const [orderData , setOrderData] = useState([]);
     const [bufferingTotal , setBufferingTotal] = useState(false);
     const [refresh , setRefresh] = useState(false);
+    const [totalPrice , setTotalPrice] = useState(0);
+
+    /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
+    useEffect(() =>{
+        const orderFetch = async() =>{
+            try{
+                const responseOrder = await axios.get('/api/order/getAllOrder');
+                const responseTotal = await axios.get('/api/order/getTotalPrice');
+                setOrderData(responseOrder.data)
+                setTotalPrice(responseTotal.data[0].totalPriceOrder);
+                setBufferingTotal(false)
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+        orderFetch();
+    },[refresh]);
+
+
 
     return(
         <OrderContext.Provider value={{
-            orderData , setOrderData , bufferingTotal , setBufferingTotal , refresh , setRefresh
+            orderData , setOrderData , bufferingTotal , setBufferingTotal , refresh , setRefresh , totalPrice , setTotalPrice
         }}>
             {children}
         </OrderContext.Provider>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import FormatLengkap from '../reusable/RupiahFormat';
-import {useRef, useCallback, useState, useEffect} from 'react';
+import {useCallback, useState, useEffect} from 'react';
 import debounce from 'lodash.debounce';
-import { Loader2, QuoteIcon } from 'lucide-react';
+import { Loader2} from 'lucide-react';
 
 function FoodContainer({product_id,product_name,product_price,product_img,setRefresh}){
 

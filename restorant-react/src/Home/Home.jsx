@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useAuth from "../reusable/Auth";
 import FormatLengkap from "../reusable/RupiahFormat";
-import FoodContainer from "../FoodContainer/FoodContainer";
+import FoodContainer from "./FoodContainer.jsx";
 import FoodQueue from "../FoodQueue/FoodQueue";
 import axios from "axios";
 import {Trash,ShoppingCart, Loader2} from 'lucide-react';
@@ -36,12 +36,10 @@ function Home(){
     const {orderData , setOrderData} = useOrder();
     const {refresh , setRefresh} = useOrder();
     const {bufferingTotal , setBufferingTotal} = useOrder();
+    const {totalPrice , setTotalPrice} = useOrder();
 
     /* DIGUNAKAN UNTUK MENGETAHUI JENIS MAKANAN YANG DIPILIH */
     const [title,setTitle] = useState("Semua");
-
-    /* MENAMPILKAN SEMUA TOTAL HARGA */
-    const [totalPrice , setTotalPrice] = useState(0);
 
     /* VARIABEL UNTUK MENSEARCH MAKANAN */
     const [search , setSearch] = useState("");
@@ -76,23 +74,6 @@ function Home(){
             </li>
         );
     })
-
-    /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
-    useEffect(() =>{
-        const orderFetch = async() =>{
-            try{
-                const responseOrder = await axios.get('/api/order/getAllOrder');
-                const responseTotal = await axios.get('/api/order/getTotalPrice');
-                setOrderData(responseOrder.data)
-                setTotalPrice(responseTotal.data[0].totalPriceOrder);
-                setBufferingTotal(false)
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
-        orderFetch();
-    },[refresh])
 
     /* FETCH DATA SEMUA MAKANAN  */
     useEffect(() => {
@@ -207,10 +188,13 @@ function Home(){
             <section
                 className={`flex flex-col shrink-0 overflow-hidden transition-all duration-300
                     sm:max-h-none sm:max-w-75 sm:min-w-50 md:max-w-none
-                    ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl`}
+                    ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl
+                `}
             >
                 <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
-                    <button className={`ml-2 ${styleButtonFooter}`} onClick={resetOrder}><Trash />reset</button>
+                    <button className={`ml-2 ${styleButtonFooter}`} onClick={resetOrder}><Trash />
+                        reset
+                    </button>
                     <button
                         className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all duration-300 sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
                         onClick={() => setExpand(!expand)}
