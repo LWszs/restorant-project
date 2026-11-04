@@ -5,7 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import useAuth from "../reusable/Auth";
 import FoodContainer from "./FoodContainer.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
-import HomeQueueHeader from "./HomeQueueComponent/HomeQueueHeader.jsx";
+import HomeQueueHeader from "./HomeQueueHeader.jsx";
 import axios from "axios";
 
 
