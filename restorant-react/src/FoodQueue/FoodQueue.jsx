@@ -23,7 +23,7 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
     const addCode = () =>{
         const newQuantity = quantity + 1;
         setQuantity(newQuantity);
-        setBufferingTotal(true)
+        setBufferingTotal(true);
         debounceChange(newQuantity);
     }
 
@@ -31,12 +31,14 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
     const subtractCode = () =>{
         const newQuantity = quantity - 1;
         setQuantity(newQuantity);
+        setBufferingTotal(true);
         debounceChange(newQuantity);
     }
 
     /* DIGUNAKAN UNTUK SETIAP KALI MEGGANTI QUANTITY DI INPUT AKAN FETCH DB TAPI DIKOMBO DENGAN DEBOUNCE AGAR TIDAK TERLALU BANYAK REQUEST */
     const onchangeCode = (event) =>{
         let newQuantity = Number(event.target.value);
+        setBufferingTotal(true);
         if (newQuantity <= 0){
             setQuantity(0);
             return
