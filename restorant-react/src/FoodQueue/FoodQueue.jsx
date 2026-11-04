@@ -88,7 +88,7 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
                     <p className='truncate text-2xl'>
                         {product_name}
                     </p>
-                    <p>
+                    <p className='overflow-x-auto'>
                         {FormatLengkap(totalPrice)}
                     </p>
                 </figcaption>

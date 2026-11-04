@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Armchair } from "lucide-react";
 import TableContainer from "../TableContainer/TableContainer";
+import FormatLengkap from "../reusable/RupiahFormat";
 import axios from "axios";
 
 function TablePicker(){
@@ -10,17 +12,15 @@ function TablePicker(){
 
     /* VARIABEL MEJA TERPILIH */
     const [mejaTerpilih , setMejaTerpilih] = useState(0);
-
+    const [lantaiMejaTerpilih , setLantaiMejaTerpilih] = useState(0);
     const [lantaiPilih , setLantaiPilih] = useState("Semua");
 
     const listLantai = ["Semua","Lantai 1","Lantai 2","Lantai 3"];
-
-    /* VARIABEL STYLE */
-    const stylePemilihanLantai = "bg-gray-300 p-1 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70";
-    const liPenjelasanWarna = "flex flex-row items-center gap-1.5";
-    const bulatWarna = "w-2 h-2 rounded-2xl";
-
-    const styleLantaiTerpilih = "bg-black-green text-white p-1 rounded-2xl";
+    const liPenjelasan = [
+        {label:"Tersedia" , style: "bg-green-400"},
+        {label:"Terisi" , style: "bg-gray-500"},
+        {label:"Terpilih" , style: "bg-black-green"},
+    ]; 
 
     /* FETCH DATA MEJA */
     useEffect(() => {
@@ -37,27 +37,42 @@ function TablePicker(){
         dataMeja()
     },[])
 
-    /* RENDERING LIST */
-    const listMeja = tampilMeja.map(meja =>{
+    /* RENDERING LIST MEJA*/
+    const RenderListMeja = tampilMeja.map(meja =>{
         return(
             <li key={meja.meja_id}>
-                <TableContainer {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih}/>
+                <TableContainer {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
             </li>
         );
     })
 
+    /* RENDER LIST PENJELASAN */
+    const renderLiPenjelasan = liPenjelasan.map((penjelasan) => {
+        return (
+            <li key={penjelasan.label} className="flex flex-row items-center gap-1.5">
+                <div className={`w-2 h-2 rounded-2xl ${penjelasan.style}`}></div>
+                {penjelasan.label}
+            </li>
+        );
+    })
+
+    /* RENDER LIST LANTAI */
     const buttonPilihLantai = listLantai.map((lantai) =>{
         return(
             <button key={lantai}
                 className={
-                    lantaiPilih == lantai ? styleLantaiTerpilih : stylePemilihanLantai} onClick={() => {
-                        setLantaiPilih(lantai); 
-                        lantaiFilter(lantai)}}>
-                    {lantai}
+                    lantaiPilih == lantai ? "bg-black-green text-white p-1 rounded-2xl" : 
+                    "bg-gray-300 p-1 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70"
+                } 
+                onClick={() => {
+                    setLantaiPilih(lantai); 
+                    lantaiFilter(lantai)}}>
+                {lantai}
             </button>
         );
     });
 
+    /* PEMILIHAN LANTAI BERDASARKAN TOMBOL */
     function lantaiFilter(lantai){
         if (lantai === "Semua"){
             setTampilMeja(dataMeja);
@@ -72,14 +87,14 @@ function TablePicker(){
     
 
     return(
-        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col h-[90vh]'>
+        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col h-[90vh] font-bold'>
             <aside className='
                         m-3 text-m flex justify-center gap-2 bg-pemilihan-pembelian 
                         p-3 rounded-2xl whitespace-nowrap'>
 
                 <button className="bg-black-green p-2 text-white rounded-2xl
                         hover:bg-black-green-hover active:bg-black-green-active">
-                    Memiilh Meja
+                    Memilih Meja
                 </button>
 
                 <span className="bg-black h-full w-0.5"></span>
@@ -96,46 +111,49 @@ function TablePicker(){
                 <hr />
                 <section className="mt-2">
                     <ul className="flex justify-evenly bg-petunjuk-warna p-2 rounded-2xl text-sm gap-2">
-                        <li className={liPenjelasanWarna}>
-                            <div className={`${bulatWarna} bg-green-400`}></div>
-                            Tersedia
-                        </li>
-                        <li className={liPenjelasanWarna}>
-                            <div className={`${bulatWarna} bg-gray-500`}></div>
-                            Terisi
-                        </li>
-                        <li className={liPenjelasanWarna}>
-                            <div className={`${bulatWarna} bg-black-green`}></div>
-                            Terpilih
-                        </li>
+                        {renderLiPenjelasan}
                     </ul>
                 </section>
                 <ul className="flex flex-wrap m-1 justify-center gap-3 mt-3">
-                    {listMeja}
+                    {RenderListMeja}
                 </ul>
             </section>
-            <section className="bg-black-green text-white p-2 mt-2"> 
+            <section className="bg-black-green text-white p-2 mt-2 rounded-t-2xl"> 
                 <section>
-                    <figure>
-                        <img src="a" alt="" />
-                        <figcaption>
-                            <p>Pemilihan Meja</p>
-                            <p>Meja 6 Lantai 1</p>
-                        </figcaption>
-                    </figure>
+                    <div className={`
+                        flex gap-2 justify-center rounded-2xl 
+                        ${mejaTerpilih === 0 ? "bg-green-900" : "bg-green-800"
+                    }`}>
+                        <Armchair height={50} width={40}/>
+                        <div>
+                            <p>Lokasi</p>
+                            <p>
+                                {mejaTerpilih === 0 ? 
+                                "Meja Belum Terpilih" : 
+                                `Meja ${mejaTerpilih} (${lantaiMejaTerpilih})`}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="text-xs w-full text-right p-2">
+                        <button className="hover:opacity-50 active:opacity-70 cursor-pointer">
+                            Detail Pesanan &#9650;
+                        </button>
+                    </div>
                 </section>
                 <ul>
-
+                    {/* Data para order */}
                 </ul>
-                <footer>
-                    <div>
-                        <button>←</button>
-                        <button>Detail Pesanan</button>
-                    </div>
-                    <div>
-                        <p>Total Harga: 0</p>
-                        <button>Konfirmasi & Bayar</button>
-                    </div>
+                <footer className="flex m-2 items-center justify-between">
+                        <div className="flex w-[70%]">
+                            <p className="whitespace-nowrap">Total Harga :</p>
+                            <p className="overflow-x-auto w-[50%]">100000000000000000000</p>
+                        </div>
+                        <button className="
+                            bg-green-600 p-1 px-2 rounded-2xl whitespace-nowrap text-sm
+                            hover:opacity-70 active:opacity-50 cursor-pointer
+                            ">
+                                Payment
+                        </button>
                 </footer>
             </section>
         </main>

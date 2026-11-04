@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import HeaderEmployee from "../HeaderEmployee/HeaderEmployee.jsx";
+import { OrderProvider } from "../DataContext/OrderContext.jsx";
 
 
 function EmployeeLayout(){
@@ -9,11 +10,11 @@ function EmployeeLayout(){
         <div className="flex h-dvh flex-col overflow-hidden">
             <HeaderEmployee/>
 
-            <div className="min-h-0 flex-1">
+            <OrderProvider className="min-h-0 flex-1">
 
                 <Outlet />
 
-            </div>
+            </OrderProvider>
         </div>
 
     );

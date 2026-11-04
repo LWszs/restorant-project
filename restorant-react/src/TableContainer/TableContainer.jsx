@@ -1,7 +1,7 @@
 import {Armchair,Lock} from 'lucide-react'
 import { useState } from 'react';
 
-function TableContainer({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setMejaTerpilih,mejaTerpilih}){
+function TableContainer({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setMejaTerpilih,mejaTerpilih,setLantaiMejaTerpilih}){
 
     /* PERATURAN UNTUK STYLE */
     const peraturanStatus = meja_status !== "Terisi";
@@ -11,6 +11,7 @@ function TableContainer({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_statu
     function click(){
         if (peraturanStatus){
             setMejaTerpilih(meja_id);
+            setLantaiMejaTerpilih(meja_lantai);
         }
     }
 

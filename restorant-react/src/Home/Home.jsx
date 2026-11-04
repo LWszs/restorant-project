@@ -6,6 +6,7 @@ import FoodQueue from "../FoodQueue/FoodQueue";
 import axios from "axios";
 import {Trash,ShoppingCart, Loader2} from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import { useOrder } from "../DataContext/OrderContext";
 
 function Home(){
 
@@ -35,7 +36,7 @@ function Home(){
 
     /* Variabel menampung order */
     const [foodData , setFoodData] = useState([])
-    const [orderData , setOrderData] = useState([]);
+    const {orderData , setOrderData} = useOrder();
 
     /* DIGUNAKAN UNTUK MENGETAHUI JENIS MAKANAN YANG DIPILIH */
     const [title,setTitle] = useState("Semua");
