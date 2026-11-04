@@ -1,4 +1,4 @@
-import FormatLengkap from './reusable/RupiahFormat';
+import FormatLengkap from '../reusable/RupiahFormat';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import debounce from 'lodash.debounce';

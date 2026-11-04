@@ -3,7 +3,7 @@ import { Armchair,Loader2 } from "lucide-react";
 import TableContainer from "./TableContainer.jsx";
 import FormatLengkap from "../reusable/RupiahFormat";
 import { useOrder } from "../DataContext/OrderContext";
-import FoodQueue from "../FoodQueue.jsx";
+import FoodQueue from "../FoodQueue/FoodQueue.jsx";
 import axios from "axios";
 
 function TablePicker(){
@@ -174,17 +174,6 @@ function TablePicker(){
                     {renderOrderData}
                 </ul>
                 <footer className="flex m-2 items-center justify-between">
-                        {bufferingTotal ? <Loader2 className="animate-spin" /> : 
-                                
-                                <div className="flex w-[70%]">
-                                    <p className="whitespace-nowrap">
-                                        Total Price :
-                                    </p>
-                                    <p className="w-[60%] overflow-x-auto">
-                                        {FormatLengkap(totalPrice)}
-                                    </p>
-                                </div>
-                        }
                         <button className="
                             bg-green-600 p-1 px-2 rounded-2xl whitespace-nowrap text-sm
                             hover:opacity-70 active:opacity-50 cursor-pointer

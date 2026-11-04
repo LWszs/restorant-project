@@ -1,18 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import useAuth from "../reusable/Auth";
-import FormatLengkap from "../reusable/RupiahFormat";
-import FoodContainer from "./FoodContainer.jsx";
-import FoodQueue from "../FoodQueue.jsx";
-import axios from "axios";
-import {Trash,ShoppingCart, Loader2} from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../DataContext/OrderContext";
+import { ShoppingCart } from "lucide-react";
+import useAuth from "../reusable/Auth";
+import FoodContainer from "./FoodContainer.jsx";
+import QueueFooter from "../FoodQueue/QueueFooter.jsx";
+import HomeQueueHeader from "./HomeQueueComponent/HomeQueueHeader.jsx";
+import axios from "axios";
+
 
 function Home(){
 
     useAuth();
-
-    const styleButtonFooter = "cursor-pointer hover:opacity-70 active:opacity-50`";
 
     /* List footer button */
     const foodButtonList = ["Semua","Main Course","Beverage","Appetizer","Dessert","Side Dish"]
@@ -25,18 +24,12 @@ function Home(){
     const dessFoodRef = useRef([]);
     const sideFoodRef = useRef([]);
 
-    /* Expand */
-    const [expand , setExpand] = useState(false);
-
     /* NAVIGATE */
     const navigate = useNavigate();
 
     /* Variabel menampung order */
     const [foodData , setFoodData] = useState([])
-    const {orderData , setOrderData} = useOrder();
     const {refresh , setRefresh} = useOrder();
-    const {bufferingTotal , setBufferingTotal} = useOrder();
-    const {totalPrice , setTotalPrice} = useOrder();
 
     /* DIGUNAKAN UNTUK MENGETAHUI JENIS MAKANAN YANG DIPILIH */
     const [title,setTitle] = useState("Semua");
@@ -44,20 +37,18 @@ function Home(){
     /* VARIABEL UNTUK MENSEARCH MAKANAN */
     const [search , setSearch] = useState("");
 
+    /* BUTTON QUEUE FOOTER */
+    const ButtonFooter = (<button onClick={next} className="
+                            cursor-pointer hover:opacity-70 active:opacity-50
+                        ">
+                            <ShoppingCart />
+                        </button>);
+
     /* MENAMPILKAN SEMUA MAKANAN YANG ADA */
     const data = foodData.map(food => {
         return(
             <li key={food.product_id} className="mb-2.5 max-w-50 w-full">
                 <FoodContainer {...food} setRefresh={setRefresh}/>
-            </li>
-        );
-    })
-
-    /* MENAMPILKAN SEMUA ORDER YANG ADA */
-    const orderList = orderData.map(order =>{
-        return(
-            <li key={order.orderCart_id}>
-                <FoodQueue {...order} setRefresh={setRefresh} setBufferingTotal={setBufferingTotal}/>
             </li>
         );
     })
@@ -107,20 +98,6 @@ function Home(){
         }
         foodDataFetch();
     },[])
-
-    /* MERESET/MENGHAPUS SEMUA ORDER YANG SUDAH DI ORDER */
-    async function resetOrder(){
-        try{
-            await axios.delete('/api/order/resetOrder');
-            setRefresh(() => {
-                setTotalPrice(0);
-                return !refresh;
-            });
-        }
-        catch(error){
-            console.log(error);
-        }
-    }
 
     /* MENNGECEK JENIS MAKANAN */
     function cekJenisMakanan(jenis){
@@ -184,42 +161,8 @@ function Home(){
                     </ul>
                 </aside>
             </section>
-
-            <section
-                className={`flex flex-col shrink-0 overflow-hidden transition-all duration-300
-                    sm:max-h-none sm:max-w-75 sm:min-w-50 md:max-w-none
-                    ${expand ? "max-h-100" : "max-h-23"} lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl
-                `}
-            >
-                <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
-                    <button className={`ml-2 ${styleButtonFooter}`} onClick={resetOrder}><Trash />
-                        reset
-                    </button>
-                    <button
-                        className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all duration-300 sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
-                        onClick={() => setExpand(!expand)}
-                    >
-                        &#8593;
-                    </button>
-                </section>
-
-                <ul className="bg-gray-200 sm:hidden h-50 overflow-y-auto">
-                    {orderList}
-                </ul>
-                <ul className="hidden bg-gray-200 sm:block flex-1 overflow-y-auto">
-                    {orderList}
-                </ul>
-
-                <footer className="bg-green-800 text-white flex justify-between p-2">
-                    <p>
-                        {bufferingTotal ? <Loader2 className="animate-spin" /> : `Total Price: ${FormatLengkap(totalPrice)}`}
-                    </p>
-                    {orderList.length > 0 && 
-                        <button onClick={next} className={styleButtonFooter}>
-                            <ShoppingCart />
-                        </button>}
-                </footer>
-            </section>
+            
+            <QueueFooter setRefresh={setRefresh} QueueHeader={HomeQueueHeader} ButtonFooter={ButtonFooter}/>
         </main>
     );
 
