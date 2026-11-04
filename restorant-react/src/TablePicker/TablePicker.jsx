@@ -72,7 +72,7 @@ function TablePicker(){
     
 
     return(
-        <main className='bg-table-picker w-screen bg-center bg-cover flex flex-col h-[90vh]'>
+        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col h-[90vh]'>
             <aside className='
                         m-3 text-m flex justify-center gap-2 bg-pemilihan-pembelian 
                         p-3 rounded-2xl whitespace-nowrap'>
