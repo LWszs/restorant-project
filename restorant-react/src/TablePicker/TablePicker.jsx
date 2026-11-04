@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Armchair } from "lucide-react";
 import TableContainer from "../TableContainer/TableContainer";
 import FormatLengkap from "../reusable/RupiahFormat";
+import { useOrder } from "../DataContext/OrderContext";
+import FoodQueue from "../FoodQueue/FoodQueue";
 import axios from "axios";
 
 function TablePicker(){
@@ -9,6 +11,8 @@ function TablePicker(){
     /* VARIABEL PENYIMPAN DATA */
     const [dataMeja,setDataMeja] = useState([]);
     const [tampilMeja, setTampilMeja] = useState([]);
+
+    const {orderData , setOrderData} = useOrder();
 
     /* VARIABEL MEJA TERPILIH */
     const [mejaTerpilih , setMejaTerpilih] = useState(0);
@@ -72,6 +76,15 @@ function TablePicker(){
         );
     });
 
+    /* RENDER LIST ORDER */
+    const renderOrderData = orderData.map((order) =>{
+        return(
+            <li key={order.orderCart_id}>
+                <FoodQueue {...order} setRefresh={setRefresh} setBufferingTotal={setBufferingTotal}/>
+            </li>
+        );
+    });
+
     /* PEMILIHAN LANTAI BERDASARKAN TOMBOL */
     function lantaiFilter(lantai){
         if (lantai === "Semua"){
@@ -118,6 +131,7 @@ function TablePicker(){
                     {RenderListMeja}
                 </ul>
             </section>
+
             <section className="bg-black-green text-white p-2 mt-2 rounded-t-2xl"> 
                 <section>
                     <div className={`
