@@ -31,18 +31,14 @@ function Home(){
     /* NAVIGATE */
     const navigate = useNavigate();
 
-    /* VARIABEL BUFFERING TOTAL PRICE*/
-    const [bufferingTotal , setBufferingTotal] = useState(false);
-
     /* Variabel menampung order */
     const [foodData , setFoodData] = useState([])
     const {orderData , setOrderData} = useOrder();
+    const {refresh , setRefresh} = useOrder();
+    const {bufferingTotal , setBufferingTotal} = useOrder();
 
     /* DIGUNAKAN UNTUK MENGETAHUI JENIS MAKANAN YANG DIPILIH */
     const [title,setTitle] = useState("Semua");
-
-    /* DIGUNAKAN UNTUK  REFRESH*/
-    const [refresh , setRefresh] = useState(false);
 
     /* MENAMPILKAN SEMUA TOTAL HARGA */
     const [totalPrice , setTotalPrice] = useState(0);
