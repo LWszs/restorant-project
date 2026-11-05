@@ -141,15 +141,15 @@ function Home(){
     return (
         <main className="h-[calc(100dvh-84px)] overflow-y-hidden flex flex-col w-full sm:flex-row-reverse font-bold lg:min-h-0">
 
-            <section className="flex flex-col min-h-0 min-w-0 grow mb-3 sm:h-[87dvh]">
-                <div className="flex-1 overflow-y-auto p-4">
-                    <input
+            <section className="flex flex-col min-h-0 min-w-0 grow mb-3 mx-2 sm:h-[87dvh]">
+                <input
                         type="text"
                         placeholder="⌕ search"
-                        className="border w-full rounded-2xl p-2 mb-2"
+                        className="border w-full rounded-2xl p-2 mt-2"
                         value={search}
                         onChange={searchMenu}
-                    />
+                />
+                <div className="flex-1 overflow-y-auto p-4">
                     <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
                         {data}
                     </ul>

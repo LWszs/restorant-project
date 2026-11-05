@@ -86,11 +86,11 @@ function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,pro
         <figure className="max-w-120 flex rounded-2xl p-2 m-2 shadow-2xl bg-gray-300 gap-2 h-20 lg:max-w-none">
             <img src={`/food/${product_img}.webp`} alt={product_name} loading='lazy' width={70} className="rounded-2xl "/>
             <div className="flex justify-between w-full items-center">
-                <figcaption className="flex flex-col gap-1 text-xs w-20">
-                    <p className='truncate text-2xl'>
+                <figcaption className="flex flex-col gap-1 text-xs w-21">
+                    <p className='truncate text-sm'>
                         {product_name}
                     </p>
-                    <p className='overflow-x-auto'>
+                    <p className='overflow-x-auto w-[90%]'>
                         {FormatLengkap(totalPrice)}
                     </p>
                 </figcaption>

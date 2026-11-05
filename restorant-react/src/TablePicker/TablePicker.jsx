@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Armchair,Loader2 } from "lucide-react";
 import TableContainer from "./TableContainer.jsx";
-import FormatLengkap from "../reusable/RupiahFormat";
+import TableQueueHeader from "./TableQueueHeader.jsx";
+import QueueFooter from "../FoodQueue/QueueFooter.jsx";
 import { useOrder } from "../DataContext/OrderContext";
-import FoodQueue from "../FoodQueue/FoodQueue.jsx";
 import axios from "axios";
 
 function TablePicker(){
@@ -12,12 +11,7 @@ function TablePicker(){
     const [dataMeja,setDataMeja] = useState([]);
     const [tampilMeja, setTampilMeja] = useState([]);
 
-    const {orderData , setOrderData} = useOrder();
     const {refresh , setRefresh} = useOrder();
-    const {bufferingTotal , setBufferingTotal} = useOrder();
-    const {totalPrice , setTotalPrice} = useOrder();
-
-    const [expand , setExpand] = useState(false);
 
     /* VARIABEL MEJA TERPILIH */
     const [mejaTerpilih , setMejaTerpilih] = useState(0);
@@ -30,6 +24,13 @@ function TablePicker(){
         {label:"Terisi" , style: "bg-gray-500"},
         {label:"Terpilih" , style: "bg-black-green"},
     ]; 
+
+    const ButtonFooter = (<button className="
+                            bg-green-600 p-1 px-2 rounded-2xl whitespace-nowrap text-sm
+                            hover:opacity-70 active:opacity-50 cursor-pointer
+                            ">
+                                Payment
+                        </button>);
 
     /* FETCH DATA MEJA */
     useEffect(() => {
@@ -81,15 +82,6 @@ function TablePicker(){
         );
     });
 
-    /* RENDER LIST ORDER */
-    const renderOrderData = orderData.map((order) =>{
-        return(
-            <li key={order.orderCart_id}>
-                <FoodQueue {...order} setRefresh={setRefresh} setBufferingTotal={setBufferingTotal}/>
-            </li>
-        );
-    });
-
     /* PEMILIHAN LANTAI BERDASARKAN TOMBOL */
     function lantaiFilter(lantai){
         if (lantai === "Semua"){
@@ -121,7 +113,7 @@ function TablePicker(){
 
             </aside>
 
-            <section className='grow shadow-md p-3 rounded-2xl overflow-auto'>
+            <section className='grow shadow-md p-3 rounded-2xl overflow-y-auto'>
                 <h2 className="text-xl mb-4 text-black-green">Pilih Area & Meja</h2>
                 <section className="flex justify-evenly m-1 text-sm gap-2">
                     {buttonPilihLantai}
@@ -137,51 +129,8 @@ function TablePicker(){
                 </ul>
             </section>
 
-            <section className="bg-green-800 text-white mt-2 rounded-t-2xl shrink-0"> 
-                <section className="m-2">
-                    <section className={`
-                        flex gap-2 justify-center rounded-2xl 
-                        ${mejaTerpilih === 0 ? "bg-green-900" : "bg-green-700"}
-                    `}>
-                        <Armchair height={50} width={40}/>
-                        <div>
-                            <p>Lokasi</p>
-                            <p>
-                                {mejaTerpilih === 0 ? 
-                                "Meja Belum Terpilih" : 
-                                `Meja ${mejaTerpilih} (${lantaiMejaTerpilih})`}
-                            </p>
-                        </div>
-                    </section>
-                    <section className="text-xs w-full p-2 flex justify-between mt-1">
-                        <div>
-                            <p>Rekap Pesanan ({orderData.length})</p>
-                        </div>
-                        <div className="flex gap-2">
-                            <button className="
-                            hover:opacity-50 active:opacity-70 cursor-pointer" 
-                            onClick={() => setExpand(!expand)}>
-                                Detail Pesanan
-                            </button>
-                            <p className={`transition-all duration-500 ${expand ? "rotate-180" : ""}`}>
-                                &#9650;
-                            </p>
-                        </div>
-                    </section>
-                </section>
-                <ul className={`bg-gray-200 text-black h-50 overflow-y-auto border border-green-600
-                    transition-all duration-500 ${expand ? "max-h-100" : "max-h-0"}`}>
-                    {renderOrderData}
-                </ul>
-                <footer className="flex m-2 items-center justify-between">
-                        <button className="
-                            bg-green-600 p-1 px-2 rounded-2xl whitespace-nowrap text-sm
-                            hover:opacity-70 active:opacity-50 cursor-pointer
-                            ">
-                                Payment
-                        </button>
-                </footer>
-            </section>
+            <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} ButtonFooter={ButtonFooter} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>
+
         </main>
     );
 
