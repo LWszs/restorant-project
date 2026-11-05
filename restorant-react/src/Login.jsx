@@ -26,7 +26,7 @@ function Login(){
             })
 
             if (response.status >= 200 && response.status < 300){
-                navigate("/Home");
+                navigate("/");
             }
 
             else{
