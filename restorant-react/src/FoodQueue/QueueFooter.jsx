@@ -39,14 +39,14 @@ function QueueFooter({setRefresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMej
 
     return(
         <section
-            className={`flex flex-col shrink-0 overflow-hidden transition-all duration-300
+            className={`flex flex-col shrink-0 overflow-hidden
                 sm:max-h-none sm:max-w-75 sm:min-w-50 md:max-w-none
                 lg:w-90 sm:h-[85dvh] sm:m-4 sm:rounded-b-2xl
             `}
         >
             <QueueHeader resetOrder={resetOrder} setExpand={setExpand} expand={expand} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih} rekap={orderData.length}/>
 
-            <ul className={`bg-gray-200 sm:hidden h-50 overflow-y-auto ${expand ? "max-h-100" : "max-h-0"} border border-green-700`}>
+            <ul className={`bg-gray-200 sm:hidden h-50 overflow-y-auto transition-all duration-800 ${expand ? "max-h-100" : "max-h-0"} border border-green-700`}>
                 {orderList}
             </ul>
             <ul className="hidden bg-gray-200 sm:block flex-1 overflow-y-auto">
