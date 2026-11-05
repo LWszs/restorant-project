@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { Calculator, Trash2, RotateCcw, Grid } from 'lucide-react';
 import {NavLink , useNavigate,Link} from 'react-router-dom'
 import LogOutReuse from '../reusable/LogOutReuse.jsx'
@@ -8,7 +8,7 @@ function HeaderEmployee(){
     const styleSpanButton = "bg-white h-0.5 w-full block transition-all";
     const styleProfileButton = "bg-green-900 border-2 w-full p-4 hover:bg-green-700 active:bg-green-600";
     const listButtonHamburger = [
-        {name: "Order" , icon: Calculator, link:"/Home"},
+        {name: "Order" , icon: Calculator, link:"/"},
         {name: "Waste Management" , icon: Trash2, link:"/Waste"},
         {name: "History" , icon: RotateCcw, link:"/History"},
         {name: "List Meja" , icon: Grid, link:"/Meja"}
@@ -59,7 +59,7 @@ function HeaderEmployee(){
             </nav>
 
             <h1>
-                <Link to="/Home" className="flex gap-1 items-center">
+                <Link to="/" className="flex gap-1 items-center">
                     <img src="/header/logo.webp" alt="logo" width={50} className="rounded-full"/>
                     <div className="text-white text-md flex flex-col">
                         <span className="">Global Bites</span>

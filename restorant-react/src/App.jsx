@@ -1,9 +1,10 @@
-import Login from './Login.jsx';
-import Home from './Home/Home.jsx';
 import EmployeeLayout from './Layout/EmployeeLayout.jsx';
-import Profile from './Profile.jsx';
 import InsideLayout from './Layout/InsideLayout.jsx';
 import TablePicker from './TablePicker/TablePicker.jsx';
+import Login from './Login.jsx';
+import Home from './Home/Home.jsx';
+import Profile from './Profile.jsx';
+import Payment from './Layout/PaymentLayout.jsx';
 import {Routes,Route} from 'react-router-dom'
 
 function App(){
@@ -12,11 +13,12 @@ function App(){
   return(
 
     <Routes>
-      <Route index element={<Login/>}/>
+      <Route path='/Login' element={<Login/>}/>
 
       <Route element={<EmployeeLayout/>}>
-        <Route path='/Home' element={<Home/>}/>
+        <Route index element={<Home/>}/>
         <Route path='/TablePicker' element={<TablePicker/>}/>
+        
       </Route>
       
       <Route element={<InsideLayout/>}>

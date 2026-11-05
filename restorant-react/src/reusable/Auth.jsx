@@ -13,7 +13,7 @@ function useAuth(){
                     {withCredentials:true});
             }
             catch(error){
-                navigate("/")
+                navigate("/Login");
             }
         }
         employeeCheck()
