@@ -1,4 +1,6 @@
-  //MELAKUKAN LOGUT
+import axios from "axios";
+
+//MELAKUKAN LOGUT
 async function LogOutReuse(navigate){
     try{
         const response = await axios.get('/api/logOut');
@@ -7,6 +9,7 @@ async function LogOutReuse(navigate){
         }
     }
     catch(error){
+        console.log(error);
         navigate('/Login');
     }
 };
