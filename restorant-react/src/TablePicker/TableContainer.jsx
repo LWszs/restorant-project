@@ -1,5 +1,4 @@
 import {Armchair,Lock} from 'lucide-react'
-import { useState } from 'react';
 
 function TableContainer({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setMejaTerpilih,mejaTerpilih,setLantaiMejaTerpilih}){
 

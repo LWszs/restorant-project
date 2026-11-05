@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import TableContainer from "./TableContainer.jsx";
-import TableQueueHeader from "./TableQueueHeader.jsx";
-import TablePickerButton from "./TablePickerButton.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
-import { useOrder } from "../DataContext/OrderContext";
+import TablePickerButton from "./TablePickerButton.jsx";
+import TableQueueHeader from "./TableQueueHeader.jsx";
+import TableContainer from "./TableContainer.jsx";
+import ButtonTablePayment from "../ButtonTablePayment.jsx";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useOrder } from "../DataContext/OrderContext";
+
 
 function TablePicker(){
 
@@ -97,25 +99,7 @@ function TablePicker(){
 
             <section className='flex-1 min-h-0 p-3 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-2'>
 
-                <aside className='
-                        text-m flex justify-around gap-2 bg-pemilihan-pembelian 
-                        rounded-2xl whitespace-nowrap p-2'>
-
-                    <button className="bg-black-green p-2 text-white rounded-2xl
-                            hover:bg-black-green-hover active:bg-black-green-active min-w-[30%]">
-                        Memilih Meja
-                    </button>
-
-                    <span className="bg-black h-full w-0.5"></span>
-                    
-                    <button className="
-                        bg-gray-300 p-2 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70
-                        min-w-[30%]
-                    ">
-                        Bawa Pulang
-                    </button>
-
-                </aside>
+                <ButtonTablePayment page="Meja"/>
 
                 <h2 className="text-xl mb-2 mt-4 text-black-green">Pilih Area & Meja</h2>
                 <section className="flex justify-around text-sm gap-2 my-2">
