@@ -65,7 +65,7 @@ function QueueFooter({setRefresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMej
                         </p>
                     </div>
                 }
-                {ButtonFooter}
+                <ButtonFooter/>
             </footer>
         </section>
     );

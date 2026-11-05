@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TableContainer from "./TableContainer.jsx";
 import TableQueueHeader from "./TableQueueHeader.jsx";
+import TablePickerButton from "./TablePickerButton.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
 import { useOrder } from "../DataContext/OrderContext";
 import axios from "axios";
@@ -23,14 +24,7 @@ function TablePicker(){
         {label:"Tersedia" , style: "bg-green-400"},
         {label:"Terisi" , style: "bg-gray-500"},
         {label:"Terpilih" , style: "bg-black-green"},
-    ]; 
-
-    const ButtonFooter = (<button className="
-                            bg-green-600 p-1 px-2 rounded-2xl whitespace-nowrap text-sm
-                            hover:opacity-70 active:opacity-50 cursor-pointer
-                            ">
-                                Payment
-                        </button>);
+    ];
 
     /* FETCH DATA MEJA */
     useEffect(() => {
@@ -124,12 +118,12 @@ function TablePicker(){
                         {renderLiPenjelasan}
                     </ul>
                 </section>
-                <ul className="flex flex-wrap m-1 justify-center gap-3 mt-3">
+                <ul className="grid grid-cols-2 m-1 justify-items-center gap-3 mt-3">
                     {RenderListMeja}
                 </ul>
             </section>
 
-            <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} ButtonFooter={ButtonFooter} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>
+            <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} ButtonFooter={TablePickerButton} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>
 
         </main>
     );

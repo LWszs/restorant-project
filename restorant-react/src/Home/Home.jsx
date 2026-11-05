@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../DataContext/OrderContext";
-import { ShoppingCart } from "lucide-react";
+import HomeButtonQueue from "./HomeButtonQueue.jsx";
 import useAuth from "../reusable/Auth";
 import FoodContainer from "./FoodContainer.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
@@ -36,13 +36,6 @@ function Home(){
 
     /* VARIABEL UNTUK MENSEARCH MAKANAN */
     const [search , setSearch] = useState("");
-
-    /* BUTTON QUEUE FOOTER */
-    const ButtonFooter = (<button onClick={next} className="
-                            cursor-pointer hover:opacity-70 active:opacity-50
-                        ">
-                            <ShoppingCart />
-                        </button>);
 
     /* MENAMPILKAN SEMUA MAKANAN YANG ADA */
     const data = foodData.map(food => {
@@ -162,7 +155,7 @@ function Home(){
                 </aside>
             </section>
             
-            <QueueFooter setRefresh={setRefresh} QueueHeader={HomeQueueHeader} ButtonFooter={ButtonFooter}/>
+            <QueueFooter setRefresh={setRefresh} QueueHeader={HomeQueueHeader} ButtonFooter={HomeButtonQueue}/>
         </main>
     );
 
