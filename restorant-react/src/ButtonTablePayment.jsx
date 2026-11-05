@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function ButtonTablePayment({page}){
 
@@ -6,24 +7,28 @@ function ButtonTablePayment({page}){
     const styleDeactiveButton = "bg-gray-300 opacity-50 hover:opacity-100 active:opacity-70";
 
     return(
+
         <aside className='
             text-m flex justify-around gap-2 bg-pemilihan-pembelian 
             rounded-2xl whitespace-nowrap p-2
         '>
-
-            <button className={`
-                ${button} ${page == "Meja" ? styleActiveButton : styleDeactiveButton}
-            `}>
-                Memilih Meja
-            </button>
+            <Link to={"/TablePicker"}>
+                <button className={`
+                    ${button} ${page == "Meja" ? styleActiveButton : styleDeactiveButton}
+                `}>
+                    Memilih Meja
+                </button>
+            </Link>
 
             <span className="bg-black h-full w-0.5"></span>
             
-            <button className={`
-                ${button} ${page == "Payment" ? styleActiveButton : styleDeactiveButton}
-            `}>
-                Bawa Pulang
-            </button>
+            <Link to={"PaymentTakeAway"}>
+                <button className={`
+                    ${button} ${page == "Payment" ? styleActiveButton : styleDeactiveButton}
+                `}>
+                    Bawa Pulang
+                </button>
+            </Link>
 
         </aside>
     );
