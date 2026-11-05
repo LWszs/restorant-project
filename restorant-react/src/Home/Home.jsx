@@ -24,9 +24,6 @@ function Home(){
     const dessFoodRef = useRef([]);
     const sideFoodRef = useRef([]);
 
-    /* NAVIGATE */
-    const navigate = useNavigate();
-
     /* Variabel menampung order */
     const [foodData , setFoodData] = useState([])
     const {refresh , setRefresh} = useOrder();
@@ -123,11 +120,6 @@ function Home(){
         setSearch(event.target.value);
         const cariMenu = semuaFoodRef.current.filter((food) => ( title === "Semua" || food.product_category == title) && food.product_name.toLowerCase().includes(event.target.value.toLowerCase()))
         setFoodData(cariMenu)
-    }
-
-    /* LANJUT KE TAHAP PEMILILHAN MEJA */
-    function next(){
-        navigate('/TablePicker');
     }
 
 
