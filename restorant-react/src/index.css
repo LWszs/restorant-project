@@ -5,6 +5,7 @@
 
 
 @theme {
+  --breakpoint-xs: 500px;
   --background-image-login-main: url('/login/background-main.webp');
   --background-image-login-image: url('/login/background-login.webp');
   --background-image-login-form: url('/login/background-form.webp');

@@ -64,10 +64,12 @@ function TablePicker(){
     const buttonPilihLantai = listLantai.map((lantai) =>{
         return(
             <button key={lantai}
-                className={
-                    lantaiPilih == lantai ? "bg-black-green text-white p-1 rounded-2xl" : 
-                    "bg-gray-300 p-1 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70"
-                } 
+                className={`
+                    min-w-[10%]
+                    ${lantaiPilih == lantai ? 
+                        "bg-black-green text-white p-1 rounded-2xl" : 
+                        "bg-gray-300 p-1 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70"}
+                `} 
                 onClick={() => {
                     setLantaiPilih(lantai); 
                     lantaiFilter(lantai)}}>
@@ -91,36 +93,49 @@ function TablePicker(){
     
 
     return(
-        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col h-[calc(100dvh-84px)] font-bold'>
-            <aside className='
-                        m-3 text-m flex justify-center gap-2 bg-pemilihan-pembelian 
-                        p-3 rounded-2xl whitespace-nowrap'>
+        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col sm:flex-row-reverse h-[calc(100dvh-84px)] font-bold'>
 
-                <button className="bg-black-green p-2 text-white rounded-2xl
-                        hover:bg-black-green-hover active:bg-black-green-active">
-                    Memilih Meja
-                </button>
+            <section className='flex-1 min-h-0 p-3 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-2'>
 
-                <span className="bg-black h-full w-0.5"></span>
+                <aside className='
+                        text-m flex justify-around gap-2 bg-pemilihan-pembelian 
+                        rounded-2xl whitespace-nowrap p-2'>
 
-                <button className="bg-gray-300 p-2 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70">Bawa Pulang</button>
+                    <button className="bg-black-green p-2 text-white rounded-2xl
+                            hover:bg-black-green-hover active:bg-black-green-active min-w-[30%]">
+                        Memilih Meja
+                    </button>
 
-            </aside>
+                    <span className="bg-black h-full w-0.5"></span>
 
-            <section className='grow shadow-md p-3 rounded-2xl overflow-y-auto'>
-                <h2 className="text-xl mb-4 text-black-green">Pilih Area & Meja</h2>
-                <section className="flex justify-evenly m-1 text-sm gap-2">
+                    <button className="
+                        bg-gray-300 p-2 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70
+                        min-w-[30%]
+                    ">
+                        Bawa Pulang
+                    </button>
+
+                </aside>
+
+                <h2 className="text-xl mb-2 mt-4 text-black-green">Pilih Area & Meja</h2>
+                <section className="flex justify-around text-sm gap-2 my-2">
                     {buttonPilihLantai}
                 </section>
+
                 <hr />
-                <section className="mt-2">
+
+                <section className="mt-1">
                     <ul className="flex justify-evenly bg-petunjuk-warna p-2 rounded-2xl text-sm gap-2">
                         {renderLiPenjelasan}
                     </ul>
                 </section>
-                <ul className="grid grid-cols-2 m-1 justify-items-center gap-3 mt-3">
+
+                <ul className="
+                    grid grid-cols-2 justify-items-center gap-3 mt-3 overflow-y-auto h-full rounded-b-2xl m-1 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
+                ">
                     {RenderListMeja}
                 </ul>
+
             </section>
 
             <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} ButtonFooter={TablePickerButton} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>

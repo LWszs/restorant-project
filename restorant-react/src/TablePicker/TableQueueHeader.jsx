@@ -22,7 +22,7 @@ function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,reka
                 <div>
                     <p>Rekap Pesanan ({rekap})</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 sm:hidden">
                     <button className="
                     hover:opacity-50 active:opacity-70 cursor-pointer" 
                     onClick={() => setExpand(!expand)}>
