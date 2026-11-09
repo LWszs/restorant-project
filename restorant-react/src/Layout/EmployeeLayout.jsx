@@ -7,7 +7,7 @@ function EmployeeLayout(){
 
     return(
 
-        <div className="flex h-dvh flex-col overflow-hidden">
+        <div className="flex h-dvh flex-col overflow-y-auto overflow-x-hidden">
             <HeaderEmployee/>
 
             <OrderProvider className="min-h-0 flex-1">

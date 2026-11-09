@@ -39,7 +39,7 @@ function HeaderEmployee(){
 
     return(
 
-        <header className="bg-header-employee bg-center bg-cover flex justify-evenly items-center p-2 min-h-21 max-h-21 text-main font-bold relative">
+        <header className="bg-header-employee bg-center bg-cover flex justify-evenly items-center p-2 min-h-21 max-h-21 text-main font-bold sticky top-0">
 
             <button 
             className="w-8 flex flex-col gap-2 justify-center hover:opacity-70 active:opacity-50 sm:hidden"

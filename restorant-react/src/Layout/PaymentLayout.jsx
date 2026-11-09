@@ -4,7 +4,7 @@ function PaymentLayout(){
     return(
         <main className="p-2">
             <Outlet/>
-            
+
         </main>
     );
 }
