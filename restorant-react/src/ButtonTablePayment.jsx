@@ -20,9 +20,9 @@ function ButtonTablePayment({page}){
                 </button>
             </Link>
 
-            <span className="bg-black h-full w-0.5"></span>
+            <div className="bg-black min-h-8px w-0.5"></div>
             
-            <Link to={"PaymentTakeAway"}>
+            <Link to={"/PaymentTakeAway"}>
                 <button className={`
                     ${button} ${page == "Payment" ? styleActiveButton : styleDeactiveButton}
                 `}>

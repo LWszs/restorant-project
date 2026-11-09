@@ -2,8 +2,9 @@ import { Outlet } from "react-router-dom";
 
 function PaymentLayout(){
     return(
-        <main>
+        <main className="p-2">
             <Outlet/>
+            
         </main>
     );
 }
