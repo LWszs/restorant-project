@@ -29,14 +29,6 @@ describe("Format Lengkap", ()=>{
 
 });
 
-// 1. Mock Axios
-vi.mock('axios');
-
-// 2. Mock useNavigate
-vi.mock('react-router-dom', () => ({
-    useNavigate: vi.fn()
-}));
-
 describe('useAuth', () => {
 
     const mockNavigate = vi.fn();
