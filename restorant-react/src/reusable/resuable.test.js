@@ -13,4 +13,9 @@ describe("Format Lengkap", ()=>{
         .toBe("Rp 0");
     });
 
+    it('Cek angka 0', () => {
+        expect(FormatLengkap(0).replace(/\u00A0/g, " "))
+        .toBe("Rp 0");
+    })
+
 });
