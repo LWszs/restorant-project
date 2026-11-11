@@ -1,6 +1,7 @@
 import {it,describe, expect , vi, beforeEach}  from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
-import {useNavigate } from 'react-router-dom';
+import {Navigate, useNavigate } from 'react-router-dom';
+import LogOutReuse from './LogOutReuse';
 import FormatLengkap from './RupiahFormat';
 import axios from 'axios';
 import useAuth from './Auth';
@@ -74,4 +75,51 @@ describe('useAuth', () => {
 
 });
 
+describe("LogOut", () => {
 
+    const mockNavigate = vi.fn();
+
+    beforeEach(() => {
+        
+        vi.clearAllMocks();
+
+    })
+
+    it("Tes Log Out berhasil", async () => {
+
+        axios.get.mockResolvedValue({
+            status: 200
+        })
+
+        await LogOutReuse(mockNavigate);
+
+        expect(axios.get).toHaveBeenCalledWith("/api/logOut");
+        expect(mockNavigate).toHaveBeenCalledWith("/Login");
+
+    })
+
+    it("Tes Log out selain 200",  async() => {
+
+        axios.get.mockResolvedValue({
+            status: 400
+        })
+
+        await LogOutReuse(mockNavigate);
+
+        expect(axios.get).toHaveBeenCalledWith("/api/logOut");
+        expect(mockNavigate).not.toHaveBeenCalled();
+
+    })
+
+    it("Tes Log Out error", async () =>{
+
+        axios.get.mockRejectedValue(new Error("LogOut Gagal"));
+
+        await LogOutReuse(mockNavigate);
+
+        expect(axios.get).toHaveBeenCalledWith("/api/logOut");
+        expect(mockNavigate).toHaveBeenCalledWith("/Login")
+
+    })
+
+});
