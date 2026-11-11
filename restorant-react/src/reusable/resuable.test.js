@@ -1,8 +1,14 @@
 import {it,describe, expect , vi, beforeEach}  from 'vitest';
-import { useNavigate } from "react-router-dom";
+import { renderHook, waitFor } from '@testing-library/react';
+import {useNavigate } from 'react-router-dom';
 import FormatLengkap from './RupiahFormat';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import useAuth from './Auth';
 
+vi.mock('axios');
+vi.mock("react-router-dom", () => ({
+    useNavigate:vi.fn()
+}));
 
 describe("Format Lengkap", ()=>{
 
@@ -22,4 +28,58 @@ describe("Format Lengkap", ()=>{
     })
 
 });
+
+// 1. Mock Axios
+vi.mock('axios');
+
+// 2. Mock useNavigate
+vi.mock('react-router-dom', () => ({
+    useNavigate: vi.fn()
+}));
+
+describe('useAuth', () => {
+
+    const mockNavigate = vi.fn();
+
+    beforeEach(() => {
+        vi.clearAllMocks();
+
+        useNavigate.mockReturnValue(mockNavigate);
+    });
+
+    it('tidak redirect ketika autentikasi berhasil', async () => {
+
+        axios.get.mockResolvedValue({
+            data: 'Berhasil'
+        });
+
+        renderHook(() => useAuth());
+
+        await waitFor(() => {
+            expect(axios.get).toHaveBeenCalledWith(
+                '/api/employee/check',
+                { withCredentials: true }
+            );
+        });
+
+        expect(mockNavigate).not.toHaveBeenCalled();
+
+    });
+
+    it('redirect ke Login ketika autentikasi gagal', async () => {
+
+        axios.get.mockRejectedValue(
+            new Error('Unauthorized')
+        );
+
+        renderHook(() => useAuth());
+
+        await waitFor(() => {
+            expect(mockNavigate).toHaveBeenCalledWith('/Login');
+        });
+
+    });
+
+});
+
 
