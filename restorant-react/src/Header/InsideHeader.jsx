@@ -4,8 +4,12 @@ function InsideHeader(){
 
     return(
 
-        <header className="flex justify-center items-center bg-header-employee bg-center bg-cover min-h-21 text-main font-bold max-h-21">
-            <NavLink className="hover:opacity-70 active:opacity-50 w-80" to='/Home'>
+        <header className="
+            flex justify-center items-center bg-header-employee bg-center bg-cover min-h-21 text-main font-bold max-h-21 sticky top-0 z-1
+        ">
+            <NavLink className="
+                hover:opacity-70 active:opacity-50 w-80" to='/
+            '>
                 <h1 className='flex gap-2 justify-center'>
                     <img src="/header/logo.webp" alt="logo" width={50} className='rounded-full block lg:w-18'/>
                     <div className="text-white flex flex-col justify-center">

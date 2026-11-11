@@ -8,7 +8,7 @@ function InsideLayout(){
 
         <div className="flex flex-col sm:h-dvh">
 
-            <InsideHeader />
+            <InsideHeader/>
 
             <div className="flex-1 min-h-0">
 

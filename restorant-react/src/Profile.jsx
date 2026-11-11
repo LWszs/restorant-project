@@ -223,7 +223,7 @@ function Profile(){
                         </div>
 
                         {passActive && 
-                            <aside className="fixed top-0 inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center">
+                            <aside className="fixed top-0 inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center z-2">
 
                                 <form 
                                 onSubmit={(event) => resetPass(event)} 
