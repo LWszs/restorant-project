@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { QrCode, CreditCard, Banknote } from 'lucide-react';
 import { useOrder } from "../DataContext/OrderContext";
 import PaymentQueue from "../FoodQueue/PaymentQueue";
-import FoodQueue from "../FoodQueue/FoodQueue";
 
 function PaymentLayout(){
 
@@ -40,7 +39,7 @@ function PaymentLayout(){
 
 
     return(
-        <main className="p-2 flex flex-col gap-2">
+        <main className="p-2 flex flex-col gap-2 font-bold">
             <Outlet/>
 
             <section className={`${styleContainer} h-[40vh] min-h-0`}>
