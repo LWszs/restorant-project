@@ -97,19 +97,19 @@ function TablePicker(){
     return(
         <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col sm:flex-row-reverse h-[calc(100dvh-84px)] font-bold'>
 
-            <section className='flex-1 min-h-0 p-3 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-2'>
+            <section className='flex-1 min-h-0 p-2 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-1'>
 
                 <ButtonTablePayment page="Meja"/>
 
-                <h2 className="text-xl mb-2 mt-4 text-black-green">Pilih Area & Meja</h2>
-                <section className="flex justify-around text-sm gap-2 my-2">
+                <h2 className="text-xl mb-2 mt-2 text-black-green">Pilih Area & Meja</h2>
+                <section className="flex justify-around text-sm gap-2 my-1">
                     {buttonPilihLantai}
                 </section>
 
                 <hr />
 
                 <section className="mt-1">
-                    <ul className="flex justify-evenly bg-petunjuk-warna p-2 rounded-2xl text-sm gap-2">
+                    <ul className="flex justify-evenly bg-petunjuk-warna p-1 rounded-2xl text-xs gap-2">
                         {renderLiPenjelasan}
                     </ul>
                 </section>

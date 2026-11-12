@@ -9,7 +9,7 @@ function ButtonTablePayment({page}){
     return(
 
         <aside className='
-            text-m flex justify-around gap-2 bg-pemilihan-pembelian 
+            text-sm flex justify-around gap-2 bg-pemilihan-pembelian 
             rounded-2xl whitespace-nowrap p-2
         '>
             <Link to={"/TablePicker"}>
