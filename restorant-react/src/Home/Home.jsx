@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useOrder } from "../DataContext/OrderContext";
 import HomeButtonQueue from "./HomeButtonQueue.jsx";
 import useAuth from "../reusable/Auth";
@@ -147,7 +146,7 @@ function Home(){
                 </aside>
             </section>
             
-            <QueueFooter setRefresh={setRefresh} QueueHeader={HomeQueueHeader} ButtonFooter={HomeButtonQueue}/>
+            <QueueFooter setRefresh={setRefresh} refresh={refresh} QueueHeader={HomeQueueHeader} ButtonFooter={HomeButtonQueue}/>
         </main>
     );
 

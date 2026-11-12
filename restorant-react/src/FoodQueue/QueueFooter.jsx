@@ -1,10 +1,12 @@
 import {Loader2} from 'lucide-react';
-import FormatLengkap from "../reusable/RupiahFormat";
-import FoodQueue from './FoodQueue';
 import { useOrder } from '../DataContext/OrderContext';
 import { useState } from 'react';
+import axios from 'axios';
+import FormatLengkap from "../reusable/RupiahFormat";
+import FoodQueue from './FoodQueue';
 
-function QueueFooter({setRefresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMejaTerpilih}){
+
+function QueueFooter({setRefresh,refresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMejaTerpilih}){
 
 
     const [expand , setExpand] = useState(false);
@@ -18,10 +20,8 @@ function QueueFooter({setRefresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMej
     async function resetOrder(){
         try{
             await axios.delete('/api/order/resetOrder');
-            setRefresh(() => {
-                setTotalPrice(0);
-                return !refresh;
-            });
+            setRefresh(!refresh);
+            setTotalPrice(0);
         }
         catch(error){
             console.log(error);
