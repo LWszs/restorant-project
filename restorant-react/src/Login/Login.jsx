@@ -1,4 +1,4 @@
-import React, {useState,useEffect,useRef} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -81,27 +81,53 @@ function Login(){
                     }
                     <form onSubmit={(event) => handleSubmit(event)} className='flex flex-col mt-4'>
                         <label htmlFor="username">Username</label>
-                        <input type="text" id='username' name='username' placeholder='Insert Username' required className={input} value={username} onChange={(event)=> setUsername(event.target.value)}/>
+                        <input 
+                            type="text" 
+                            id='username' 
+                            name='username' 
+                            placeholder='Insert Username' 
+                            required 
+                            className={input} 
+                            value={username} 
+                            data-testid = "inputUsername"
+                            onChange={(event)=> setUsername(event.target.value)}/>
 
                         <br />
 
                         <label htmlFor="password">Password</label>
                         <div className="flex gap-2 items-center relative border-2 rounded-2xl p-2">
                 
-                            <input type={showpass ? "text" : "password"} 
-                            id='password' name='password' placeholder='Insert Password' minLength="4" className='border-none outline-none w-[80%]' 
-                            required 
-                            value={password} 
-                            onChange={(event) => setPassword(event.target.value)}/>
+                            <input 
+                                type={showpass ? "text" : "password"} 
+                                id='password' 
+                                name='password' 
+                                placeholder='Insert Password' 
+                                minLength="4" 
+                                className='border-none outline-none w-[80%]' 
+                                required 
+                                value={password} 
+                                data-testid = "inputPassword"
+                                onChange={(event) => setPassword(event.target.value)}
+                            />
 
-                            <button type='button' className='cursor-pointer hover:opacity-70 active:opacity-50 absolute right-5' onClick={() => setShowPass(!showpass)}>
+                            <button 
+                                type='button' 
+                                className='cursor-pointer hover:opacity-70 active:opacity-50 absolute right-5' 
+                                onClick={() => setShowPass(!showpass)}
+                            >
                                 {showpass ? <EyeOff/> :<Eye/>}
                             </button>
                         </div>
 
                         <br />
 
-                        <button type='submit' className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white hover:bg-green-500 active:bg-green-800'>Login</button>
+                        <button 
+                            type='submit' 
+                            className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white hover:bg-green-500 active:bg-green-800'
+                            data-testid = "buttonLogin"
+                        >
+                            Login
+                        </button>
 
                     </form>
                 </section>

@@ -3,7 +3,7 @@ import InsideLayout from './Layout/InsideLayout.jsx';
 import TablePicker from './TablePicker/TablePicker.jsx';
 import PaymentLayout from './Layout/PaymentLayout.jsx';
 import ButtonTablePayment from './ButtonTablePayment.jsx';
-import Login from './Login.jsx';
+import Login from './Login/Login.jsx';
 import Home from './Home/Home.jsx';
 import Profile from './Profile.jsx';
 import {Routes,Route} from 'react-router-dom'

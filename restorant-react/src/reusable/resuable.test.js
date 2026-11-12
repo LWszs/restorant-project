@@ -1,6 +1,6 @@
 import {it,describe, expect , vi, beforeEach}  from 'vitest';
 import { renderHook, waitFor } from '@testing-library/react';
-import {Navigate, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import LogOutReuse from './LogOutReuse';
 import FormatLengkap from './RupiahFormat';
 import axios from 'axios';
@@ -32,11 +32,12 @@ describe("Format Lengkap", ()=>{
 
 describe('useAuth', () => {
 
-    const mockNavigate = vi.fn();
+    let mockNavigate;
 
     beforeEach(() => {
         vi.clearAllMocks();
 
+        mockNavigate = vi.fn();
         useNavigate.mockReturnValue(mockNavigate);
     });
 
