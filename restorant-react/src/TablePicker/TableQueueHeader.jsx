@@ -1,6 +1,6 @@
 import { Armchair} from "lucide-react";
 
-function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,rekap}){
+function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,errorTidakPilih}){
 
     return(
         <section className="bg-green-800 rounded-t-2xl text-white">
@@ -18,6 +18,13 @@ function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,reka
                     </p>
                 </div>
             </section>
+            {errorTidakPilih && 
+                <aside className="text-center">
+                    <p className="text-sm text-black bg-red-300 rounded-2xl font-medium m-2">
+                        <span className='text-red-500'>&#9433; </span> Harus Memilih Meja Terlebih Dahulu
+                    </p>
+                </aside>
+            }
             <section className="text-xs w-full p-2 flex justify-between mt-1">
                 <div>
                     <p>Rekap Meja</p>

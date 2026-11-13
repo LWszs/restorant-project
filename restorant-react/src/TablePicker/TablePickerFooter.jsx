@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
 
-function TablePickerFooter({mejaTerpilih}){
+function TablePickerFooter({mejaTerpilih,setErrorTidakPilih}){
 
     const navigate = useNavigate();
 
     function order(){
         if (mejaTerpilih !== 0){
-            navigate("/FoodOrder")
+            navigate("/FoodOrder");
+        }
+        else{
+            setErrorTidakPilih(true);
         }
     }
 
