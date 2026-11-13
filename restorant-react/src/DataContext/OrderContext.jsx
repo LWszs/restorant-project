@@ -10,6 +10,8 @@ export function OrderProvider({children}) {
     const [bufferingTotal , setBufferingTotal] = useState(false);
     const [refresh , setRefresh] = useState(false);
     const [totalPrice , setTotalPrice] = useState(0);
+    const [mejaTerpilih , setMejaTerpilih] = useState(0);
+    const [lantaiMejaTerpilih , setLantaiMejaTerpilih] = useState(0);
 
     /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
     useEffect(() =>{
@@ -31,8 +33,14 @@ export function OrderProvider({children}) {
 
 
     return(
-        <OrderContext.Provider value={{
-            orderData , setOrderData , bufferingTotal , setBufferingTotal , refresh , setRefresh , totalPrice , setTotalPrice
+        <OrderContext.Provider 
+            value={{
+                orderData , setOrderData ,
+                bufferingTotal , setBufferingTotal ,
+                refresh , setRefresh , 
+                totalPrice , setTotalPrice,
+                mejaTerpilih , setMejaTerpilih,
+                lantaiMejaTerpilih, setLantaiMejaTerpilih
         }}>
             {children}
         </OrderContext.Provider>

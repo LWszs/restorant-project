@@ -14,10 +14,9 @@ function TablePicker(){
     const [tampilMeja, setTampilMeja] = useState([]);
 
     const {refresh , setRefresh} = useOrder();
+    const {mejaTerpilih , setMejaTerpilih} = useOrder();
+    const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
 
-    /* VARIABEL MEJA TERPILIH */
-    const [mejaTerpilih , setMejaTerpilih] = useState(0);
-    const [lantaiMejaTerpilih , setLantaiMejaTerpilih] = useState(0);
     const [lantaiPilih , setLantaiPilih] = useState("Semua");
 
     const listLantai = ["Semua","Lantai 1","Lantai 2","Lantai 3"];
