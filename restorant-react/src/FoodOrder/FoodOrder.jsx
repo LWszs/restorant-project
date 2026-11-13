@@ -146,7 +146,10 @@ function FoodOrder(){
                 </aside>
             </section>
             
-            <QueueFooter setRefresh={setRefresh} refresh={refresh} QueueHeader={FoodOrderQueueHeader} Footer={FoodOrderFooterQueue}/>
+            <QueueFooter 
+                setRefresh={setRefresh} refresh={refresh} 
+                QueueHeader={FoodOrderQueueHeader} Footer={FoodOrderFooterQueue}
+                />
         </main>
     );
 

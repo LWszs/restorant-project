@@ -1,24 +1,11 @@
-import { Armchair} from "lucide-react";
 import FoodDetailButton from "../FoodQueue/FoodDetailButton";
+import TablePickerPilihan from "./TablePickerPilihan";
 
-function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,errorTidakPilih}){
+function TableQueueHeader({setExpand,expand,errorTidakPilih}){
 
     return(
         <section className="bg-green-800 rounded-t-2xl text-white">
-            <section className={`
-                flex gap-2 justify-center rounded-2xl m-2
-                ${mejaTerpilih === 0 ? "bg-green-900" : "bg-green-700"}
-            `}>
-                <Armchair height={50} width={40}/>
-                <div>
-                    <p>Lokasi</p>
-                    <p>
-                        {mejaTerpilih === 0 ? 
-                        "Meja Belum Terpilih" : 
-                        `Meja ${mejaTerpilih} (${lantaiMejaTerpilih})`}
-                    </p>
-                </div>
-            </section>
+            <TablePickerPilihan/>
             {errorTidakPilih && 
                 <aside className="text-center">
                     <p className="text-sm text-black bg-red-300 rounded-2xl font-medium m-2">

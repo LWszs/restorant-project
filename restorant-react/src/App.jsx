@@ -16,10 +16,9 @@ function App(){
       <Route path='/Login' element={<Login/>}/>
 
       <Route element={<EmployeeLayout/>}>
+        <Route index element={<TablePicker/>}/>
         <Route path='/FoodOrderTakeAway' element={<FoodOrder/>}/>
         <Route path='/FoodOrderDineIn' element={<FoodOrder/>}/>
-        <Route index element={<TablePicker/>}/>
-
       {/*  <Route element={<PaymentLayout/>}>
           
         </Route> */}

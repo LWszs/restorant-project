@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {Trash2, RotateCcw, Grid , Package} from 'lucide-react';
 import {NavLink , useNavigate,Link} from 'react-router-dom'
+import { useOrder } from '../DataContext/OrderContext.jsx';
 import LogOutReuse from '../reusable/LogOutReuse.jsx'
 
 function HeaderEmployee(){
@@ -18,6 +19,8 @@ function HeaderEmployee(){
     const [showProfile,setShowProfile] = useState(false);
     const [hamburgerActive , setHamburgerActive] = useState(false);
 
+    const {dineIn ,setDineIn} = useOrder();
+
     const mapButtonHamburger = listButtonHamburger.map((button)=>{
         return (
             <li key={button.name} 
@@ -33,7 +36,12 @@ function HeaderEmployee(){
                         sm:text-xs xl:text-xl
                         hover:opacity-70 active:opacity-50
                     " 
-                    onClick={() => setHamburgerActive(false)}
+                    onClick={() => {
+                            setHamburgerActive(false);
+                            button.name === "List Meja" ? setDineIn(true) : ""
+                            button.name === "Take Away" ? setDineIn(false) : ""
+                        }
+                    }
                 >
                     <button.icon className='sm:w-5'/> &nbsp; {button.name}
 
