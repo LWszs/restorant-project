@@ -68,7 +68,7 @@ function HeaderEmployee(){
                     backdrop-blur-xs transition-all duration-500
                     ${hamburgerActive ? "translate-x-0" : "-translate-x-200"}
             `}>
-                <ul className="text-white bg-green-800 rounded-2xl w-[60%] xs:w-[40%]">
+                <ul className="text-white bg-green-800 rounded-2xl w-[70%] xs:w-[50%]">
                     {mapButtonHamburger}
                 </ul>
             </nav>
