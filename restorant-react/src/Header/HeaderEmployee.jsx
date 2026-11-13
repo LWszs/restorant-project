@@ -20,8 +20,19 @@ function HeaderEmployee(){
     const [hamburgerActive , setHamburgerActive] = useState(false);
 
     const {dineIn ,setDineIn} = useOrder();
+    const {mejaTerpilih , setMejaTerpilih} = useOrder();
+    const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
 
     const mapButtonHamburger = listButtonHamburger.map((button)=>{
+        
+        function takeAway(type){
+            if (type === "Take Away"){
+                setDineIn(false);
+                setMejaTerpilih(0);
+                setLantaiMejaTerpilih(0);
+            }
+        }
+
         return (
             <li key={button.name} 
             className={`border-2 border-b-0 p-5 sm:p-0 sm:border-0
@@ -38,8 +49,8 @@ function HeaderEmployee(){
                     " 
                     onClick={() => {
                             setHamburgerActive(false);
-                            button.name === "List Meja" ? setDineIn(true) : ""
-                            button.name === "Take Away" ? setDineIn(false) : ""
+                            button.name === "List Meja" ? setDineIn(true) : "";
+                            takeAway(button.name);
                         }
                     }
                 >
