@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { useOrder } from "../DataContext/OrderContext";
-import HomeButtonQueue from "./HomeButtonQueue.jsx";
-import useAuth from "../reusable/Auth";
+import { useOrder } from "../DataContext/OrderContext.jsx";
+import HomeButtonQueue from "./FoodOrderButtonQueue.jsx";
+import useAuth from "../reusable/Auth.jsx";
 import FoodContainer from "./FoodContainer.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
-import HomeQueueHeader from "./HomeQueueHeader.jsx";
+import HomeQueueHeader from "./FoodOrderQueueHeader.jsx";
 import axios from "axios";
 
 
-function Home(){
+function FoodOrder(){
 
     useAuth();
 
@@ -151,4 +151,4 @@ function Home(){
     );
 
 }
-export default Home;
+export default FoodOrder;

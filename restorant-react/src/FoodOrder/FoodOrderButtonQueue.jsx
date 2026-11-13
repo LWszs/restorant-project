@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 
-function HomeButtonQueue(){
+function FoodOrderButtonQueue(){
 
     /* NAVIGATE */
     const navigate = useNavigate();
@@ -21,4 +21,4 @@ function HomeButtonQueue(){
     );
 }
 
-export default HomeButtonQueue;
+export default FoodOrderButtonQueue;

@@ -1,6 +1,6 @@
 import { Trash } from "lucide-react";
 
-function HomeQueueHeader({resetOrder,setExpand,expand}){
+function FoodOrderQueueHeader({resetOrder,setExpand,expand}){
     return(
         <section className="bg-green-800 text-white p-1 rounded-t-2xl flex justify-between items-center">
             <button className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50" onClick={resetOrder}><Trash />
@@ -16,4 +16,4 @@ function HomeQueueHeader({resetOrder,setExpand,expand}){
     );
 }
 
-export default HomeQueueHeader;
+export default FoodOrderQueueHeader;
