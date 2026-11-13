@@ -53,7 +53,7 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
                 {orderList}
             </ul>
 
-            <Footer bufferingTotal={bufferingTotal} totalPrice={totalPrice}/>
+            <Footer bufferingTotal={bufferingTotal} totalPrice={totalPrice} mejaTerpilih={mejaTerpilih}/>
         </section>
     );
 }
