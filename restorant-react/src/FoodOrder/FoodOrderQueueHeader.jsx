@@ -16,7 +16,7 @@ function FoodOrderQueueHeader({resetOrder,setExpand,expand}){
 
             <div className="flex items-center justify-between text-xs">
                 <button 
-                    className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50 flex items-center gap-1" 
+                    className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50 flex items-center gap-1 p-2" 
                     onClick={resetOrder}
                 >
                     <Trash/>
