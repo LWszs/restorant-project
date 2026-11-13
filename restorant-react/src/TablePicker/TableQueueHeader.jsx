@@ -1,4 +1,5 @@
 import { Armchair} from "lucide-react";
+import FoodDetailButton from "../FoodQueue/FoodDetailButton";
 
 function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,errorTidakPilih}){
 
@@ -26,16 +27,7 @@ function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,erro
                 </aside>
             }
             <section className="text-xs w-full p-2 flex justify-end mt-1">
-                <div className="flex gap-2 sm:hidden">
-                    <button className="
-                    hover:opacity-50 active:opacity-70 cursor-pointer" 
-                    onClick={() => setExpand(!expand)}>
-                        Detail Meja
-                    </button>
-                    <p className={`transition-all duration-500 ${expand ? "rotate-180" : ""}`}>
-                        &#9650;
-                    </p>
-                </div>
+                <FoodDetailButton setExpand={setExpand} expand={expand} teks='Meja'/>
             </section>
         </section>
     );

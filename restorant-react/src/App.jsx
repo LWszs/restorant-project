@@ -16,7 +16,8 @@ function App(){
       <Route path='/Login' element={<Login/>}/>
 
       <Route element={<EmployeeLayout/>}>
-        <Route path='/FoodOrder' element={<FoodOrder/>}/>
+        <Route path='/FoodOrderTakeAway' element={<FoodOrder/>}/>
+        <Route path='/FoodOrderDineIn' element={<FoodOrder/>}/>
         <Route index element={<TablePicker/>}/>
 
       {/*  <Route element={<PaymentLayout/>}>

@@ -1,4 +1,5 @@
 import { Trash } from "lucide-react";
+import FoodDetailButton from "../FoodQueue/FoodDetailButton";
 
 function FoodOrderQueueHeader({resetOrder,setExpand,expand}){
     return(
@@ -6,12 +7,7 @@ function FoodOrderQueueHeader({resetOrder,setExpand,expand}){
             <button className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50" onClick={resetOrder}><Trash />
                 reset
             </button>
-            <button
-                className={`border-2 p-1 mr-2 rounded-lg text-sm transition-all duration-300 sm:hidden ${expand ? "rotate-180" : ""} cursor-pointer hover:opacity-70 active:opacity-50`}
-                onClick={() => setExpand(!expand)}
-            >
-                &#8593;
-            </button>
+            <FoodDetailButton setExpand={setExpand} expand={expand} teks='Pesanan'/>
         </section>
     );
 }
