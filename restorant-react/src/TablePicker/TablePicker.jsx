@@ -1,8 +1,7 @@
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
-import TablePickerButton from "./TablePickerButton.jsx";
+import TablePickerFooter from "./TablePickerFooter.jsx";
 import TableQueueHeader from "./TableQueueHeader.jsx";
 import TableContainer from "./TableContainer.jsx";
-import ButtonTablePayment from "../ButtonTablePayment.jsx";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useOrder } from "../DataContext/OrderContext";
@@ -99,8 +98,6 @@ function TablePicker(){
 
             <section className='flex-1 min-h-0 p-2 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-1'>
 
-                <ButtonTablePayment page="Meja"/>
-
                 <h2 className="text-xl mb-2 mt-2 text-black-green">Pilih Area & Meja</h2>
                 <section className="flex justify-around text-sm gap-2 my-1">
                     {buttonPilihLantai}
@@ -122,7 +119,7 @@ function TablePicker(){
 
             </section>
 
-            <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} ButtonFooter={TablePickerButton} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>
+            <QueueFooter QueueHeader={TableQueueHeader} setRefresh={setRefresh} Footer={TablePickerFooter} mejaTerpilih={mejaTerpilih} lantaiMejaTerpilih={lantaiMejaTerpilih}/>
 
         </main>
     );

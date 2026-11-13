@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useOrder } from "../DataContext/OrderContext.jsx";
-import FoodOrderButtonQueue from "./FoodOrderButtonQueue.jsx";
+import FoodOrderFooterQueue from "./FoodOrderFooterQueue.jsx";
 import useAuth from "../reusable/Auth.jsx";
 import FoodContainer from "./FoodContainer.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
@@ -146,7 +146,7 @@ function FoodOrder(){
                 </aside>
             </section>
             
-            <QueueFooter setRefresh={setRefresh} refresh={refresh} QueueHeader={FoodOrderQueueHeader} ButtonFooter={FoodOrderButtonQueue}/>
+            <QueueFooter setRefresh={setRefresh} refresh={refresh} QueueHeader={FoodOrderQueueHeader} Footer={FoodOrderFooterQueue}/>
         </main>
     );
 

@@ -20,13 +20,13 @@ function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,reka
             </section>
             <section className="text-xs w-full p-2 flex justify-between mt-1">
                 <div>
-                    <p>Rekap Pesanan ({rekap})</p>
+                    <p>Rekap Meja</p>
                 </div>
                 <div className="flex gap-2 sm:hidden">
                     <button className="
                     hover:opacity-50 active:opacity-70 cursor-pointer" 
                     onClick={() => setExpand(!expand)}>
-                        Detail Pesanan
+                        Detail Meja
                     </button>
                     <p className={`transition-all duration-500 ${expand ? "rotate-180" : ""}`}>
                         &#9650;

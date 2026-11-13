@@ -6,7 +6,7 @@ import FormatLengkap from "../reusable/RupiahFormat";
 import FoodQueue from './FoodQueue';
 
 
-function QueueFooter({setRefresh,refresh,QueueHeader,ButtonFooter,mejaTerpilih,lantaiMejaTerpilih}){
+function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiMejaTerpilih}){
 
 
     const [expand , setExpand] = useState(false);
@@ -53,20 +53,7 @@ function QueueFooter({setRefresh,refresh,QueueHeader,ButtonFooter,mejaTerpilih,l
                 {orderList}
             </ul>
 
-            <footer className="bg-green-800 text-white flex justify-between items-center p-2">
-                {bufferingTotal ? <Loader2 className="animate-spin" /> : 
-                        
-                    <div className="flex w-[70%]">
-                        <p className="whitespace-nowrap">
-                            Total Price :
-                        </p>
-                        <p className="w-[60%] overflow-x-auto">
-                            {FormatLengkap(totalPrice)}
-                        </p>
-                    </div>
-                }
-                <ButtonFooter/>
-            </footer>
+            <Footer bufferingTotal={bufferingTotal} totalPrice={totalPrice}/>
         </section>
     );
 }
