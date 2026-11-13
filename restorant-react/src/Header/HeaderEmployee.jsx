@@ -9,7 +9,7 @@ function HeaderEmployee(){
     const styleProfileButton = "bg-green-900 border-2 w-[60%] xs:w-[40%] md:w-[30%] p-4 hover:bg-green-700 active:bg-green-600";
     const listButtonHamburger = [
         {name: "List Meja" , icon: Grid, link:"/"},
-        {name: "Take Away" , icon: Package, link:"/FoodOrder"},
+        {name: "Take Away" , icon: Package, link:"/FoodOrderTakeAway"},
         {name: "Waste Management" , icon: Trash2, link:"/Waste"},
         {name: "History" , icon: RotateCcw, link:"/History"},
     ];
