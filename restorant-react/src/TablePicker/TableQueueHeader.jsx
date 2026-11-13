@@ -25,10 +25,7 @@ function TableQueueHeader({setExpand,expand,mejaTerpilih,lantaiMejaTerpilih,erro
                     </p>
                 </aside>
             }
-            <section className="text-xs w-full p-2 flex justify-between mt-1">
-                <div>
-                    <p>Rekap Meja</p>
-                </div>
+            <section className="text-xs w-full p-2 flex justify-end mt-1">
                 <div className="flex gap-2 sm:hidden">
                     <button className="
                     hover:opacity-50 active:opacity-70 cursor-pointer" 
