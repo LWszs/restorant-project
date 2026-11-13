@@ -10,7 +10,7 @@ function HeaderEmployee(){
     const styleProfileButton = "bg-green-900 border-2 w-[60%] xs:w-[40%] md:w-[30%] p-4 hover:bg-green-700 active:bg-green-600";
     const listButtonHamburger = [
         {name: "List Meja" , icon: Grid, link:"/"},
-        {name: "Take Away" , icon: Package, link:"/FoodOrderTakeAway"},
+        {name: "Take Away" , icon: Package, link:"/FoodOrder"},
         {name: "Waste Management" , icon: Trash2, link:"/Waste"},
         {name: "History" , icon: RotateCcw, link:"/History"},
     ];
@@ -100,11 +100,11 @@ function HeaderEmployee(){
             <button className="bg-profil-default bg-center bg-cover w-10 h-10 rounded-full hover:opacity-70 active:opacity-50" onClick={() => {setShowProfile(!showProfile); setHamburgerActive(false)}}></button>
             <nav 
                 className={`
-                    absolute z-1 top-20 right-0
+                    absolute top-20 right-0
                     p-2 text-white text-right w-full
                     h-[calc(100dvh-84px)] 
-                    backdrop-blur-xs transition-all duration-500
-                    ${showProfile ? "translate-x-0" : "translate-x-[100vw]"}
+                    backdrop-blur-xs transition-all duration-300
+                    ${showProfile ? "opacity-100 visible" : "opacity-0 invisible"}
             `}>
                 <button className={`${styleProfileButton} rounded-t-2xl`} onClick={profile}>Profile</button>
                 <br />

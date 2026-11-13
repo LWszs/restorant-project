@@ -17,8 +17,7 @@ function App(){
 
       <Route element={<EmployeeLayout/>}>
         <Route index element={<TablePicker/>}/>
-        <Route path='/FoodOrderTakeAway' element={<FoodOrder/>}/>
-        <Route path='/FoodOrderDineIn' element={<FoodOrder/>}/>
+        <Route path='/FoodOrder' element={<FoodOrder/>}/>
       {/*  <Route element={<PaymentLayout/>}>
           
         </Route> */}

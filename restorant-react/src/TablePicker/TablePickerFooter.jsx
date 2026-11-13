@@ -7,7 +7,7 @@ function TablePickerFooter({mejaTerpilih,setErrorTidakPilih}){
 
     function order(){
         if (mejaTerpilih !== 0){
-            navigate("/FoodOrderDineIn");
+            navigate("/FoodOrder");
         }
         else{
             setErrorTidakPilih(true);
