@@ -16,10 +16,11 @@ function FoodOrderQueueHeader({resetOrder,setExpand,expand}){
 
             <div className="flex items-center justify-between text-xs">
                 <button 
-                    className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50" 
+                    className="ml-2 cursor-pointer hover:opacity-70 active:opacity-50 flex items-center gap-1" 
                     onClick={resetOrder}
                 >
-                    <Trash/> reset
+                    <Trash/>
+                    <p>reset</p>
                 </button>
 
                 <FoodDetailButton setExpand={setExpand} expand={expand} teks='Pesanan'/>
