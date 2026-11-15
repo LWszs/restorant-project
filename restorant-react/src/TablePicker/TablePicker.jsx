@@ -3,11 +3,14 @@ import TablePickerFooter from "./TablePickerFooter.jsx";
 import TableQueueHeader from "./TableQueueHeader.jsx";
 import TableContainer from "./TableContainer.jsx";
 import axios from "axios";
+import useAuth from "../reusable/Auth.jsx";
 import { useEffect, useState } from "react";
 import { useOrder } from "../DataContext/OrderContext";
 
 
 function TablePicker(){
+
+    useAuth();
 
     /* VARIABEL PENYIMPAN DATA */
     const [dataMeja,setDataMeja] = useState([]);
