@@ -16,7 +16,14 @@ function TableContainer({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_statu
 
     return(
 
-        <div className={`flex flex-col justify-center shadow-md shadow-gray-500 rounded-2xl text-m w-30 gap-2 p-2 ${peraturanStatus ? "hover:border-2 active:border-green-400" : "opacity-50"} ${peraturanMejaTerpilih ? "border-2 border-green-600 bg-green-200" : ""}`} onClick={click}>
+        <div 
+            className={`
+                flex flex-col justify-center shadow-sm bg-gray-300 text-black shadow-gray-800 rounded-2xl text-m w-30 gap-2 p-2 transition-all duration-500
+                ${peraturanStatus ? "hover:scale-103 active:scale-110" : "opacity-50"} 
+                ${peraturanMejaTerpilih ? "bg-green-400 scale-105" : ""}
+            `} 
+            onClick={click}
+        >
             
             <header className='flex gap-6'>
                 <h3>Meja {meja_no}</h3>

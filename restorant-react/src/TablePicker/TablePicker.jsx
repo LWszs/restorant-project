@@ -29,9 +29,9 @@ function TablePicker(){
 
     const listLantai = ["Lantai 1","Lantai 2","Lantai 3"];
     const liPenjelasan = [
-        {label:"Tersedia" , style: "bg-green-400"},
-        {label:"Terisi" , style: "bg-gray-500"},
-        {label:"Terpilih" , style: "bg-black-green"},
+        {label:"Tersedia" , style: "bg-gray-400"},
+        {label:"Terpilih" , style: "bg-green-400"},
+        {label:"Terisi" , style: "bg-red-400"},
     ];
 
     /* FETCH DATA MEJA */
@@ -76,10 +76,11 @@ function TablePicker(){
         return(
             <button key={lantai}
                 className={`
+                    transition-all duration-500
                     min-w-[10%]
                     ${lantaiPilih == lantai ? 
-                        "bg-black-green text-white p-1 rounded-2xl" : 
-                        "bg-gray-300 p-1 rounded-2xl opacity-50 hover:opacity-100 active:opacity-70"}
+                        "bg-black-green text-white p-1 rounded-2xl scale-110" : 
+                        "bg-gray-300 p-1 rounded-2xl opacity-50 hover:scale-103 active:scale-120"}
                 `} 
                 onClick={() => {
                     setLantaiPilih(lantai); 
@@ -158,7 +159,10 @@ function TablePicker(){
                 </section>
 
                 <ul className="
-                    grid grid-cols-2 justify-items-center gap-3 mt-3 overflow-y-auto h-full rounded-b-2xl m-1 xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
+                    grid grid-cols-2 justify-items-center gap-3 
+                    mt-3 overflow-y-auto h-full rounded-b-2xl p-2 
+                    xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 
+                    lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
                 ">
                     {RenderListMeja}
                 </ul>
