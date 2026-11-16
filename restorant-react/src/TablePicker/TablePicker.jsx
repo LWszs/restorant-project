@@ -11,18 +11,23 @@ import { useOrder } from "../DataContext/OrderContext";
 function TablePicker(){
 
     useAuth();
+    
+    const styleButtonTampilanTable = "border border-green-700 p-1 opacity-50 cursor-pointer hover:scale-102 active:scale-105 transition-all duration-400";
+    const styleButtonTampilanTableTerpilih = "opacity-100 text-white bg-green-700";
 
     /* VARIABEL PENYIMPAN DATA */
     const [dataMeja,setDataMeja] = useState([]);
     const [tampilMeja, setTampilMeja] = useState([]);
 
+    const [buttonTampilanTable , setButtonTampilanTable] = useState("Table Map");
+
     const {refresh , setRefresh} = useOrder();
     const {mejaTerpilih , setMejaTerpilih} = useOrder();
     const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
 
-    const [lantaiPilih , setLantaiPilih] = useState("Semua");
+    const [lantaiPilih , setLantaiPilih] = useState("Lantai 1");
 
-    const listLantai = ["Semua","Lantai 1","Lantai 2","Lantai 3"];
+    const listLantai = ["Lantai 1","Lantai 2","Lantai 3"];
     const liPenjelasan = [
         {label:"Tersedia" , style: "bg-green-400"},
         {label:"Terisi" , style: "bg-gray-500"},
@@ -35,7 +40,10 @@ function TablePicker(){
             try{
                 const response = await axios.get("/api/meja/ambilSemuaData");
                 setDataMeja(response.data);
-                setTampilMeja(response.data);
+                const dataMejaFilter = response.data.filter((meja) =>{
+                    return meja.meja_lantai === "Lantai 1";
+                });
+                setTampilMeja(dataMejaFilter);
             }
             catch(error){
                 console.log(error);
@@ -83,7 +91,7 @@ function TablePicker(){
 
     /* PEMILIHAN LANTAI BERDASARKAN TOMBOL */
     function lantaiFilter(lantai){
-        if (lantai === "Semua"){
+        if (lantai === "Table Card"){
             setTampilMeja(dataMeja);
         }
         else{
@@ -100,7 +108,43 @@ function TablePicker(){
 
             <section className='flex-1 min-h-0 p-2 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-1'>
 
-                <h2 className="text-xl mb-2 mt-2 text-black-green">Pilih Area & Meja</h2>
+                <h2 className="
+                    text-xl mb-2 mt-2
+                    flex justify-around items-center
+                ">
+                    <p className="text-black-green">
+                        Pilih Area & Meja
+                    </p>
+
+                    <div className="
+                        flex text-xs
+                    ">
+                        <button 
+                            className={`
+                                rounded-l-lg
+                                ${styleButtonTampilanTable} 
+                                ${buttonTampilanTable === "Table Card" ? styleButtonTampilanTableTerpilih : ""}
+                            `}
+                            onClick={() => setButtonTampilanTable("Table Card")}
+                        >
+                            Table Card
+                        </button>
+
+                        <button 
+                            className={`
+                                rounded-r-lg
+                                ${styleButtonTampilanTable}
+                                ${buttonTampilanTable === "Table Map" ? styleButtonTampilanTableTerpilih : ""}
+                            `}
+                            onClick={() => setButtonTampilanTable("Table Map")}
+                        >
+                            Table Map
+                        </button>
+
+                    </div>
+
+                </h2>
+
                 <section className="flex justify-around text-sm gap-2 my-1">
                     {buttonPilihLantai}
                 </section>
