@@ -94,7 +94,7 @@ function FoodOrder(){
         foodDataFetch();
     },[])
 
-    /* MENGGECEK APAKAH INI UNTUK DINE IN ATAU TAKE AWAY */
+    /* JIKA BLOM ADA MEJA YANG TERPILH DAN DINE IN = TRUE UBAH INI JADI TAKE AWAY */
     useEffect( () => {
 
         if (dineIn === true && mejaTerpilih === 0){
