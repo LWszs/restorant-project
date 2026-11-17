@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
 
-    const input = "border-2 rounded-xl border-black p-2";
+    const input = "border-2 rounded-xl border-black p-2 transition-all hover:scale-105 focus:scale-105";
 
     const [username , setUsername] = useState("");
     const [password , setPassword] = useState("");
@@ -95,7 +95,11 @@ function Login(){
                         <br />
 
                         <label htmlFor="password">Password</label>
-                        <div className="flex gap-2 items-center relative border-2 rounded-2xl p-2">
+                        <div className="
+                            flex gap-2 items-center relative border-2 rounded-xl p-2
+                            transition-all
+                            hover:scale-105 focus-within:scale-105
+                        ">
                 
                             <input 
                                 type={showpass ? "text" : "password"} 
@@ -112,7 +116,11 @@ function Login(){
 
                             <button 
                                 type='button' 
-                                className='cursor-pointer hover:opacity-70 active:opacity-50 absolute right-5' 
+                                className='
+                                    cursor-pointer absolute right-5
+                                    hover:opacity-70 hover:scale-105
+                                    active:opacity-50 active:scale-100
+                                ' 
                                 onClick={() => setShowPass(!showpass)}
                             >
                                 {showpass ? <EyeOff/> :<Eye/>}
@@ -123,7 +131,11 @@ function Login(){
 
                         <button 
                             type='submit' 
-                            className='bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white hover:bg-green-500 active:bg-green-800'
+                            className='
+                                bg-green-700 p-4 rounded-2xl w-[70%] mx-auto text-white 
+                                hover:bg-green-500 hover:scale-105 
+                                active:bg-green-800 active:scale-100
+                            '
                             data-testid = "buttonLogin"
                         >
                             Login
