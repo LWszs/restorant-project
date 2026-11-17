@@ -13,7 +13,8 @@ function FoodOrder(){
 
     useAuth();
 
-    const {dineIn} = useOrder();
+    const {dineIn , setDineIn} = useOrder();
+    const {mejaTerpilih} = useOrder();
     cekPage(dineIn);
 
 
@@ -91,6 +92,15 @@ function FoodOrder(){
             }
         }
         foodDataFetch();
+    },[])
+
+    /* MENGGECEK APAKAH INI UNTUK DINE IN ATAU TAKE AWAY */
+    useEffect( () => {
+
+        if (dineIn === true && mejaTerpilih === 0){
+            setDineIn(false);
+        }
+
     },[])
 
     /* MENNGECEK JENIS MAKANAN */
