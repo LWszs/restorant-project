@@ -128,7 +128,7 @@ function FoodOrder(){
 
 
     return (
-        <main className="h-[calc(100dvh-84px)] overflow-y-hidden flex flex-col w-full sm:flex-row-reverse font-bold lg:min-h-0">
+        <main className="h-[calc(100dvh-84px)] overflow-y-hidden flex flex-col w-full sm:flex-row font-bold lg:min-h-0">
 
             <section className="flex flex-col min-h-0 min-w-0 grow mb-3 mx-2 sm:h-[87dvh]">
                 <input

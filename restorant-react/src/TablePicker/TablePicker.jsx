@@ -115,7 +115,7 @@ function TablePicker(){
     
 
     return(
-        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col sm:flex-row-reverse h-[calc(100dvh-84px)] font-bold'>
+        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col sm:flex-row h-[calc(100dvh-84px)] font-bold'>
 
             <section className='flex-1 min-h-0 p-2 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-1'>
 
