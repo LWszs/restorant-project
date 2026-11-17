@@ -7,10 +7,10 @@ function EmployeeLayout(){
 
     return(
 
-        <OrderProvider className="flex h-dvh flex-col overflow-y-auto overflow-x-hidden">
+        <OrderProvider className="flex h-dvh w-dvw flex-col overflow-auto">
             <HeaderEmployee/>
 
-            <div className="min-h-0 flex-1">
+            <div className="min-h-0 min-w-0 flex-1">
 
                 <Outlet />
 

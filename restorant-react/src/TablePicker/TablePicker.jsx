@@ -2,6 +2,7 @@ import QueueFooter from "../FoodQueue/QueueFooter.jsx";
 import TablePickerFooter from "./TablePickerFooter.jsx";
 import TableQueueHeader from "./TableQueueHeader.jsx";
 import TableContainer from "./TableContainer.jsx";
+import TableMap from "./TableMap.jsx";
 import axios from "axios";
 import useAuth from "../reusable/Auth.jsx";
 import { useEffect, useState } from "react";
@@ -63,13 +64,27 @@ function TablePicker(){
     },[])
 
     /* RENDERING LIST MEJA*/
-    const RenderListMeja = tampilMeja.map(meja =>{
+    const RenderListMejaCard = tampilMeja.map(meja =>{
         return(
             <li key={meja.meja_id}>
                 <TableContainer {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
             </li>
         );
-    })
+    });
+
+    const RenderListMejaMap = tampilMeja.map(meja =>{
+        return(
+            <li 
+                key={meja.meja_id} 
+                className={`
+                    absolute
+
+                `}
+            >
+                <TableMap {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
+            </li>
+        );
+    });
 
     /* RENDER LIST PENJELASAN */
     const renderLiPenjelasan = liPenjelasan.map((penjelasan) => {
@@ -115,9 +130,15 @@ function TablePicker(){
     
 
     return(
-        <main className='bg-gray-100 w-screen bg-center bg-cover flex flex-col sm:flex-row h-[calc(100dvh-84px)] font-bold'>
+        <main 
+            className='
+                font-bold
+                bg-gray-100 w-dvw bg-center bg-cover flex flex-col 
+                sm:flex-row h-[calc(100dvh-84px)] 
+            '
+        >
 
-            <section className='flex-1 min-h-0 p-2 rounded-2xl flex flex-col shadow-md sm:h-[86vh] mt-1'>
+            <section className='flex-1 min-h-0 min-w-0 p-2 rounded-2xl flex flex-col shadow-md mt-1'>
 
                 <h2 className="
                     text-xl mb-2 mt-2
@@ -168,14 +189,26 @@ function TablePicker(){
                     </ul>
                 </section>
 
-                <ul className="
-                    grid grid-cols-2 justify-items-center gap-3 
-                    mt-3 overflow-y-auto h-full rounded-b-2xl p-2 
-                    xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 
-                    lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
-                ">
-                    {RenderListMeja}
-                </ul>
+                {buttonTampilanTable === "Table Card" ? 
+
+                    <ul className="
+                        grid grid-cols-2 justify-items-center gap-3 
+                        mt-3 overflow-y-auto h-full rounded-b-2xl p-2 
+                        xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 
+                        lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
+                    ">
+                        {RenderListMejaCard}
+                    </ul>
+                : 
+                
+                    <div className="flex-1 overflow-auto">
+                        <ul className="relative border h-161 w-334">
+                            {RenderListMejaMap}
+                        </ul>
+                    </div>
+                
+                }
+
 
             </section>
 
