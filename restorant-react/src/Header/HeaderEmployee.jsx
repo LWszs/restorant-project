@@ -39,6 +39,7 @@ function HeaderEmployee(){
                 key={button.name} 
                 className={`
                     border-2 border-b-0 p-5 sm:p-3 sm:border-0 sm:rounded-lg
+                    transition-all duration-400
                     ${button.name === "List Meja" ? "rounded-t-2xl" : ""} 
                     ${button.name === "History" ? "rounded-b-2xl border-b-2" : ""}
                     ${page === button.name ? "bg-green-600" : "" }
