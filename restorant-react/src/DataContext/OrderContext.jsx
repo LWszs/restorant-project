@@ -13,6 +13,7 @@ export function OrderProvider({children}) {
     const [mejaTerpilih , setMejaTerpilih] = useState(0);
     const [lantaiMejaTerpilih , setLantaiMejaTerpilih] = useState(0);
     const [dineIn , setDineIn] = useState(false);
+    const [page , setPage] = useState("List Meja");
 
     /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
     useEffect(() =>{
@@ -42,7 +43,8 @@ export function OrderProvider({children}) {
                 totalPrice , setTotalPrice,
                 mejaTerpilih , setMejaTerpilih,
                 lantaiMejaTerpilih, setLantaiMejaTerpilih,
-                dineIn , setDineIn
+                dineIn , setDineIn,
+                page , setPage
         }}>
             {children}
         </OrderContext.Provider>

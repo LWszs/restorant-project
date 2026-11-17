@@ -6,11 +6,16 @@ import FoodContainer from "./FoodContainer.jsx";
 import QueueFooter from "../FoodQueue/QueueFooter.jsx";
 import FoodOrderQueueHeader from "./FoodOrderQueueHeader.jsx";
 import axios from "axios";
+import cekPage from "../reusable/cekPage.jsx";
 
 
 function FoodOrder(){
 
     useAuth();
+
+    const {dineIn} = useOrder();
+    cekPage(dineIn);
+
 
     /* List footer button */
     const foodButtonList = ["Semua","Main Course","Beverage","Appetizer","Dessert","Side Dish"]

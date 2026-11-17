@@ -24,6 +24,8 @@ function TablePicker(){
     const {refresh , setRefresh} = useOrder();
     const {mejaTerpilih , setMejaTerpilih} = useOrder();
     const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
+    const {setPage} = useOrder();
+    const {setDineIn} = useOrder();
 
     const [lantaiPilih , setLantaiPilih] = useState("Lantai 1");
 
@@ -50,6 +52,14 @@ function TablePicker(){
             }
         }
         dataMeja()
+    },[])
+
+    /* Jika memasuki page List Meja langsung setPage menjadi List Meja dan Dine In True */
+    useEffect(() => {
+
+        setPage("List Meja");
+        setDineIn(true);
+
     },[])
 
     /* RENDERING LIST MEJA*/
