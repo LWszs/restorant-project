@@ -21,7 +21,7 @@ function TablePicker(){
 
     const [buttonTampilanTable , setButtonTampilanTable] = useState("Table Map");
 
-    const {refresh , setRefresh} = useOrder();
+    const {setRefresh} = useOrder();
     const {mejaTerpilih , setMejaTerpilih} = useOrder();
     const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
     const {setPage} = useOrder();
