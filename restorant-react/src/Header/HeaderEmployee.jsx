@@ -79,8 +79,13 @@ function HeaderEmployee(){
         <header className="bg-header-employee bg-center bg-cover flex justify-evenly items-center p-2 min-h-21 max-h-21 text-main font-bold sticky top-0 z-1">
 
             <button 
-            className="w-8 flex flex-col gap-2 justify-center hover:opacity-70 active:opacity-50 md:hidden"
-            onClick={() => {setHamburgerActive(!hamburgerActive); 
+                className="
+                    w-8 flex flex-col gap-2 justify-center 
+                    hover:opacity-70 hover:scale-110 
+                    active:opacity-50 active:scale-100
+                    md:hidden
+                "
+                onClick={() => {setHamburgerActive(!hamburgerActive); 
                             setShowProfile(false)}}>
 
                 <span className={`${styleSpanButton} ${hamburgerActive ? "rotate-45 translate-y-3" : ""}`}></span>
@@ -117,7 +122,16 @@ function HeaderEmployee(){
                 </ul>
             </nav>
 
-            <button className="bg-profil-default bg-center bg-cover w-10 h-10 rounded-full hover:opacity-70 active:opacity-50" onClick={() => {setShowProfile(!showProfile); setHamburgerActive(false)}}></button>
+            <button 
+                className="
+                    bg-profil-default bg-center bg-cover w-10 h-10 rounded-full 
+                    hover:opacity-70 hover:scale-110
+                    active:opacity-50 active:scale-100
+                " 
+                onClick={() => {setShowProfile(!showProfile); setHamburgerActive(false)}}
+            >
+
+            </button>
             <nav 
                 className={`
                     absolute top-20 right-0
@@ -126,9 +140,25 @@ function HeaderEmployee(){
                     backdrop-blur-xs transition-all duration-300
                     ${showProfile ? "opacity-100 visible" : "opacity-0 invisible"}
             `}>
-                <button className={`${styleProfileButton} rounded-t-2xl`} onClick={profile}>Profile</button>
+                <button 
+                    className={`${styleProfileButton} rounded-t-2xl`} 
+                    onClick={profile}
+                >
+                    <div className='hover:scale-110 active:scale-100'>
+                        Profile
+                    </div>
+                </button>
+
                 <br />
-                <button className={`${styleProfileButton} rounded-b-2xl`} onClick={() => LogOutReuse(navigate)}>Log Out</button>
+
+                <button 
+                    className={`${styleProfileButton} rounded-b-2xl`} 
+                    onClick={() => LogOutReuse(navigate)}
+                >
+                    <div className='hover:scale-110 active:scale-100'>
+                        Log Out
+                    </div>
+                </button>
             </nav>
         </header>
 
