@@ -19,7 +19,7 @@ function TablePickerFooter({mejaTerpilih,setErrorTidakPilih}){
             <button 
                 className="
                     bg-green-600 p-2 rounded-2xl whitespace-nowrap text-sm
-                    hover:opacity-70 active:opacity-50 cursor-pointer w-[50%]
+                    hover:scale-110 active:scale-105 cursor-pointer w-[50%]
                 "
                 onClick={order}
                 >
