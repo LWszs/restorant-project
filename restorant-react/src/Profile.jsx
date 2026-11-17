@@ -9,10 +9,10 @@ function Profile(){
 
     useAuth();
 
-    const styleDivButton = "relative border rounded-2xl p-1 bg-white text-black";
+    const styleDivButton = "relative border rounded-2xl p-2 bg-white text-black transition-all hover:scale-105 focus-within:scale-105";
     const styleInputPass = "outline-0 text-main";
-    const styleButtonEye = "absolute right-2";
-    const styleButtonBackReset = "bg-green-900 rounded-2xl p-1 px-2 hover:opacity-70  active:opacity-50";
+    const styleButtonEye = "absolute right-2 opacity-70 hover:scale-110 active:scale-100";
+    const styleButtonBackReset = "bg-green-900 rounded-2xl p-1 px-2 hover:scale-105  active:scale-100";
     const styleErrorPass = "text-red-500";
 
     /* HANDLE SHOW AND HIDE PASS */
@@ -140,7 +140,7 @@ function Profile(){
                                 
                         <button className="
                             bg-green-900 rounded-2xl p-1 px-2 text-white 
-                            hover:opacity-50 active:opacity-70" 
+                            hover:scale-105 active:scale-100" 
                             onClick={() => navigate(-1)}> 
                             ← back
                         </button>
@@ -213,7 +213,9 @@ function Profile(){
                                 <br />
 
                                 <button className="
-                                bg-green-900 p-2 text-white rounded-2xl" 
+                                    bg-green-900 p-2 text-white rounded-2xl
+                                    hover:scale-105 active:scale-100
+                                " 
                                 onClick={changePassClick}>
                                     Change Password
                                 </button>
@@ -227,11 +229,12 @@ function Profile(){
 
                                 <form 
                                 onSubmit={(event) => resetPass(event)} 
-                                className="bg-green-700 text-white p-2 rounded-2xl text-main font-bold md:w-100 md:text-2xl">
+                                className="bg-green-700 text-white p-4 rounded-2xl text-main font-bold md:w-100 md:text-2xl">
 
                                     <button type="button" 
-                                    className={styleButtonBackReset} 
-                                    onClick={()  => setPassActive(false)}>
+                                        className={styleButtonBackReset} 
+                                        onClick={()  => setPassActive(false)}
+                                    >
 
                                         ← back
 
@@ -354,8 +357,11 @@ function Profile(){
                             
                         </ul>
 
-                        <button className="
-                            bg-green-900 text-white rounded-2xl p-2 w-[80%]" 
+                        <button 
+                            className="
+                                bg-green-900 text-white rounded-2xl p-2 w-[80%]
+                                hover:scale-105 active:scale-100
+                            " 
                             onClick={() => LogOutReuse(navigate)}>
                                 Log Out
                         </button>
