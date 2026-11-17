@@ -139,7 +139,7 @@ function FoodOrder(){
                         onChange={searchMenu}
                 />
                 <div className="flex-1 overflow-y-auto p-4">
-                    <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
+                    <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
                         {data}
                     </ul>
                 </div>
