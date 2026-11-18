@@ -14,28 +14,23 @@ function TableMap({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setM
         }
     }
 
-    function whMeja(){
-        if(meja_jumlahKursi === 4){
-            return "w-50 h-40"
-        }
-        else if (meja_jumlahKursi === 8){
-            return "w-80 h-40"
-        }
-        else{
-            return "w-140 h-40"
-        }
-
-    }
 
     return(
 
-        <div className={`
-            flex justify-center items-center rounded-full bg-green-300
-            ${whMeja()}
-        `}>
-            <p>{meja_jumlahKursi}</p>
+        <div 
+            className={`
+                w-full h-full
+                flex flex-col justify-center items-center border rounded-xl
+                hover:scale-105 active:scale-100 cursor-pointer
+                ${peraturanMejaTerpilih ? "bg-green-600 text-white" : "bg-gray-300"}
+            `}
+            onClick={click}
+        >
+            <p>Meja {meja_id}</p>
+            <p>Kapasitas {meja_jumlahKursi}</p>
+            
         </div>
-
+        
     );
 
 }

@@ -15,6 +15,7 @@ function TablePicker(){
     
     const styleButtonTampilanTable = "border border-green-700 p-1 opacity-50 cursor-pointer hover:scale-102 active:scale-105 transition-all duration-400";
     const styleButtonTampilanTableTerpilih = "opacity-100 text-white bg-green-700";
+    const styleTableMapTangga = "absolute justify-center items-center border w-35 h-60 bg-gray-400 cursor-pointer hover:scale-105 active:scale-100";
 
     /* VARIABEL PENYIMPAN DATA */
     const [dataMeja,setDataMeja] = useState([]);
@@ -66,7 +67,7 @@ function TablePicker(){
     /* RENDERING LIST MEJA*/
     const RenderListMejaCard = tampilMeja.map(meja =>{
         return(
-            <li key={meja.meja_id}>
+            <li key={meja.meja_id} className="w-30">
                 <TableContainer {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
             </li>
         );
@@ -78,7 +79,8 @@ function TablePicker(){
                 key={meja.meja_id} 
                 className={`
                     absolute
-
+                    ${whMeja(meja.meja_jumlahKursi)}
+                    ${meja.meja_position}
                 `}
             >
                 <TableMap {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
@@ -126,6 +128,20 @@ function TablePicker(){
             });
             setTampilMeja(dataMejaFilter);
         }
+    }
+
+    /* MENENTUKAN PANJANG DAN BESAR DARI MEJA */
+    function whMeja(meja_jumlahKursi){
+        if(meja_jumlahKursi === 4){
+            return "bg-center bg-cover w-[165px] h-[160px]";
+        }
+        else if (meja_jumlahKursi === 8){
+            return "bg-center bg-cover w-[389px] h-[190px]";
+        }
+        else{
+            return `bg-center bg-cover w-113.75 h-49`;
+        }
+
     }
     
 
@@ -192,8 +208,8 @@ function TablePicker(){
                 {buttonTampilanTable === "Table Card" ? 
 
                     <ul className="
-                        grid grid-cols-2 justify-items-center gap-3 
-                        mt-3 overflow-y-auto h-full rounded-b-2xl p-2 
+                        grid grid-cols-2 items-center justify-items-center
+                        mt-3 overflow-y-auto h-full rounded-b-2xl p-2 gap-3 
                         xs:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 
                         lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7
                     ">
@@ -201,10 +217,57 @@ function TablePicker(){
                     </ul>
                 : 
                 
-                    <div className="flex-1 overflow-auto">
-                        <ul className="relative border h-161 w-334">
-                            {RenderListMejaMap}
-                        </ul>
+                    <div className="flex-1 overflow-auto border rounded-2xl">
+                        <div className="relative h-161 w-334 bg-gray-200">
+                            <button className=" absolute right-0 bottom-0">+</button>
+                            <button className="absolute right-0 bottom-0">-</button>
+                            <ul>
+
+                                <li 
+                                    className={`
+                                        ${styleTableMapTangga}
+                                        ${lantaiPilih === "Lantai 1" || lantaiPilih === "Lantai 2" ? "flex" : "hidden"}
+                                        "top-0 right-0
+                                    `}
+                                    onClick={() => {
+                                        if (lantaiPilih === "Lantai 1"){
+                                            setLantaiPilih("Lantai 2");
+                                            lantaiFilter("Lantai 2");
+                                        }
+                                        else if (lantaiPilih === "Lantai 2"){
+                                            setLantaiPilih("Lantai 3");
+                                            lantaiFilter('Lantai 3');
+                                        }
+                                    }}
+                                >
+                                    <p>Tangga Naik</p>
+                                </li>
+                                
+                                <li 
+                                    className={`
+                                        ${styleTableMapTangga}
+                                        ${lantaiPilih === "Lantai 2" || lantaiPilih === "Lantai 3" ? "flex" : "hidden"}
+                                        bottom-0
+                                    `}
+                                    onClick={() =>{
+                                        if (lantaiPilih === 'Lantai 2'){
+                                            setLantaiPilih("Lantai 1");
+                                            lantaiFilter("Lantai 1");
+                                        }
+                                        else if (lantaiPilih === "Lantai 3"){
+                                            setLantaiPilih("Lantai 2");
+                                            lantaiFilter("Lantai 2");
+                                        }
+                                    }}  
+                                >
+                                    <p>Tangga Turun</p>
+                                </li>    
+
+                                
+
+                                {RenderListMejaMap}
+                            </ul>
+                        </div>
                     </div>
                 
                 }
