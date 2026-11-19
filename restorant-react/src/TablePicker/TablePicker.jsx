@@ -7,6 +7,10 @@ import axios from "axios";
 import useAuth from "../reusable/Auth.jsx";
 import { useEffect, useState } from "react";
 import { useOrder } from "../DataContext/OrderContext";
+import {TransformWrapper , TransformComponent} from "react-zoom-pan-pinch";
+import { ZoomIn, ZoomOut, ZoomOutIcon } from "lucide-react";
+
+
 
 
 function TablePicker(){
@@ -15,7 +19,8 @@ function TablePicker(){
     
     const styleButtonTampilanTable = "border border-green-700 p-1 opacity-50 cursor-pointer hover:scale-102 active:scale-105 transition-all duration-400";
     const styleButtonTampilanTableTerpilih = "opacity-100 text-white bg-green-700";
-    const styleTableMapTangga = "absolute justify-center items-center border w-35 h-60 bg-gray-400 cursor-pointer hover:scale-105 active:scale-100";
+    const styleTableMapTangga = "absolute justify-center items-center border w-35 h-60 bg-gray-200 cursor-pointer hover:scale-105 active:scale-100";
+    const STYLEZOOM = "cursor-pointer hover:scale-110 active:scale-100";
 
     /* VARIABEL PENYIMPAN DATA */
     const [dataMeja,setDataMeja] = useState([]);
@@ -34,8 +39,8 @@ function TablePicker(){
     const listLantai = ["Lantai 1","Lantai 2","Lantai 3"];
     const liPenjelasan = [
         {label:"Tersedia" , style: "bg-gray-400"},
-        {label:"Terpilih" , style: "bg-green-400"},
-        {label:"Terisi" , style: "bg-red-400"},
+        {label:"Terpilih" , style: "bg-black-green"},
+        {label:"Terisi" , style: "bg-red-600"},
     ];
 
     /* FETCH DATA MEJA */
@@ -223,58 +228,86 @@ function TablePicker(){
                         {RenderListMejaCard}
                     </ul>
                 : 
-                
-                    <div className="flex-1 overflow-auto border rounded-2xl">
-                        <div className="relative h-161 w-334 bg-gray-200">
-                            <button className=" absolute right-0 bottom-0">+</button>
-                            <button className="absolute right-0 bottom-0">-</button>
-                            <ul>
+                    
+                    <div className="relative flex-1 border rounded-2xl bg-dot-grid bg-size-[20px_20px] bg-support">
+                        <TransformWrapper
+                            initialScale={1}
+                            minScale={0.5}
+                            maxScale={5}
+                            centerOnInit
+                        >
+                            {({ zoomIn, zoomOut, resetTransform }) => (
+                                <>
+                                    <div 
+                                        className="
+                                            flex gap-3 rounded-2xl p-2 z-1 absolute bg-black-green text-white
+                                            bottom-2 right-2 text-xs md:text-sm
+                                        "
+                                    >
+                                        <button>
+                                            <ZoomIn className={STYLEZOOM} onClick={() => zoomIn()}/>
+                                        </button>
+                                        <button>
+                                            <ZoomOut className={STYLEZOOM} onClick={() => zoomOut()}/>
+                                        </button>
+                                        <div className="bg-gray-300 w-0.5"></div>
+                                        <button className={`${STYLEZOOM} hover:bg-black-green-hover p-0.5 rounded-2xl`} onClick={() => resetTransform()}>
+                                            Reset
+                                        </button>
+                                    </div>
 
-                                <li 
-                                    className={`
-                                        ${styleTableMapTangga}
-                                        ${lantaiPilih === "Lantai 1" || lantaiPilih === "Lantai 2" ? "flex" : "hidden"}
-                                        "top-0 right-0
-                                    `}
-                                    onClick={() => {
-                                        if (lantaiPilih === "Lantai 1"){
-                                            setLantaiPilih("Lantai 2");
-                                            lantaiFilter("Lantai 2");
-                                        }
-                                        else if (lantaiPilih === "Lantai 2"){
-                                            setLantaiPilih("Lantai 3");
-                                            lantaiFilter('Lantai 3');
-                                        }
-                                    }}
-                                >
-                                    <p>Tangga Naik</p>
-                                </li>
-                                
-                                <li 
-                                    className={`
-                                        ${styleTableMapTangga}
-                                        ${lantaiPilih === "Lantai 2" || lantaiPilih === "Lantai 3" ? "flex" : "hidden"}
-                                        bottom-0
-                                    `}
-                                    onClick={() =>{
-                                        if (lantaiPilih === 'Lantai 2'){
-                                            setLantaiPilih("Lantai 1");
-                                            lantaiFilter("Lantai 1");
-                                        }
-                                        else if (lantaiPilih === "Lantai 3"){
-                                            setLantaiPilih("Lantai 2");
-                                            lantaiFilter("Lantai 2");
-                                        }
-                                    }}  
-                                >
-                                    <p>Tangga Turun</p>
-                                </li>    
+                                    <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                                        <TransformComponent wrapperStyle={{ width: "100%", height: "100%" }}>
+                                            <ul className="relative h-161 w-334 text-black-green border">
+                                                
+                                                <li 
+                                                    className={`
+                                                        ${styleTableMapTangga}
+                                                        ${lantaiPilih === "Lantai 1" || lantaiPilih === "Lantai 2" ? "flex" : "hidden"}
+                                                        "top-0 right-0
+                                                    `}
+                                                    onClick={() => {
+                                                        if (lantaiPilih === "Lantai 1"){
+                                                            setLantaiPilih("Lantai 2");
+                                                            lantaiFilter("Lantai 2");
+                                                        }
+                                                        else if (lantaiPilih === "Lantai 2"){
+                                                            setLantaiPilih("Lantai 3");
+                                                            lantaiFilter('Lantai 3');
+                                                        }
+                                                    }}
+                                                >
+                                                    <p>Tangga Naik</p>
+                                                </li>
+                                                
+                                                <li 
+                                                    className={`
+                                                        ${styleTableMapTangga}
+                                                        ${lantaiPilih === "Lantai 2" || lantaiPilih === "Lantai 3" ? "flex" : "hidden"}
+                                                        bottom-0
+                                                    `}
+                                                    onClick={() =>{
+                                                        if (lantaiPilih === 'Lantai 2'){
+                                                            setLantaiPilih("Lantai 1");
+                                                            lantaiFilter("Lantai 1");
+                                                        }
+                                                        else if (lantaiPilih === "Lantai 3"){
+                                                            setLantaiPilih("Lantai 2");
+                                                            lantaiFilter("Lantai 2");
+                                                        }
+                                                    }}  
+                                                >
+                                                    <p>Tangga Turun</p>
+                                                </li>    
 
-                                
+                                                {RenderListMejaMap}
 
-                                {RenderListMejaMap}
-                            </ul>
-                        </div>
+                                            </ul>
+                                        </TransformComponent>
+                                    </div>
+                                </>
+                            )}
+                        </TransformWrapper>
                     </div>
                 
                 }

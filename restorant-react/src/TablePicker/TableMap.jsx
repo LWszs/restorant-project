@@ -21,7 +21,7 @@ function TableMap({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setM
                 w-full h-full
                 flex flex-col justify-center items-center border rounded-xl
                 hover:scale-105 active:scale-100 cursor-pointer
-                ${peraturanMejaTerpilih ? "bg-green-600 text-white" : "bg-gray-300"}
+                ${peraturanMejaTerpilih ? "bg-green-800 text-support" : "bg-white"}
             `}
             onClick={click}
         >
