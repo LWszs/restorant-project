@@ -14,7 +14,6 @@ function TableMap({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setM
         }
     }
 
-
     return(
 
         <div 

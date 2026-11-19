@@ -78,10 +78,17 @@ function TablePicker(){
             <li 
                 key={meja.meja_id} 
                 className={`
-                    absolute
+                    absolute     
                     ${whMeja(meja.meja_jumlahKursi)}
-                    ${meja.meja_position}
                 `}
+                style={
+                    {
+                        transform: `
+                            translate(${meja.meja_positionX}px , ${meja.meja_positionY}px) 
+                            rotate(${meja.meja_rotate}deg)
+                        `
+                    }
+                }
             >
                 <TableMap {...meja} setMejaTerpilih={setMejaTerpilih} mejaTerpilih={mejaTerpilih} setLantaiMejaTerpilih={setLantaiMejaTerpilih}/>
             </li>
