@@ -19,9 +19,9 @@ function HeaderEmployee(){
     const [showProfile,setShowProfile] = useState(false);
     const [hamburgerActive , setHamburgerActive] = useState(false);
 
-    const {dineIn ,setDineIn} = useOrder();
-    const {mejaTerpilih , setMejaTerpilih} = useOrder();
-    const {lantaiMejaTerpilih , setLantaiMejaTerpilih} = useOrder();
+    const {setDineIn} = useOrder();
+    const {setMejaTerpilih} = useOrder();
+    const {setLantaiMejaTerpilih} = useOrder();
     const {page , setPage} = useOrder();
 
     const mapButtonHamburger = listButtonHamburger.map((button)=>{
@@ -35,38 +35,40 @@ function HeaderEmployee(){
         }
 
         return (
-            <li 
-                key={button.name} 
-                className={`
-                    border-2 border-b-0 p-5 sm:p-3 sm:border-0 sm:rounded-lg
-                    transition-all duration-400
-                    ${button.name === "List Meja" ? "rounded-t-2xl" : ""} 
-                    ${button.name === "History" ? "rounded-b-2xl border-b-2" : ""}
-                    ${page === button.name ? "bg-green-600" : "" }
-                `}
-            >
-
-                <NavLink 
-                    to={button.link} 
+            button.name === "Take Away" && page !== "List Meja" ? "" : 
+                <li 
+                    key={button.name} 
                     className={`
-                        flex items-center gap-2 
-                        text-white
-                        sm:text-xs xl:text-xl
-                        hover:scale-110 active:scale-105
-                        ${page === button.name ? "opacity-100 scale-105" : "opacity-50"}
-                    `} 
-                    onClick={() => {
-                            setHamburgerActive(false);
-                            button.name === "List Meja" ? setDineIn(true) : "";
-                            takeAway(button.name);
-                            setPage(button.name);
-                        }
-                    }
+                        border-2 border-b-0 p-5 sm:p-3 sm:border-0 sm:rounded-lg
+                        transition-all duration-400
+                        ${button.name === "List Meja" ? "rounded-t-2xl" : ""} 
+                        ${button.name === "History" ? "rounded-b-2xl border-b-2" : ""}
+                        ${page === button.name ? "bg-green-600" : "" }
+                    `}
                 >
-                    <button.icon className='sm:w-5'/> &nbsp; {button.name}
 
-                </NavLink>
-            </li>
+                    <NavLink 
+                        to={button.link} 
+                        className={`
+                            flex items-center gap-2 
+                            text-white
+                            sm:text-xs xl:text-xl
+                            hover:scale-110 active:scale-105
+                            ${page === button.name ? "opacity-100 scale-105" : "opacity-50"}
+                        `} 
+                        onClick={() => {
+                                setHamburgerActive(false);
+                                button.name === "List Meja" ? setDineIn(true) : "";
+                                takeAway(button.name);
+                                setPage(button.name);
+                            }
+                        }
+                    >
+                        <button.icon className='sm:w-5'/> &nbsp; {button.name}
+
+                    </NavLink>
+                </li>
+                
         );
     });
 
