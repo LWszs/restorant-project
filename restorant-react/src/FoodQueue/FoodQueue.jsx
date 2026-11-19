@@ -8,7 +8,7 @@ import {Trash} from 'lucide-react';
 function FoodQueue({orderCart_id,orderCart_quantity,product_name,product_img,product_price,setRefresh,setBufferingTotal}){
 
     /* STYLE */
-    const styleButtonAction = "cursor-pointer border-2 p-1 hover:opacity-70 active:opacity-50";
+    const styleButtonAction = "cursor-pointer border-2 p-1 hover:scale-105 active:scale-100";
 
     /* MENAMPILKAN HARGA DAN QUANTITY */
     const [quantity , setQuantity] = useState(orderCart_quantity);

@@ -80,13 +80,24 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
 
         <figure className="shadow-2xl rounded-2xl p-2 bg-gray-200 font-main font-bold text-sm flex flex-col items-center lg:text-lg relative">
             {queryActive && 
-                <div className={`absolute top-0 right-0 rounded-2xl p-1 flex items-center
-                w-20 justify-center ${confirm ? "bg-green-600 text-white" : "bg-yellow-300"}`}>
-                {confirm ? confirmText : loadingText}
+                <div className={`
+                    absolute top-0 right-0
+                    flex items-center
+                    animate-rubber-band rounded-2xl p-1
+                    w-20 justify-center 
+                    ${confirm ? "bg-black-green text-white" : "bg-support"}
+                `}>
+                    {confirm ? confirmText : loadingText}
                 </div>
             }
             {queryActive && 
-                <p className={`absolute bg-yellow-300 rounded-2xl p-1 right-0 top-10 ${quantity == 0? "hidden" : "block"}`}>
+                <p className={`
+                        absolute right-0 top-10
+                        animate-rubber-band bg-support
+                        rounded-2xl p-1 
+                        ${quantity == 0? "hidden" : "block"}
+                    `}
+                >
                     {quantity} in query
                 </p>
             } 
@@ -107,7 +118,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
                             {FormatLengkap(product_price)}
                         </p>
                     </div>
-                    <button className="bg-green-600 p-2 rounded-lg text-white cursor-pointer hover:opacity-70 active:opacity-50" onClick={add}>+
+                    <button className="bg-green-600 p-2 rounded-lg text-white cursor-pointer hover:scale-110 active:scale-100" onClick={add}>+
                     </button>
                 </div>
                 <p className="rounded-2xl bg-gray-300 text-center mt-2"> stock: 0</p>

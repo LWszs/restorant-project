@@ -54,7 +54,11 @@ function FoodOrder(){
             <li key={button}>
                 <button
                     onClick={() => {setTitle(button);cekJenisMakanan(button)}}  
-                    className={`rounded-2xl p-1 ${title == button ? "bg-gray-300" : ""}`}>
+                    className={` 
+                        transition-all rounded-2xl p-1
+                        hover:scale-110 active:scale-100
+                        ${title == button ? "bg-gray-300" : ""}
+                    `}>
                         {button}
                 </button>
             </li>
