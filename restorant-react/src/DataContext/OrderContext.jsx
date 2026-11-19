@@ -14,6 +14,8 @@ export function OrderProvider({children}) {
     const [lantaiMejaTerpilih , setLantaiMejaTerpilih] = useState(0);
     const [dineIn , setDineIn] = useState(false);
     const [page , setPage] = useState("List Meja");
+    const [dataMeja,setDataMeja] = useState([]);
+    const [tampilMeja, setTampilMeja] = useState([]);
 
     /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
     useEffect(() =>{
@@ -32,7 +34,23 @@ export function OrderProvider({children}) {
         orderFetch();
     },[refresh]);
 
-
+    /* FETCH DATA MEJA */
+    useEffect(() => {
+        const dataMeja = async() =>{
+            try{
+                const response = await axios.get("/api/meja/ambilSemuaData");
+                setDataMeja(response.data);
+                const dataMejaFilter = response.data.filter((meja) =>{
+                    return meja.meja_lantai === "Lantai 1";
+                });
+                setTampilMeja(dataMejaFilter);
+            }
+            catch(error){
+                console.log(error);
+            }
+        }
+        dataMeja()
+    },[]);
 
     return(
         <OrderContext.Provider 
@@ -44,7 +62,9 @@ export function OrderProvider({children}) {
                 mejaTerpilih , setMejaTerpilih,
                 lantaiMejaTerpilih, setLantaiMejaTerpilih,
                 dineIn , setDineIn,
-                page , setPage
+                page , setPage,
+                dataMeja , setDataMeja,
+                tampilMeja , setTampilMeja
         }}>
             {children}
         </OrderContext.Provider>

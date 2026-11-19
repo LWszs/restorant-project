@@ -3,7 +3,6 @@ import TablePickerFooter from "./TablePickerFooter.jsx";
 import TableQueueHeader from "./TableQueueHeader.jsx";
 import TableContainer from "./TableContainer.jsx";
 import TableMap from "./TableMap.jsx";
-import axios from "axios";
 import useAuth from "../reusable/Auth.jsx";
 import { useEffect, useState } from "react";
 import { useOrder } from "../DataContext/OrderContext";
@@ -23,8 +22,8 @@ function TablePicker(){
     const STYLEZOOM = "cursor-pointer hover:scale-110 active:scale-100";
 
     /* VARIABEL PENYIMPAN DATA */
-    const [dataMeja,setDataMeja] = useState([]);
-    const [tampilMeja, setTampilMeja] = useState([]);
+    const {dataMeja} = useOrder();
+    const {tampilMeja , setTampilMeja} = useOrder();
 
     const [buttonTampilanTable , setButtonTampilanTable] = useState("Table Map");
 
@@ -43,23 +42,6 @@ function TablePicker(){
         {label:"Terisi" , style: "bg-red-600"},
     ];
 
-    /* FETCH DATA MEJA */
-    useEffect(() => {
-        const dataMeja = async() =>{
-            try{
-                const response = await axios.get("/api/meja/ambilSemuaData");
-                setDataMeja(response.data);
-                const dataMejaFilter = response.data.filter((meja) =>{
-                    return meja.meja_lantai === "Lantai 1";
-                });
-                setTampilMeja(dataMejaFilter);
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
-        dataMeja()
-    },[])
 
     /* Jika memasuki page List Meja langsung setPage menjadi List Meja dan Dine In True */
     useEffect(() => {
@@ -67,7 +49,7 @@ function TablePicker(){
         setPage("List Meja");
         setDineIn(true);
 
-    },[])
+    },[]);
 
     /* RENDERING LIST MEJA*/
     const RenderListMejaCard = tampilMeja.map(meja =>{

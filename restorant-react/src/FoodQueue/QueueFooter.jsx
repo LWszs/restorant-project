@@ -2,6 +2,7 @@ import { useOrder } from '../DataContext/OrderContext';
 import { useState } from 'react';
 import axios from 'axios';
 import FoodQueue from './FoodQueue';
+import TableQueue from './TableQueue';
 
 
 function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiMejaTerpilih}){
@@ -10,9 +11,12 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
     const [expand , setExpand] = useState(false);
 
     /* CONTEXT ORDER */
-    const {orderData , setOrderData} = useOrder();
+    const {orderData} = useOrder();
+    const {dataMeja} = useOrder();
+
     const {bufferingTotal , setBufferingTotal} = useOrder();
     const {totalPrice , setTotalPrice} = useOrder();
+    const {page} = useOrder();
 
     /* ERROR ORDER TIDAK ADA PILIH MEJA (KHUSUS UNTUK TABLE PICKER) */
     const [errorTidakPilih , setErrorTidakPilih] = useState(false);
@@ -36,7 +40,15 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
                 <FoodQueue {...order} setRefresh={setRefresh} setBufferingTotal={setBufferingTotal}/>
             </li>
         );
-    })
+    });
+
+    const tableList = dataMeja.map(meja =>{
+        return(
+            <li key={meja.meja_id}>
+                <TableQueue {...meja}/>
+            </li>
+        );
+    });
 
     return(
         <section
@@ -52,11 +64,15 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
                 errorTidakPilih={errorTidakPilih}
             />
 
-            <ul className={`bg-gray-200 sm:hidden h-50 overflow-y-auto transition-all duration-800 ${expand ? "max-h-100" : "max-h-0"} border border-green-700`}>
-                {orderList}
+            <ul 
+                className={`
+                    bg-gray-200 sm:hidden h-50 overflow-y-auto transition-all duration-800 ${expand ? "max-h-100" : "max-h-0"} border border-green-700
+                `}
+            >
+                {page === "List Meja" ? tableList : orderList}
             </ul>
             <ul className="hidden bg-gray-200 sm:block flex-1 overflow-y-auto">
-                {orderList}
+                {page === "List Meja" ? tableList : orderList}
             </ul>
 
             <Footer 
