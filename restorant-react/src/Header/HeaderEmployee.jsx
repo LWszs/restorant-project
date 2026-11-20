@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {Trash2, RotateCcw, Grid , Package} from 'lucide-react';
 import {NavLink , useNavigate,Link} from 'react-router-dom'
 import { useOrder } from '../DataContext/OrderContext.jsx';
+import { useLocation } from 'react-router-dom';
 import LogOutReuse from '../reusable/LogOutReuse.jsx'
 
 function HeaderEmployee(){
@@ -24,6 +25,8 @@ function HeaderEmployee(){
     const {setLantaiMejaTerpilih} = useOrder();
     const {page , setPage} = useOrder();
 
+    const location = useLocation();
+
     const mapButtonHamburger = listButtonHamburger.map((button)=>{
         
         function takeAway(type){
@@ -35,7 +38,7 @@ function HeaderEmployee(){
         }
 
         return (
-            button.name === "Take Away" && page !== "List Meja" ? "" : 
+            button.name === "Take Away" && location.pathname === "/FoodOrder" ? "" : 
                 <li 
                     key={button.name} 
                     className={`
