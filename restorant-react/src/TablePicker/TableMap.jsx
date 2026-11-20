@@ -1,30 +1,28 @@
-import {Armchair,Lock} from 'lucide-react'
+import {Lock} from 'lucide-react'
+import useTableFunction from './useTableFunction';
 
-function TableMap({meja_id,meja_no,meja_lantai,meja_jumlahKursi,meja_status,setMejaTerpilih,mejaTerpilih,setLantaiMejaTerpilih}){
+function TableMap(props){
 
-    /* PERATURAN UNTUK STYLE */
-    const peraturanStatus = meja_status !== "Terisi";
-    const peraturanMejaTerpilih = mejaTerpilih === meja_id
-
-    /* MEJA CLICK */
-    function click(){
-        if (peraturanStatus){
-            setMejaTerpilih(meja_id);
-            setLantaiMejaTerpilih(meja_lantai);
-        }
-    }
+    const {meja_id , meja_status , meja_jumlahKursi} = props
+    const {peraturanStatus , peraturanMejaTerpilih , click , warnaMeja} = useTableFunction(props);
 
     return(
 
         <div 
             className={`
-                w-full h-full
-                flex flex-col justify-center items-center border rounded-xl
-                hover:scale-105 active:scale-100 cursor-pointer
-                ${peraturanMejaTerpilih ? "bg-green-800 text-support" : "bg-white"}
+                w-full h-full relative
+                flex flex-col justify-center items-center border rounded-xl cursor-pointer
+                ${peraturanStatus ? "opacity-70" : "hover:scale-110 active:scale-100"} 
+                ${warnaMeja()}
             `}
             onClick={click}
         >
+            {meja_status !== "Terisi" ? 
+            "" : 
+
+                <Lock className='absolute top-8 right-8'/>
+            
+            }
             <p>Meja {meja_id}</p>
             <p>Kapasitas {meja_jumlahKursi}</p>
             

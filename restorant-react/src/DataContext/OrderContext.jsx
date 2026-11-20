@@ -16,6 +16,7 @@ export function OrderProvider({children}) {
     const [page , setPage] = useState("List Meja");
     const [dataMeja,setDataMeja] = useState([]);
     const [tampilMeja, setTampilMeja] = useState([]);
+    const [refreshMeja , setRefreshMeja] = useState(false);
 
     /* LANGSUNG MENGFETCH DAN MEMUNCULKAN ORDER JIKA TERSEDIA */
     useEffect(() =>{
@@ -49,8 +50,8 @@ export function OrderProvider({children}) {
                 console.log(error);
             }
         }
-        dataMeja()
-    },[]);
+        dataMeja();
+    },[refreshMeja]);
 
     return(
         <OrderContext.Provider 
@@ -64,7 +65,8 @@ export function OrderProvider({children}) {
                 dineIn , setDineIn,
                 page , setPage,
                 dataMeja , setDataMeja,
-                tampilMeja , setTampilMeja
+                tampilMeja , setTampilMeja,
+                refreshMeja , setRefreshMeja
         }}>
             {children}
         </OrderContext.Provider>

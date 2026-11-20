@@ -1,13 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useOrder } from "../DataContext/OrderContext";
+import axios from 'axios';
 
 
 function TablePickerFooter({mejaTerpilih,setErrorTidakPilih}){
 
     const navigate = useNavigate();
+    const {refreshMeja , setRefreshMeja} = useOrder();
 
-    function order(){
+    async function order(){
         if (mejaTerpilih !== 0){
-            navigate("/FoodOrder");
+            
+            try{
+                const updateMeja = await axios.patch("/api/meja/UpdateStatus" , {
+                    meja_id : mejaTerpilih
+                });
+                setRefreshMeja(!refreshMeja);
+                navigate("/FoodOrder");
+            }
+            catch(error){
+                console.log(error);
+            }
+
         }
         else{
             setErrorTidakPilih(true);
