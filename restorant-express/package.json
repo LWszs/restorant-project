@@ -11,6 +11,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "promise": "^8.3.0",
+    "socket.io": "^4.8.4",
     "validator": "^13.15.35"
   },
   "name": "restorant-express",
