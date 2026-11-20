@@ -56,7 +56,7 @@ function FoodOrder(){
                     onClick={() => {setTitle(button);cekJenisMakanan(button)}}  
                     className={` 
                         transition-all rounded-2xl p-1
-                        hover:scale-110 active:scale-100
+                        hover:scale-110 active:scale-105
                         ${title == button ? "bg-gray-300" : ""}
                     `}>
                         {button}

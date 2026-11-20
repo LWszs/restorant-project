@@ -1,5 +1,6 @@
 import { useOrder } from '../DataContext/OrderContext';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import FoodQueue from './FoodQueue';
 import TableQueue from './TableQueue';
@@ -10,13 +11,14 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
 
     const [expand , setExpand] = useState(false);
 
+    const location = useLocation();
+
     /* CONTEXT ORDER */
     const {orderData} = useOrder();
     const {dataMeja} = useOrder();
 
     const {bufferingTotal , setBufferingTotal} = useOrder();
     const {totalPrice , setTotalPrice} = useOrder();
-    const {page} = useOrder();
 
     /* ERROR ORDER TIDAK ADA PILIH MEJA (KHUSUS UNTUK TABLE PICKER) */
     const [errorTidakPilih , setErrorTidakPilih] = useState(false);
@@ -69,10 +71,10 @@ function QueueFooter({setRefresh,refresh,QueueHeader,Footer,mejaTerpilih,lantaiM
                     bg-gray-200 sm:hidden h-50 overflow-y-auto transition-all duration-800 ${expand ? "max-h-100" : "max-h-0"} border border-green-700
                 `}
             >
-                {page === "List Meja" ? tableList : orderList}
+                {location.pathname === "/"  ? tableList : orderList}
             </ul>
             <ul className="hidden bg-gray-200 sm:block flex-1 overflow-y-auto">
-                {page === "List Meja" ? tableList : orderList}
+                {location.pathname === "/" ? tableList : orderList}
             </ul>
 
             <Footer 

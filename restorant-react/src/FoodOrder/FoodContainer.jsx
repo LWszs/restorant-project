@@ -118,7 +118,7 @@ function FoodContainer({product_id,product_name,product_price,product_img,setRef
                             {FormatLengkap(product_price)}
                         </p>
                     </div>
-                    <button className="bg-green-600 p-2 rounded-lg text-white cursor-pointer hover:scale-110 active:scale-100" onClick={add}>+
+                    <button className="bg-green-600 p-2 rounded-lg text-white cursor-pointer hover:scale-110 active:scale-105" onClick={add}>+
                     </button>
                 </div>
                 <p className="rounded-2xl bg-gray-300 text-center mt-2"> stock: 0</p>
